@@ -2,20 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HSE by Ali</title>
+  <title>About Me – HSE by Ali</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #f8f9fa; font-family: 'Roboto', sans-serif; }
-    .hero { padding: 60px 0; text-align: center; background-color: #e9ecef; }
-    .hero h1 { color: #2c5e9e; }
-    .section { padding: 40px 20px; }
+    body { font-family: 'Roboto', sans-serif; background-color: #f8f9fa; }
+    .hero { 
+      padding: 80px 20px; 
+      text-align: center; 
+      background: linear-gradient(135deg, #1b3c73, #2c5e9e); 
+      color: #fff; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .hero img { 
+      width: 150px; 
+      height: 150px; 
+      object-fit: cover; 
+      border-radius: 50%; 
+      border: 4px solid #fff; 
+      margin-bottom: 20px;
+    }
+    h1, h2 { color: #1b3c73; }
+    .section { padding: 50px 20px; }
+    .card { box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.2s ease; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+    footer a { color: #1b3c73; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
         <img src="logo.jpg" alt="HSE by Ali Logo" height="40" class="me-2">
@@ -26,8 +45,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About Me</a></li>
           <li class="nav-item"><a class="nav-link" href="certifications.html">Certifications</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
@@ -37,38 +56,47 @@
   </nav>
 
   <!-- Hero Section -->
-  <div class="hero">
-    <h1>Welcome to HSE by Ali</h1>
-    <p class="lead">Your trusted portfolio and resource hub for Health, Safety, and Environment management.</p>
-    <a href="cv.pdf" class="btn btn-outline-primary mt-3" download>Download My CV</a>
+  <div class="hero text-center">
+    <img src="profile.jpg" alt="Mohamed Ali Suliman Salih">
+    <h1>Mohamed Ali Suliman Salih</h1>
+    <p class="lead">Civil Engineer & HSE Specialist passionate about innovative safety solutions across humanitarian, development, and private sectors.</p>
   </div>
 
   <!-- About Section -->
   <div class="container section">
-    <h2>About Me</h2>
-    <p>I’m Mohamed Ali Suliman Salih, a Civil Engineer and HSE Specialist with a passion for safety innovation across humanitarian, development, and private sectors.</p>
+    <h2>My Professional Journey</h2>
+    <p>I hold a degree in Civil Engineering and a diploma in Fire & Construction Safety Management. With multiple HSE certifications (NEBOSH, IOSH, OSHA, STPM-C) and project experience in construction supervision, field monitoring, and safety audits, I focus on creating safer workplaces and ensuring compliance with international standards.</p>
+    <p>My mission is to merge technical engineering knowledge with Health, Safety, and Environmental expertise to deliver projects that are both efficient and safe. I continuously pursue professional development to lead HSE initiatives and promote a culture of safety in every environment I work in.</p>
   </div>
 
-  <!-- Certifications Section -->
+  <!-- Skills Section -->
   <div class="container section">
-    <h2>Certifications</h2>
-    <ul>
-      <li>PMP Training Scholarship – CFYE & Dutch Government</li>
-      <li>DisasterReady: Reporting Security Incidents</li>
-      <li>Introduction to Key Performance Indicators</li>
-    </ul>
-  </div>
-
-  <!-- Contact Section -->
-  <div class="container section">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:mu8dali@gmail.com">mu8dali@gmail.com</a><br>
-       LinkedIn: <a href="https://linkedin.com/in/mohamed-s-b8929a28b" target="_blank">linkedin.com/in/mohamed-s-b8929a28b</a></p>
+    <h2>Core Competencies</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card p-3 text-center">
+          <h5>Risk Assessment</h5>
+          <p>Identify hazards and evaluate risks to ensure safe operations.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 text-center">
+          <h5>Safety Audits</h5>
+          <p>Conduct inspections and compliance checks across construction sites.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 text-center">
+          <h5>Project Coordination</h5>
+          <p>Ensure seamless collaboration between teams and stakeholders.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Footer -->
-  <footer class="bg-light text-center py-3 mt-5">
-    <p>&copy; 2025 CivSafe Solutions – Mohamed Ali Suliman Salih</p>
+  <footer class="bg-light text-center py-3 border-top">
+    <p>&copy; 2025 HSE by Ali – Mohamed Ali Suliman Salih</p>
     <p>
       <a href="mailto:mu8dali@gmail.com">mu8dali@gmail.com</a> |
       <a href="https://linkedin.com/in/mohamed-s-b8929a28b" target="_blank">LinkedIn</a>
