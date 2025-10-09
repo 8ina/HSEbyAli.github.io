@@ -2,109 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About Me – HSE by Ali</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HSE by Ali</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Roboto', sans-serif; background-color: #f8f9fa; }
-    .hero { 
-      padding: 80px 20px; 
-      text-align: center; 
-      background: linear-gradient(135deg, #1b3c73, #2c5e9e); 
-      color: #fff; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    body { background-color: #f8f9fa; font-family: 'Roboto', sans-serif; margin: 0; }
+
+    /* Navbar */
+    .navbar { background-color: #0d1b2a !important; }
+    .navbar-brand, .nav-link { color: #fff !important; }
+    .nav-link:hover { color: #74c0fc !important; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #0d1b2a, #1b3c73);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
     }
-    .hero img { 
-      width: 150px; 
-      height: 150px; 
-      object-fit: cover; 
-      border-radius: 50%; 
-      border: 4px solid #fff; 
+    .hero img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
       margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.5s ease forwards 0.3s;
     }
-    h1, h2 { color: #1b3c73; }
-    .section { padding: 50px 20px; }
-    .card { box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.2s ease; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-    footer a { color: #1b3c73; text-decoration: none; }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.5s ease forwards 0.6s;
+    }
+    .hero p.lead {
+      font-size: 1.1rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.5s ease forwards 0.9s;
+    }
+    .hero .tagline {
+      font-style: italic;
+      color: #9cc1ff;
+      margin-top: 10px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.5s ease forwards 1.2s;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Buttons */
+    .btn-custom {
+      background-color: #74c0fc;
+      border: none;
+      color: #0d1b2a;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #1b3c73;
+      color: #fff;
+      box-shadow: 0 0 15px #74c0fc;
+    }
+
+    /* Sections */
+    .section {
+      padding: 60px 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      margin-top: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    footer {
+      background-color: #0d1b2a;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+    footer a { color: #74c0fc; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="logo.jpg" alt="HSE by Ali Logo" height="40" class="me-2">
+        <img src="logo.jpg" alt="Logo" height="40" class="me-2 rounded-circle">
         <span>HSE by Ali</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon bg-light"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="about.html">About Me</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="certifications.html">Certifications</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <div class="hero text-center">
-    <img src="profile.jpg" alt="Mohamed Ali Suliman Salih">
+  <div class="hero">
+    <img src="profile.jpg" alt="Profile Picture">
     <h1>Mohamed Ali Suliman Salih</h1>
-    <p class="lead">Civil Engineer & HSE Specialist passionate about innovative safety solutions across humanitarian, development, and private sectors.</p>
+    <p class="lead">Civil Engineer | HSE Specialist</p>
+    <p class="tagline">Safety • Leadership • Innovation</p>
+    <a href="cv.pdf" class="btn btn-custom mt-3" download>Download My CV</a>
   </div>
 
   <!-- About Section -->
   <div class="container section">
-    <h2>My Professional Journey</h2>
-    <p>I hold a degree in Civil Engineering and a diploma in Fire & Construction Safety Management. With multiple HSE certifications (NEBOSH, IOSH, OSHA, STPM-C) and project experience in construction supervision, field monitoring, and safety audits, I focus on creating safer workplaces and ensuring compliance with international standards.</p>
-    <p>My mission is to merge technical engineering knowledge with Health, Safety, and Environmental expertise to deliver projects that are both efficient and safe. I continuously pursue professional development to lead HSE initiatives and promote a culture of safety in every environment I work in.</p>
-  </div>
-
-  <!-- Skills Section -->
-  <div class="container section">
-    <h2>Core Competencies</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card p-3 text-center">
-          <h5>Risk Assessment</h5>
-          <p>Identify hazards and evaluate risks to ensure safe operations.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3 text-center">
-          <h5>Safety Audits</h5>
-          <p>Conduct inspections and compliance checks across construction sites.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3 text-center">
-          <h5>Project Coordination</h5>
-          <p>Ensure seamless collaboration between teams and stakeholders.</p>
-        </div>
-      </div>
-    </div>
+    <h2>About Me</h2>
+    <p>I’m a Civil Engineer and HSE Specialist with a mission to shape safer, more resilient projects across Sudan and beyond. My expertise bridges engineering precision and safety leadership in both humanitarian and private sectors.</p>
   </div>
 
   <!-- Footer -->
-  <footer class="bg-light text-center py-3 border-top">
-    <p>&copy; 2025 HSE by Ali – Mohamed Ali Suliman Salih</p>
-    <p>
-      <a href="mailto:mu8dali@gmail.com">mu8dali@gmail.com</a> |
-      <a href="https://linkedin.com/in/mohamed-s-b8929a28b" target="_blank">LinkedIn</a>
-    </p>
+  <footer>
+    <p>&copy; 2025 CivSafe Solutions – Mohamed Ali Suliman Salih</p>
+    <p><a href="mailto:mu8dali@gmail.com">mu8dali@gmail.com</a> | <a href="https://linkedin.com/in/mohamed-s-b8929a28b" target="_blank">LinkedIn</a></p>
   </footer>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
