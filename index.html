@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohamed Ali Suliman Salih - Civil Engineer & HSE Specialist</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
@@ -35,6 +36,49 @@
       color: var(--primary-black);
       line-height: 1.7;
       font-weight: 400;
+      transition: all 0.3s ease;
+    }
+
+    /* RTL Support */
+    body.rtl {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Tajawal', 'Inter', sans-serif;
+    }
+
+    /* Language Switcher */
+    .language-switcher {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      background: var(--primary-white);
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--light-gray);
+    }
+    
+    .language-switcher button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.3rem 0.6rem;
+      border-radius: 2px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 0.85rem;
+    }
+    
+    .language-switcher button.active {
+      background: var(--primary-black);
+      color: var(--primary-white);
+    }
+    
+    .language-switcher button:not(.active):hover {
+      background: var(--light-gray);
     }
 
     /* Navigation */
@@ -89,6 +133,17 @@
     .nav-link:hover,
     .nav-link.active {
       color: var(--primary-black) !important;
+    }
+
+    /* RTL Navigation Adjustments */
+    body.rtl .nav-link::after {
+      left: auto;
+      right: 0;
+    }
+    
+    body.rtl .navbar-brand {
+      margin-right: 0;
+      margin-left: auto;
     }
 
     /* Hero Section */
@@ -627,6 +682,40 @@
       to { opacity: 1; transform: translateX(0); }
     }
 
+    /* RTL Adjustments */
+    body.rtl .hero::before {
+      right: auto;
+      left: 0;
+      transform: scaleX(-1);
+    }
+    
+    body.rtl .section-title::after,
+    body.rtl .hero .tagline::after {
+      left: auto;
+      right: 50%;
+      transform: translateX(50%);
+    }
+    
+    body.rtl .skill-card::before,
+    body.rtl .cert-card::after {
+      left: auto;
+      right: 0;
+    }
+    
+    body.rtl .project-card::before {
+      left: 100%;
+      right: auto;
+    }
+    
+    body.rtl .project-card:hover::before {
+      left: -100%;
+    }
+    
+    body.rtl .back-to-top {
+      right: auto;
+      left: 2rem;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .hero {
@@ -662,6 +751,11 @@
       .construction-banner {
         height: 200px;
       }
+      
+      .language-switcher {
+        top: 0.8rem;
+        right: 1rem;
+      }
     }
     
     @media (max-width: 576px) {
@@ -680,10 +774,25 @@
       .skill-card, .project-card, .cert-card, .contact-card {
         padding: 1.5rem;
       }
+      
+      .language-switcher {
+        padding: 0.3rem 0.6rem;
+      }
+      
+      .language-switcher button {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Language Switcher -->
+  <div class="language-switcher">
+    <button id="lang-en" class="active">EN</button>
+    <button id="lang-ar">AR</button>
+  </div>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light">
@@ -697,11 +806,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">Summary</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Impact</a></li>
-          <li class="nav-item"><a class="nav-link" href="#certifications">Credentials</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Connect</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#home" data-i18n="nav.home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav.summary">Summary</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects" data-i18n="nav.impact">Impact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications" data-i18n="nav.credentials">Credentials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.connect">Connect</a></li>
         </ul>
       </div>
     </div>
@@ -711,12 +820,12 @@
   <section id="home" class="hero">
     <div class="container">
       <img src="profile.jpg" alt="Mohamed Ali Suliman Salih" class="hero-photo">
-      <h1 data-aos="fade-up">Mohamed Ali Suliman Salih</h1>
-      <p class="lead" data-aos="fade-up" data-aos-delay="100">Civil Engineer | HSE Specialist</p>
-      <p class="tagline" data-aos="fade-up" data-aos-delay="200">Bridging Civil Engineering and Safety Excellence on High-Impact Projects</p>
+      <h1 data-aos="fade-up" data-i18n="hero.name">Mohamed Ali Suliman Salih</h1>
+      <p class="lead" data-aos="fade-up" data-aos-delay="100" data-i18n="hero.title">Civil Engineer | HSE Specialist</p>
+      <p class="tagline" data-aos="fade-up" data-aos-delay="200" data-i18n="hero.tagline">Bridging Civil Engineering and Safety Excellence on High-Impact Projects</p>
       <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-        <a href="#projects" class="btn btn-primary-custom btn-custom">View My Impact</a>
-        <a href="#contact" class="btn btn-outline-custom btn-custom">Let's Collaborate</a>
+        <a href="#projects" class="btn btn-primary-custom btn-custom" data-i18n="hero.viewImpact">View My Impact</a>
+        <a href="#contact" class="btn btn-outline-custom btn-custom" data-i18n="hero.collaborate">Let's Collaborate</a>
       </div>
     </div>
   </section>
@@ -729,15 +838,15 @@
   <!-- About Section -->
   <section id="about" class="section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Professional Summary & Value</h2>
+      <h2 class="section-title" data-aos="fade-up" data-i18n="about.title">Professional Summary & Value</h2>
       <div class="row">
         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="skill-card">
             <div class="skill-icon">
               <i class="fas fa-drafting-compass"></i>
             </div>
-            <h3 class="skill-title">Engineering-Constriction & Estimation</h3>
-            <p>Structural analysis, site planning, and construction project management for resilient infrastructure solutions.</p>
+            <h3 class="skill-title" data-i18n="about.skill1.title">Engineering-Construction & Estimation</h3>
+            <p data-i18n="about.skill1.desc">Structural analysis, site planning, and construction project management for resilient infrastructure solutions.</p>
           </div>
         </div>
         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
@@ -745,8 +854,8 @@
             <div class="skill-icon">
               <i class="fas fa-hard-hat"></i>
             </div>
-            <h3 class="skill-title">HSE Management</h3>
-            <p>Comprehensive risk assessment, safety audits, and compliance protocols for workplace safety excellence.</p>
+            <h3 class="skill-title" data-i18n="about.skill2.title">HSE Management</h3>
+            <p data-i18n="about.skill2.desc">Comprehensive risk assessment, safety audits, and compliance protocols for workplace safety excellence.</p>
           </div>
         </div>
         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
@@ -754,8 +863,8 @@
             <div class="skill-icon">
               <i class="fas fa-tasks"></i>
             </div>
-            <h3 class="skill-title">Project Coordination</h3>
-            <p>Stakeholder engagement, resource management, and quality assurance for successful project delivery.</p>
+            <h3 class="skill-title" data-i18n="about.skill3.title">Project Coordination</h3>
+            <p data-i18n="about.skill3.desc">Stakeholder engagement, resource management, and quality assurance for successful project delivery.</p>
           </div>
         </div>
       </div>
@@ -765,47 +874,52 @@
   <!-- Projects Section -->
   <section id="projects" class="section section-dark">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Key Project Impact & Achievements</h2>
+      <h2 class="section-title" data-aos="fade-up" data-i18n="projects.title">Key Project Impact & Achievements</h2>
       <div class="row">
+        <!-- Diplomatic Villas Restoration -->
         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="project-card">
             <div class="project-icon">
-              <i class="fas fa-hard-hat"></i>
+              <i class="fas fa-landmark"></i>
             </div>
-            <h4 class="project-title">WASH Infrastructure Upgrade – Kassala</h4>
-            <p>Led site planning and structural design for water and sanitation facilities, ensuring HSE compliance in humanitarian contexts.</p>
+            <h4 class="project-title" data-i18n="projects.project1.title">Diplomatic Villas Restoration</h4>
+            <p data-i18n="projects.project1.desc">I restored diplomatic villas as part of a high-level engineering project, ensuring quality and safety in the execution.</p>
             <div class="project-badges">
-              <span class="project-badge">Construction</span>
-              <span class="project-badge">HSE Compliance</span>
-              <span class="project-badge">Humanitarian</span>
+              <span class="project-badge" data-i18n="projects.badge1">Renovation</span>
+              <span class="project-badge" data-i18n="projects.badge2">Diplomatic</span>
+              <span class="project-badge" data-i18n="projects.badge3">High-Security</span>
             </div>
           </div>
         </div>
+        
+        <!-- Commercial Market Construction -->
         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="project-card">
             <div class="project-icon">
-              <i class="fas fa-clipboard-check"></i>
+              <i class="fas fa-store"></i>
             </div>
-            <h4 class="project-title">Safety Audit – Riyadh Housing Development</h4>
-            <p>Conducted comprehensive HSE audit and risk assessment, improving safety compliance by 40%.</p>
+            <h4 class="project-title" data-i18n="projects.project2.title">Commercial Market Construction</h4>
+            <p data-i18n="projects.project2.desc">Oversaw the construction of commercial markets, with a focus on quality execution and occupational safety in multiple environments.</p>
             <div class="project-badges">
-              <span class="project-badge">Safety Audit</span>
-              <span class="project-badge">Risk Assessment</span>
-              <span class="project-badge">Residential</span>
+              <span class="project-badge" data-i18n="projects.badge4">Commercial</span>
+              <span class="project-badge" data-i18n="projects.badge5">Site Supervision</span>
+              <span class="project-badge" data-i18n="projects.badge6">Construction</span>
             </div>
           </div>
         </div>
+        
+        <!-- Humanitarian Field Engagement -->
         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="project-card">
             <div class="project-icon">
-              <i class="fas fa-bridge"></i>
+              <i class="fas fa-hands-helping"></i>
             </div>
-            <h4 class="project-title">Bridge Rehabilitation – Nile Delta</h4>
-            <p>Oversaw stakeholder engagement and technical reporting for regional bridge restoration project.</p>
+            <h4 class="project-title" data-i18n="projects.project3.title">Humanitarian Field Engagement</h4>
+            <p data-i18n="projects.project3.desc">I engaged in humanitarian field work, contributing to projects in areas of need.</p>
             <div class="project-badges">
-              <span class="project-badge">Infrastructure</span>
-              <span class="project-badge">Coordination</span>
-              <span class="project-badge">Restoration</span>
+              <span class="project-badge" data-i18n="projects.badge7">Humanitarian</span>
+              <span class="project-badge" data-i18n="projects.badge8">Field Work</span>
+              <span class="project-badge" data-i18n="projects.badge9">Impact</span>
             </div>
           </div>
         </div>
@@ -816,15 +930,15 @@
   <!-- Certifications Section -->
   <section id="certifications" class="section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Core Credentials & Professional Training</h2>
+      <h2 class="section-title" data-aos="fade-up" data-i18n="certifications.title">Core Credentials & Professional Training</h2>
       <div class="row">
         <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="cert-card">
             <div class="cert-icon">
               <i class="fas fa-certificate"></i>
             </div>
-            <h4 class="cert-title">NEBOSH</h4>
-            <p>International General Certificate in Occupational Health and Safety</p>
+            <h4 class="cert-title" data-i18n="certifications.cert1.title">NEBOSH</h4>
+            <p data-i18n="certifications.cert1.desc">International General Certificate in Occupational Health and Safety</p>
           </div>
         </div>
         <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="200">
@@ -832,8 +946,8 @@
             <div class="cert-icon">
               <i class="fas fa-shield-alt"></i>
             </div>
-            <h4 class="cert-title">OSHA Safety</h4>
-            <p>Occupational Safety and Health Administration Standards</p>
+            <h4 class="cert-title" data-i18n="certifications.cert2.title">OSHA Safety</h4>
+            <p data-i18n="certifications.cert2.desc">Occupational Safety and Health Administration Standards</p>
           </div>
         </div>
         <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="300">
@@ -841,8 +955,8 @@
             <div class="cert-icon">
               <i class="fas fa-medkit"></i>
             </div>
-            <h4 class="cert-title">First Aid Certified</h4>
-            <p>Emergency First Aid, CPR, and Crisis Response Management</p>
+            <h4 class="cert-title" data-i18n="certifications.cert3.title">First Aid Certified</h4>
+            <p data-i18n="certifications.cert3.desc">Emergency First Aid, CPR, and Crisis Response Management</p>
           </div>
         </div>
         <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="400">
@@ -850,8 +964,8 @@
             <div class="cert-icon">
               <i class="fas fa-fire-extinguisher"></i>
             </div>
-            <h4 class="cert-title">Fire Safety Management</h4>
-            <p>Fire Prevention, Risk Assessment, and Emergency Procedures</p>
+            <h4 class="cert-title" data-i18n="certifications.cert4.title">Fire Safety Management</h4>
+            <p data-i18n="certifications.cert4.desc">Fire Prevention, Risk Assessment, and Emergency Procedures</p>
           </div>
         </div>
       </div>
@@ -861,15 +975,15 @@
   <!-- Contact Section -->
   <section id="contact" class="section contact-section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Connect With Me</h2>
+      <h2 class="section-title" data-aos="fade-up" data-i18n="contact.title">Connect With Me</h2>
       <div class="row">
         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="contact-card">
             <div class="contact-icon">
               <i class="fas fa-envelope"></i>
             </div>
-            <h4 class="contact-title">Email</h4>
-            <p>For professional inquiries and consultations</p>
+            <h4 class="contact-title" data-i18n="contact.email.title">Email</h4>
+            <p data-i18n="contact.email.desc">For professional inquiries and consultations</p>
             <a href="mailto:mu8dali@gmail.com" class="contact-link" title="Send Email">
               <i class="fas fa-paper-plane"></i>
             </a>
@@ -880,8 +994,8 @@
             <div class="contact-icon">
               <i class="fab fa-linkedin"></i>
             </div>
-            <h4 class="contact-title">LinkedIn</h4>
-            <p>Connect professionally and view my experience</p>
+            <h4 class="contact-title" data-i18n="contact.linkedin.title">LinkedIn</h4>
+            <p data-i18n="contact.linkedin.desc">Connect professionally and view my experience</p>
             <a href="https://linkedin.com/in/mohamed-s-b8929a28b" target="_blank" class="contact-link" title="LinkedIn Profile">
               <i class="fab fa-linkedin-in"></i>
             </a>
@@ -892,8 +1006,8 @@
             <div class="contact-icon">
               <i class="fab fa-whatsapp"></i>
             </div>
-            <h4 class="contact-title">WhatsApp</h4>
-            <p>Direct messaging for quick conversations</p>
+            <h4 class="contact-title" data-i18n="contact.whatsapp.title">WhatsApp</h4>
+            <p data-i18n="contact.whatsapp.desc">Direct messaging for quick conversations</p>
             <a href="https://wa.me/249900795293" target="_blank" class="contact-link" title="WhatsApp">
               <i class="fab fa-whatsapp"></i>
             </a>
@@ -918,9 +1032,9 @@
             <i class="fab fa-whatsapp"></i>
           </a>
         </div>
-        <p class="footer-text">CivSafeSolution</p>
-        <p class="footer-text">Civil Engineer & HSE Specialist</p>
-        <p class="footer-copyright">&copy; 2025 All rights reserved.</p>
+        <p class="footer-text" data-i18n="footer.brand">CivSafeSolution</p>
+        <p class="footer-text" data-i18n="footer.profession">Civil Engineer & HSE Specialist</p>
+        <p class="footer-copyright" data-i18n="footer.copyright">&copy; 2025 All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -939,6 +1053,181 @@
       once: true,
       offset: 100
     });
+
+    // Language translations
+    const translations = {
+      en: {
+        // Navigation
+        "nav.home": "Home",
+        "nav.summary": "Summary",
+        "nav.impact": "Impact",
+        "nav.credentials": "Credentials",
+        "nav.connect": "Connect",
+        
+        // Hero Section
+        "hero.name": "Mohamed Ali Suliman Salih",
+        "hero.title": "Civil Engineer | HSE Specialist",
+        "hero.tagline": "Bridging Civil Engineering and Safety Excellence on High-Impact Projects",
+        "hero.viewImpact": "View My Impact",
+        "hero.collaborate": "Let's Collaborate",
+        
+        // About Section
+        "about.title": "Professional Summary & Value",
+        "about.skill1.title": "Engineering-Construction & Estimation",
+        "about.skill1.desc": "Structural analysis, site planning, and construction project management for resilient infrastructure solutions.",
+        "about.skill2.title": "HSE Management",
+        "about.skill2.desc": "Comprehensive risk assessment, safety audits, and compliance protocols for workplace safety excellence.",
+        "about.skill3.title": "Project Coordination",
+        "about.skill3.desc": "Stakeholder engagement, resource management, and quality assurance for successful project delivery.",
+        
+        // Projects Section
+        "projects.title": "Key Project Impact & Achievements",
+        "projects.project1.title": "Diplomatic Villas Restoration",
+        "projects.project1.desc": "I restored diplomatic villas as part of a high-level engineering project, ensuring quality and safety in the execution.",
+        "projects.project2.title": "Commercial Market Construction",
+        "projects.project2.desc": "Oversaw the construction of commercial markets, with a focus on quality execution and occupational safety in multiple environments.",
+        "projects.project3.title": "Humanitarian Field Engagement",
+        "projects.project3.desc": "I engaged in humanitarian field work, contributing to projects in areas of need.",
+        "projects.badge1": "Renovation",
+        "projects.badge2": "Diplomatic",
+        "projects.badge3": "High-Security",
+        "projects.badge4": "Commercial",
+        "projects.badge5": "Site Supervision",
+        "projects.badge6": "Construction",
+        "projects.badge7": "Humanitarian",
+        "projects.badge8": "Field Work",
+        "projects.badge9": "Impact",
+        
+        // Certifications Section
+        "certifications.title": "Core Credentials & Professional Training",
+        "certifications.cert1.title": "NEBOSH",
+        "certifications.cert1.desc": "International General Certificate in Occupational Health and Safety",
+        "certifications.cert2.title": "OSHA Safety",
+        "certifications.cert2.desc": "Occupational Safety and Health Administration Standards",
+        "certifications.cert3.title": "First Aid Certified",
+        "certifications.cert3.desc": "Emergency First Aid, CPR, and Crisis Response Management",
+        "certifications.cert4.title": "Fire Safety Management",
+        "certifications.cert4.desc": "Fire Prevention, Risk Assessment, and Emergency Procedures",
+        
+        // Contact Section
+        "contact.title": "Connect With Me",
+        "contact.email.title": "Email",
+        "contact.email.desc": "For professional inquiries and consultations",
+        "contact.linkedin.title": "LinkedIn",
+        "contact.linkedin.desc": "Connect professionally and view my experience",
+        "contact.whatsapp.title": "WhatsApp",
+        "contact.whatsapp.desc": "Direct messaging for quick conversations",
+        
+        // Footer
+        "footer.brand": "CivSafeSolution",
+        "footer.profession": "Civil Engineer & HSE Specialist",
+        "footer.copyright": "© 2025 All rights reserved."
+      },
+      ar: {
+        // Navigation
+        "nav.home": "الرئيسية",
+        "nav.summary": "ملخص",
+        "nav.impact": "التأثير",
+        "nav.credentials": "الشهادات",
+        "nav.connect": "اتصل بي",
+        
+        // Hero Section
+        "hero.name": "محمد علي سليمان صالح",
+        "hero.title": "مهندس مدني | أخصائي الصحة والسلامة والبيئة",
+        "hero.tagline": "ربط الهندسة المدنية والتميز في مجال السلامة في المشاريع عالية التأثير",
+        "hero.viewImpact": "عرض تأثيري",
+        "hero.collaborate": "لنتعاون",
+        
+        // About Section
+        "about.title": "ملخص احترافي والقيمة المضافة",
+        "about.skill1.title": "الهندسة الإنشائية والتقدير",
+        "about.skill1.desc": "التحليل الإنشائي، تخطيط المواقع، وإدارة مشاريع البناء لحلول البنية التحتية المرنة.",
+        "about.skill2.title": "إدارة الصحة والسلامة والبيئة",
+        "about.skill2.desc": "تقييم شامل للمخاطر، تدقيق السلامة، وبروتوكولات الامتثال لتحقيق التميز في سلامة مكان العمل.",
+        "about.skill3.title": "تنسيق المشاريع",
+        "about.skill3.desc": "إشراك أصحاب المصلحة، إدارة الموارد، وضمان الجودة لتسليم المشروع بنجاح.",
+        
+        // Projects Section
+        "projects.title": "التأثير الرئيسي للمشاريع والإنجازات",
+        "projects.project1.title": "ترميم الفيلات الدبلوماسية",
+        "projects.project1.desc": "قمت بترميم الفيلات الدبلوماسية كجزء من مشروع هندسي رفيع المستوى، مع ضمان الجودة والسلامة في التنفيذ.",
+        "projects.project2.title": "بناء الأسواق التجارية",
+        "projects.project2.desc": "أشرت على بناء الأسواق التجارية، مع التركيز على التنفيذ عالي الجودة والسلامة المهنية في بيئات متعددة.",
+        "projects.project3.title": "العمل الميداني الإنساني",
+        "projects.project3.desc": "شاركت في العمل الميداني الإنساني، مساهمًا في المشاريع في المناطق المحتاجة.",
+        "projects.badge1": "ترميم",
+        "projects.badge2": "دبلوماسي",
+        "projects.badge3": "أمني عالي",
+        "projects.badge4": "تجاري",
+        "projects.badge5": "إشراف موقع",
+        "projects.badge6": "بناء",
+        "projects.badge7": "إنساني",
+        "projects.badge8": "عمل ميداني",
+        "projects.badge9": "تأثير",
+        
+        // Certifications Section
+        "certifications.title": "الشهادات الأساسية والتدريب المهني",
+        "certifications.cert1.title": "نيبوش",
+        "certifications.cert1.desc": "الشهادة الدولية العامة في الصحة والسلامة المهنية",
+        "certifications.cert2.title": "السلامة (أوشا)",
+        "certifications.cert2.desc": "معايير إدارة السلامة والصحة المهنية",
+        "certifications.cert3.title": "الإسعافات الأولية",
+        "certifications.cert3.desc": "الإسعافات الأولية الطارئة، الإنعاش القلبي الرئوي، وإدارة الاستجابة للأزمات",
+        "certifications.cert4.title": "إدارة السلامة من الحرائق",
+        "certifications.cert4.desc": "الوقاية من الحرائق، تقييم المخاطر، والإجراءات الطارئة",
+        
+        // Contact Section
+        "contact.title": "اتصل بي",
+        "contact.email.title": "البريد الإلكتروني",
+        "contact.email.desc": "للاستفسارات المهنية والاستشارات",
+        "contact.linkedin.title": "لينكد إن",
+        "contact.linkedin.desc": "تواصل معي بشكل احترافي وشاهد تجربتي",
+        "contact.whatsapp.title": "واتساب",
+        "contact.whatsapp.desc": "المراسلة المباشرة للمحادثات السريعة",
+        
+        // Footer
+        "footer.brand": "سيف سيف سوليوشن",
+        "footer.profession": "مهندس مدني وأخصائي صحة وسلامة وبيئة",
+        "footer.copyright": "© 2025 جميع الحقوق محفوظة."
+      }
+    };
+
+    // Language switching functionality
+    let currentLang = 'en';
+    
+    function switchLanguage(lang) {
+      currentLang = lang;
+      
+      // Update all elements with data-i18n attribute
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update active button state
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+      
+      // Update HTML direction and lang attribute
+      if (lang === 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
+        document.body.classList.add('rtl');
+      } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        document.body.classList.remove('rtl');
+      }
+      
+      // Reinitialize AOS for proper animations
+      AOS.refresh();
+    }
+    
+    // Set up language switcher event listeners
+    document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+    document.getElementById('lang-ar').addEventListener('click', () => switchLanguage('ar'));
 
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
