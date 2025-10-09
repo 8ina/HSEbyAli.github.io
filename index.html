@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     :root {
       --primary-white: #ffffff;
@@ -119,11 +120,18 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       margin-bottom: 2rem;
       transition: all 0.4s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
     
     .hero-photo:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      animation: none;
     }
     
     .hero h1 {
@@ -202,6 +210,25 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
+    /* Construction Banner */
+    .construction-banner {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .construction-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .construction-banner:hover img {
+      transform: scale(1.05);
+    }
+
     /* Section Styling */
     .section {
       padding: 100px 0;
@@ -278,6 +305,11 @@
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
       color: var(--primary-black);
+      transition: transform 0.3s ease;
+    }
+    
+    .skill-card:hover .skill-icon {
+      transform: scale(1.1) rotate(5deg);
     }
     
     .skill-title {
@@ -302,6 +334,22 @@
       transition: all 0.3s ease;
       border: 1px solid var(--light-gray);
       position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.03), transparent);
+      transition: left 0.6s;
+    }
+    
+    .project-card:hover::before {
+      left: 100%;
     }
     
     .project-card:hover {
@@ -352,6 +400,24 @@
       transition: all 0.3s ease;
       border: 1px solid var(--light-gray);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cert-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-black);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .cert-card:hover::after {
+      transform: scaleX(1);
     }
     
     .cert-card:hover {
@@ -363,6 +429,11 @@
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
       color: var(--primary-black);
+      transition: transform 0.3s ease;
+    }
+    
+    .cert-card:hover .cert-icon {
+      transform: scale(1.1);
     }
     
     .cert-title {
@@ -528,6 +599,34 @@
       transform: translateY(-3px);
     }
 
+    /* Animation Classes */
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .slide-in-left {
+      animation: slideInLeft 0.8s ease-out;
+    }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .slide-in-right {
+      animation: slideInRight 0.8s ease-out;
+    }
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .hero {
@@ -559,6 +658,10 @@
       .footer-icons {
         gap: 1rem;
       }
+      
+      .construction-banner {
+        height: 200px;
+      }
     }
     
     @media (max-width: 576px) {
@@ -585,7 +688,10 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="#home">HSEbyAli</a>
+      <a class="navbar-brand d-flex align-items-center" href="#home">
+        <img src="logo.jpg" alt="Logo" height="40" class="me-2 rounded-circle">
+        <span>HSEbyAli</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -604,32 +710,37 @@
   <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="container">
-      <img src="https://via.placeholder.com/180" alt="Mohamed Ali Suliman Salih" class="hero-photo">
-      <h1>Mohamed Ali Suliman Salih</h1>
-      <p class="lead">Civil Engineer | HSE Specialist</p>
-      <p class="tagline">Bridging Civil Engineering and Safety Excellence on High-Impact Projects</p>
-      <div class="cta-buttons">
+      <img src="profile.jpg" alt="Mohamed Ali Suliman Salih" class="hero-photo">
+      <h1 data-aos="fade-up">Mohamed Ali Suliman Salih</h1>
+      <p class="lead" data-aos="fade-up" data-aos-delay="100">Civil Engineer | HSE Specialist</p>
+      <p class="tagline" data-aos="fade-up" data-aos-delay="200">Bridging Civil Engineering and Safety Excellence on High-Impact Projects</p>
+      <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
         <a href="#projects" class="btn btn-primary-custom btn-custom">View My Impact</a>
         <a href="#contact" class="btn btn-outline-custom btn-custom">Let's Collaborate</a>
       </div>
     </div>
   </section>
 
+  <!-- Construction Banner -->
+  <div class="construction-banner" data-aos="fade-in">
+    <img src="construction-bg.jpg" alt="Construction Site">
+  </div>
+
   <!-- About Section -->
   <section id="about" class="section">
     <div class="container">
-      <h2 class="section-title">Professional Summary & Value</h2>
+      <h2 class="section-title" data-aos="fade-up">Professional Summary & Value</h2>
       <div class="row">
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="skill-card">
             <div class="skill-icon">
               <i class="fas fa-drafting-compass"></i>
             </div>
-            <h3 class="skill-title">Engineering Design</h3>
+            <h3 class="skill-title">Engineering-Constriction & Estimation</h3>
             <p>Structural analysis, site planning, and construction project management for resilient infrastructure solutions.</p>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="skill-card">
             <div class="skill-icon">
               <i class="fas fa-hard-hat"></i>
@@ -638,7 +749,7 @@
             <p>Comprehensive risk assessment, safety audits, and compliance protocols for workplace safety excellence.</p>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="skill-card">
             <div class="skill-icon">
               <i class="fas fa-tasks"></i>
@@ -654,9 +765,9 @@
   <!-- Projects Section -->
   <section id="projects" class="section section-dark">
     <div class="container">
-      <h2 class="section-title">Key Project Impact & Achievements</h2>
+      <h2 class="section-title" data-aos="fade-up">Key Project Impact & Achievements</h2>
       <div class="row">
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="project-card">
             <div class="project-icon">
               <i class="fas fa-hard-hat"></i>
@@ -670,7 +781,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="project-card">
             <div class="project-icon">
               <i class="fas fa-clipboard-check"></i>
@@ -684,7 +795,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="project-card">
             <div class="project-icon">
               <i class="fas fa-bridge"></i>
@@ -705,9 +816,9 @@
   <!-- Certifications Section -->
   <section id="certifications" class="section">
     <div class="container">
-      <h2 class="section-title">Core Credentials & Professional Training</h2>
+      <h2 class="section-title" data-aos="fade-up">Core Credentials & Professional Training</h2>
       <div class="row">
-        <div class="col-md-3 mb-4">
+        <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="cert-card">
             <div class="cert-icon">
               <i class="fas fa-certificate"></i>
@@ -716,7 +827,7 @@
             <p>International General Certificate in Occupational Health and Safety</p>
           </div>
         </div>
-        <div class="col-md-3 mb-4">
+        <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="cert-card">
             <div class="cert-icon">
               <i class="fas fa-shield-alt"></i>
@@ -725,7 +836,7 @@
             <p>Occupational Safety and Health Administration Standards</p>
           </div>
         </div>
-        <div class="col-md-3 mb-4">
+        <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="cert-card">
             <div class="cert-icon">
               <i class="fas fa-medkit"></i>
@@ -734,7 +845,7 @@
             <p>Emergency First Aid, CPR, and Crisis Response Management</p>
           </div>
         </div>
-        <div class="col-md-3 mb-4">
+        <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="400">
           <div class="cert-card">
             <div class="cert-icon">
               <i class="fas fa-fire-extinguisher"></i>
@@ -750,9 +861,9 @@
   <!-- Contact Section -->
   <section id="contact" class="section contact-section">
     <div class="container">
-      <h2 class="section-title">Connect With Me</h2>
+      <h2 class="section-title" data-aos="fade-up">Connect With Me</h2>
       <div class="row">
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="contact-card">
             <div class="contact-icon">
               <i class="fas fa-envelope"></i>
@@ -764,7 +875,7 @@
             </a>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="contact-card">
             <div class="contact-icon">
               <i class="fab fa-linkedin"></i>
@@ -776,7 +887,7 @@
             </a>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="contact-card">
             <div class="contact-icon">
               <i class="fab fa-whatsapp"></i>
@@ -807,7 +918,7 @@
             <i class="fab fa-whatsapp"></i>
           </a>
         </div>
-        <p class="footer-text">HSEbyAli</p>
+        <p class="footer-text">CivSafeSolution</p>
         <p class="footer-text">Civil Engineer & HSE Specialist</p>
         <p class="footer-copyright">&copy; 2025 All rights reserved.</p>
       </div>
@@ -820,7 +931,15 @@
   </button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
+    // Initialize AOS animations
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
       const navbar = document.querySelector('.navbar');
@@ -888,6 +1007,14 @@
             behavior: 'smooth'
           });
         }
+      });
+    });
+
+    // Add loading animation to elements
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('.skill-card, .project-card, .cert-card, .contact-card');
+      elements.forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.1}s`;
       });
     });
   </script>
