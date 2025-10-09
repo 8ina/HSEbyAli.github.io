@@ -17,8 +17,8 @@
     }
     h1, h2 { color: #1b3c73; }
     .section { padding: 50px 20px; }
-    .card { transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); }
+    .card { box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.2s ease; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
     footer a { color: #1b3c73; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
   </style>
@@ -40,8 +40,8 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About Me</a></li>
           <li class="nav-item"><a class="nav-link active" href="certifications.html">Certifications</a></li>
-          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
         </ul>
       </div>
     </div>
@@ -49,68 +49,57 @@
 
   <!-- Hero Section -->
   <div class="hero">
-    <h1>Certifications & Professional Development</h1>
-    <p class="lead">Credentials that strengthen my expertise in Civil Engineering, HSE, and Project Management.</p>
+    <h1>My Certifications</h1>
+    <p class="lead">A showcase of professional qualifications in HSE, project management, and safety leadership.</p>
   </div>
 
   <!-- Certifications Section -->
   <div class="container section">
     <div class="row g-4">
-      <!-- NEBOSH -->
       <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">NEBOSH IGC</h5>
-            <p class="card-text">International General Certificate in Occupational Health & Safety.</p>
-          </div>
+        <div class="card p-3 text-center">
+          <h5>NEBOSH Health & Safety</h5>
+          <p>Comprehensive occupational health and safety qualification recognized globally.</p>
         </div>
       </div>
-      <!-- IOSH -->
       <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">IOSH Managing Safely</h5>
-            <p class="card-text">Comprehensive training in workplace safety management.</p>
-          </div>
+        <div class="card p-3 text-center">
+          <h5>IOSH Managing Safely</h5>
+          <p>Practical skills for managers to lead safety initiatives effectively.</p>
         </div>
       </div>
-      <!-- OSHA -->
       <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">OSHA General Industry</h5>
-            <p class="card-text">General Industry Safety & Health certification.</p>
-          </div>
+        <div class="card p-3 text-center">
+          <h5>OSHA Safety Standards</h5>
+          <p>Training on workplace safety, hazard recognition, and compliance with OSHA standards.</p>
         </div>
       </div>
-      <!-- KPIs -->
       <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">KPIs Course</h5>
-            <p class="card-text">Key Performance Indicators – Disaster Ready.</p>
-          </div>
+        <div class="card p-3 text-center">
+          <h5>STPM-C Security Risk Management</h5>
+          <p>State Professional Certificate in security and risk management.</p>
         </div>
       </div>
-      <!-- Reporting Security Incidents -->
       <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">Reporting Security Incidents</h5>
-            <p class="card-text">Disaster Ready course on incident reporting and response.</p>
-          </div>
+        <div class="card p-3 text-center">
+          <h5>PMP Training Scholarship</h5>
+          <p>Project Management Professional training via CFYE & Dutch Government initiative.</p>
         </div>
       </div>
-      <!-- PMP Essentials -->
       <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">PMP Essentials Training</h5>
-            <p class="card-text">Benchmark Training (CFYE Scholarship, Oct 2025). Supported by the Dutch Government, focused on project planning, scheduling, and risk management.</p>
-          </div>
+        <div class="card p-3 text-center">
+          <h5>DisasterReady: Security Reporting</h5>
+          <p>Training in reporting security incidents and incident management protocols.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 text-center">
+          <h5>Introduction to Key Performance Indicators</h5>
+          <p>Understanding KPIs to measure performance and enhance project outcomes.</p>
         </div>
       </div>
     </div>
+    <a href="index.html" class="btn btn-outline-primary mt-4">← Back to Home</a>
   </div>
 
   <!-- Footer -->
