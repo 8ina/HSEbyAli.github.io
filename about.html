@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,49 +8,57 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Roboto', sans-serif; background-color: #f8f9fa; }
+    body { font-family: 'Roboto', sans-serif; background-color: #121212; color: #fff; }
+    a { color: #00bfa6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
     .hero {
       padding: 60px 20px;
       text-align: center;
       background: linear-gradient(135deg, #1b3c73, #2c5e9e);
       color: #fff;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     .section { padding: 50px 20px; }
     .profile-pic {
-      width: 160px;
-      height: 160px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #1b3c73;
+      border: 4px solid #00bfa6;
       margin-bottom: 20px;
     }
-    h1, h2, h3 { color: #1b3c73; }
-    .card-custom {
-      border: none;
+    h1, h2, h3, h5 { color: #00bfa6; }
+    .bio-card {
+      background-color: #1e1e1e;
+      padding: 25px;
       border-radius: 12px;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+    }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .cert-card {
+      background-color: #1e1e1e;
+      border-radius: 12px;
       padding: 20px;
-      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .badge-skill {
-      background-color: #1b3c73;
-      color: #fff;
-      margin: 5px;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      display: inline-block;
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.5);
     }
-    footer a { color: #1b3c73; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    footer { background-color: #1e1e1e; padding: 20px 0; margin-top: 50px; }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
         <img src="logo.jpg" alt="HSE by Ali Logo" height="40" class="me-2">
@@ -70,63 +79,49 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <div class="hero">
     <h1>About Me</h1>
-    <p class="lead">Health, Safety, and Environment Professional | Civil Engineer | Risk Management Enthusiast</p>
+    <p class="lead">HSE Professional | Risk Management | Safety Leadership</p>
   </div>
 
-  <!-- About Section -->
-  <div class="container section text-center">
-    <img src="profile.jpg" alt="Profile Photo" class="profile-pic">
-    <h2>Hello, I’m Mohamed Ali Suliman Salih</h2>
-    <p class="mt-3">
-      A <strong>Civil Engineer</strong> and <strong>certified HSE professional</strong> passionate about building safer, more sustainable environments.
-      I hold a <strong>Diploma in Fire and Construction Safety Management</strong> and multiple international certificates, including <strong>NEBOSH, IOSH, OSHA, and STPM-C</strong>.
-    </p>
-    <p>
-      My experience includes internships with the <strong>Ministry of Infrastructure and Urban Development</strong> and <strong>Plan International Sudan</strong>, where I participated in field safety assessments, site inspections, and project management activities.  
-      I specialize in <strong>HSE supervision, risk control, and emergency planning</strong>.
-    </p>
-  </div>
-
-  <!-- Experience Section -->
+  <!-- Bio Section -->
   <div class="container section">
-    <h3 class="text-center mb-4">Professional Experience</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card-custom">
-          <h5>Intern – Ministry of Infrastructure and Urban Development</h5>
-          <p class="text-muted">Aug 2024 – Apr 2025</p>
-          <p>Supported safety compliance monitoring, reviewed construction site documentation, and participated in project planning and coordination activities.</p>
-        </div>
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center">
+        <img src="profile.jpg" alt="Profile Photo" class="profile-pic">
       </div>
-      <div class="col-md-6">
-        <div class="card-custom">
-          <h5>Project Management Intern – Plan International Sudan</h5>
-          <p class="text-muted">Feb 2024 – Mar 2024</p>
-          <p>Assisted in project supervision, report preparation, and coordination with engineering teams across multiple cities.</p>
+      <div class="col-md-8">
+        <div class="bio-card">
+          <h2>Mohamed Ali Suliman Salih</h2>
+          <p>
+            I’m a <strong>Civil Engineer</strong> and <strong>certified HSE professional</strong> passionate about creating safer and more resilient workplaces.
+            I hold international certifications including <strong>NEBOSH, IOSH, OSHA, and STPM-C</strong>, and I have hands-on experience in project safety and risk management.
+          </p>
+          <p>
+            I specialize in <strong>HSE supervision, incident reporting, and risk assessment</strong>. My approach combines technical expertise with proactive leadership, ensuring compliance and fostering a culture of safety.
+          </p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Skills Section -->
-  <div class="container section text-center">
-    <h3>Core Skills</h3>
-    <div class="mt-3">
-      <span class="badge-skill">HSE Management</span>
-      <span class="badge-skill">Risk Assessment</span>
-      <span class="badge-skill">Fire Safety</span>
-      <span class="badge-skill">Incident Reporting</span>
-      <span class="badge-skill">Project Coordination</span>
-      <span class="badge-skill">Safety Auditing</span>
-      <span class="badge-skill">Construction Supervision</span>
+  <!-- Certification Cards -->
+  <div class="container section">
+    <h3 class="text-center mb-4">Certifications & Professional Development</h3>
+    <div class="cert-grid">
+      <div class="cert-card"><h5>NEBOSH International General Certificate</h5></div>
+      <div class="cert-card"><h5>IOSH Managing Safely</h5></div>
+      <div class="cert-card"><h5>OSHA General Industry Safety & Health</h5></div>
+      <div class="cert-card"><h5>State Professional Certificate in Security Risk Management (STPM-C)</h5></div>
+      <div class="cert-card"><h5>Key Performance Indicators (KPIs) – DisasterReady</h5></div>
+      <div class="cert-card"><h5>Reporting Security Incidents – DisasterReady</h5></div>
+      <div class="cert-card"><h5>PMP Essentials – Benchmark Training (CFYE)</h5></div>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="bg-light text-center py-3 border-top">
+  <footer class="text-center text-white">
     <p>&copy; 2025 HSE by Ali – Mohamed Ali Suliman Salih</p>
     <p>
       <a href="mailto:mu8dali@gmail.com">mu8dali@gmail.com</a> |
@@ -134,8 +129,6 @@
     </p>
   </footer>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
