@@ -47,20 +47,6 @@
     .hero p.lead { font-size: 1.1rem; }
     .hero .tagline { font-style: italic; color: #9cc1ff; margin-top: 10px; }
 
-    /* Button */
-    .btn-custom {
-      background-color: #74c0fc;
-      border: none;
-      color: #0d1b2a;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .btn-custom:hover {
-      background-color: #1b3c73;
-      color: #fff;
-      box-shadow: 0 0 15px #74c0fc;
-    }
-
     /* About Section */
     .section {
       padding: 60px 20px;
@@ -74,7 +60,14 @@
       transform: translateY(-5px);
       box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
     }
-    .about-image img { max-height: 450px; object-fit: cover; }
+
+    .about-image img {
+      width: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
     .nav-tabs .nav-link {
       border: none;
       background: transparent;
@@ -134,7 +127,12 @@
     <p class="tagline">Safety • Leadership • Innovation</p>
   </div>
 
-  <!-- About Section -->
+  <!-- Construction Image Banner -->
+  <section class="about-image my-4">
+    <img src="construction-bg.jpg" alt="Construction Site">
+  </section>
+
+  <!-- About Section Text & Tabs -->
   <section class="about-section">
     <div class="container text-center py-5 section">
       <ul class="nav nav-tabs justify-content-center mb-4 border-0">
@@ -142,6 +140,7 @@
         <li class="nav-item"><a class="nav-link fw-bold text-muted" href="#">HSE</a></li>
         <li class="nav-item"><a class="nav-link fw-bold text-muted" href="#">Coordination</a></li>
       </ul>
+
       <h2 class="fw-bold" style="color:#1b3c73;">Structural Design & Site Planning</h2>
       <p class="lead mt-3" style="color:#f8f9fa;">
         I’m a Civil Engineer and HSE Specialist dedicated to building safer, smarter, and more resilient projects. My work blends engineering expertise with safety leadership — ensuring every project meets the highest standards of quality and protection.
