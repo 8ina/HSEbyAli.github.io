@@ -1,2 +1,2 @@
-# HSEbyAli.github.io
+# civsafe.github.io
 Personal portfolio and resources on Health, Safety, and Environment (HSE) management.
