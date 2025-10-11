@@ -503,71 +503,100 @@
       font-size: 0.9rem;
     }
 
-    /* Contact Section */
-    .contact-section {
-      background: var(--secondary-black);
-      color: var(--primary-white);
+    /* Vision & Mission Section */
+    .vision-mission-section {
+      background-color: var(--secondary-white);
+      padding: 100px 0;
     }
     
-    .contact-card {
-      background: rgba(255, 255, 255, 0.05);
+    .vision-mission-card {
+      background: var(--primary-white);
       border-radius: 4px;
-      padding: 2.5rem;
+      padding: 3rem;
       height: 100%;
       transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
+      border: 1px solid var(--light-gray);
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
     
-    .contact-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-5px);
-    }
-    
-    .contact-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary-white);
-      transition: all 0.3s ease;
-    }
-    
-    .contact-card:hover .contact-icon {
-      transform: scale(1.1);
-    }
-    
-    .contact-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: var(--primary-white);
-    }
-    
-    .contact-card p {
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
-    }
-    
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      background: var(--primary-white);
-      color: var(--primary-black);
-      border-radius: 50%;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-    
-    .contact-link:hover {
+    .vision-mission-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
       background: var(--primary-black);
-      color: var(--primary-white);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .vision-mission-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .vision-mission-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    
+    .vision-mission-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-black);
+      transition: transform 0.3s ease;
+    }
+    
+    .vision-mission-card:hover .vision-mission-icon {
       transform: scale(1.1);
+    }
+    
+    .vision-mission-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--primary-black);
+    }
+    
+    .vision-mission-text {
+      color: var(--dark-gray);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    /* Call to Action Section */
+    .cta-section {
+      background-color: var(--secondary-black);
+      color: var(--primary-white);
+      padding: 100px 0;
+      text-align: center;
+    }
+    
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .cta-icon {
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      color: var(--primary-white);
+    }
+    
+    .cta-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary-white);
+    }
+    
+    .cta-description {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.7;
     }
 
     /* Footer */
@@ -697,7 +726,8 @@
     }
     
     body.rtl .skill-card::before,
-    body.rtl .cert-card::after {
+    body.rtl .cert-card::after,
+    body.rtl .vision-mission-card::before {
       left: auto;
       right: 0;
     }
@@ -756,6 +786,18 @@
         top: 0.8rem;
         right: 1rem;
       }
+      
+      .vision-mission-card {
+        padding: 2rem;
+      }
+      
+      .cta-title {
+        font-size: 1.8rem;
+      }
+      
+      .cta-description {
+        font-size: 1.1rem;
+      }
     }
     
     @media (max-width: 576px) {
@@ -771,7 +813,7 @@
         font-size: 1.8rem;
       }
       
-      .skill-card, .project-card, .cert-card, .contact-card {
+      .skill-card, .project-card, .cert-card, .vision-mission-card {
         padding: 1.5rem;
       }
       
@@ -810,7 +852,8 @@
           <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav.summary">Summary</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects" data-i18n="nav.impact">Impact</a></li>
           <li class="nav-item"><a class="nav-link" href="#certifications" data-i18n="nav.credentials">Credentials</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.connect">Connect</a></li>
+          <li class="nav-item"><a class="nav-link" href="#vision-mission" data-i18n="nav.vision">Vision & Mission</a></li>
+          <li class="nav-item"><a class="nav-link" href="#call-to-action" data-i18n="nav.action">Call to Action</a></li>
         </ul>
       </div>
     </div>
@@ -825,7 +868,7 @@
       <p class="tagline" data-aos="fade-up" data-aos-delay="200" data-i18n="hero.tagline">Bridging Civil Engineering and Safety Excellence on High-Impact Projects</p>
       <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
         <a href="#projects" class="btn btn-primary-custom btn-custom" data-i18n="hero.viewImpact">View My Impact</a>
-        <a href="#contact" class="btn btn-outline-custom btn-custom" data-i18n="hero.collaborate">Let's Collaborate</a>
+        <a href="#call-to-action" class="btn btn-outline-custom btn-custom" data-i18n="hero.collaborate">Let's Collaborate</a>
       </div>
     </div>
   </section>
@@ -972,46 +1015,45 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section contact-section">
+  <!-- Vision & Mission Section -->
+  <section id="vision-mission" class="section vision-mission-section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up" data-i18n="contact.title">Connect With Me</h2>
+      <h2 class="section-title" data-aos="fade-up" data-i18n="vision.title">Vision & Mission</h2>
       <div class="row">
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="contact-card">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
+        <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="vision-mission-card">
+            <div class="vision-mission-icon">
+              <i class="fas fa-eye"></i>
             </div>
-            <h4 class="contact-title" data-i18n="contact.email.title">Email</h4>
-            <p data-i18n="contact.email.desc">For professional inquiries and consultations</p>
-            <a href="mailto:mu8dali@gmail.com" class="contact-link" title="Send Email">
-              <i class="fas fa-paper-plane"></i>
-            </a>
+            <h3 class="vision-mission-title" data-i18n="vision.visionTitle">Vision (EN)</h3>
+            <p class="vision-mission-text" data-i18n="vision.visionText">To be the region's trusted consultancy where civil engineering precision and safety excellence converge — shaping resilient infrastructure that serves communities and drives sustainable development.</p>
           </div>
         </div>
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="contact-card">
-            <div class="contact-icon">
-              <i class="fab fa-linkedin"></i>
+        <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="vision-mission-card">
+            <div class="vision-mission-icon">
+              <i class="fas fa-bullseye"></i>
             </div>
-            <h4 class="contact-title" data-i18n="contact.linkedin.title">LinkedIn</h4>
-            <p data-i18n="contact.linkedin.desc">Connect professionally</p>
-            <a href="https://linkedin.com/in/mohamed-s-b8929a28b" target="_blank" class="contact-link" title="LinkedIn Profile">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
+            <h3 class="vision-mission-title" data-i18n="vision.missionTitle">Mission (EN)</h3>
+            <p class="vision-mission-text" data-i18n="vision.missionText">At CivSafe Solutions, we deliver engineering and HSE expertise that protects people, strengthens projects, and empowers organizations. We bridge technical rigor with humanitarian impact, ensuring every project is built on safety, quality, and trust.</p>
           </div>
         </div>
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="contact-card">
-            <div class="contact-icon">
-              <i class="fab fa-whatsapp"></i>
-            </div>
-            <h4 class="contact-title" data-i18n="contact.whatsapp.title">WhatsApp</h4>
-            <p data-i18n="contact.whatsapp.desc">Direct messaging</p>
-            <a href="https://wa.me/message/CWKOGQVLSIGUF1" target="_blank" class="contact-link" title="WhatsApp">
-              <i class="fab fa-whatsapp"></i>
-            </a>
-          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section id="call-to-action" class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-icon" data-aos="fade-up">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <h2 class="cta-title" data-aos="fade-up" data-aos-delay="100" data-i18n="action.title">🚀 Call to Action</h2>
+        <p class="cta-description" data-aos="fade-up" data-aos-delay="200" data-i18n="action.description">Partner with CivSafe Solutions on your next project. Let's build safer, smarter, and more impactful solutions together.</p>
+        <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
+          <a href="#" class="btn btn-primary-custom btn-custom" data-i18n="action.schedule">Schedule a Consultation</a>
+          <a href="#" class="btn btn-outline-custom btn-custom" data-i18n="action.download">Download My Profile</a>
         </div>
       </div>
     </div>
@@ -1062,7 +1104,8 @@
         "nav.summary": "Summary",
         "nav.impact": "Impact",
         "nav.credentials": "Credentials",
-        "nav.connect": "Connect",
+        "nav.vision": "Vision & Mission",
+        "nav.action": "Call to Action",
         
         // Hero Section
         "hero.name": "Mohamed Ali Suliman Salih",
@@ -1109,14 +1152,18 @@
         "certifications.cert4.title": "Fire Safety Management",
         "certifications.cert4.desc": "Fire Prevention, Risk Assessment, and Emergency Procedures",
         
-        // Contact Section
-        "contact.title": "Connect With Me",
-        "contact.email.title": "Email",
-        "contact.email.desc": "For professional inquiries and consultations",
-        "contact.linkedin.title": "LinkedIn",
-        "contact.linkedin.desc": "Connect professionally",
-        "contact.whatsapp.title": "WhatsApp",
-        "contact.whatsapp.desc": "Direct messaging",
+        // Vision & Mission Section
+        "vision.title": "Vision & Mission",
+        "vision.visionTitle": "Vision",
+        "vision.visionText": "To be the region's trusted consultancy where civil engineering precision and safety excellence converge — shaping resilient infrastructure that serves communities and drives sustainable development.",
+        "vision.missionTitle": "Mission",
+        "vision.missionText": "At CivSafe Solutions, we deliver engineering and HSE expertise that protects people, strengthens projects, and empowers organizations. We bridge technical rigor with humanitarian impact, ensuring every project is built on safety, quality, and trust.",
+        
+        // Call to Action Section
+        "action.title": "🚀 Call to Action",
+        "action.description": "Partner with CivSafe Solutions on your next project. Let's build safer, smarter, and more impactful solutions together.",
+        "action.schedule": "Schedule a Consultation",
+        "action.download": "Download My Profile",
         
         // Footer
         "footer.brand": "CivSafeSolution",
@@ -1129,7 +1176,8 @@
         "nav.summary": "ملخص",
         "nav.impact": "التأثير",
         "nav.credentials": "الشهادات",
-        "nav.connect": "اتصل بي",
+        "nav.vision": "الرؤية والرسالة",
+        "nav.action": "دعوة للعمل",
         
         // Hero Section
         "hero.name": "محمد علي سليمان صالح",
@@ -1176,14 +1224,18 @@
         "certifications.cert4.title": "إدارة السلامة من الحرائق",
         "certifications.cert4.desc": "الوقاية من الحرائق، تقييم المخاطر، والإجراءات الطارئة",
         
-        // Contact Section
-        "contact.title": "اتصل بي",
-        "contact.email.title": "البريد الإلكتروني",
-        "contact.email.desc": "للاستفسارات المهنية والاستشارات",
-        "contact.linkedin.title": "لينكد إن",
-        "contact.linkedin.desc": "تواصل معي بشكل احترافي",
-        "contact.whatsapp.title": "واتساب",
-        "contact.whatsapp.desc": "المراسلة المباشرة",
+        // Vision & Mission Section
+        "vision.title": "الرؤية والرسالة",
+        "vision.visionTitle": "الرؤية",
+        "vision.visionText": "أن نكون الاستشارة الموثوقة في المنطقة حيث تلتقي دقة الهندسة المدنية والتميز في مجال السلامة - لتشكيل بنية تحتية مرنة تخدم المجتمعات وتدفع عجلة التنمية المستدامة.",
+        "vision.missionTitle": "الرسالة",
+        "vision.missionText": "في CivSafe Solutions، نقدم خبرة الهندسة والسلامة والصحة والبيئة التي تحمي الناس، وتقوي المشاريع، وتمكن المنظمات. نحن نربط الدقة التقنية مع الأثر الإنساني، ونتأكد من أن كل مشروع مبني على السلامة والجودة والثقة.",
+        
+        // Call to Action Section
+        "action.title": "🚀 دعوة للعمل",
+        "action.description": "شارك مع CivSafe Solutions في مشروعك القادم. دعونا نبني حلولاً أكثر أمانًا وذكاءً وتأثيرًا معًا.",
+        "action.schedule": "جدولة استشارة",
+        "action.download": "تحميل ملفي الشخصي",
         
         // Footer
         "footer.brand": "مدسيف للاستشارات",
@@ -1301,7 +1353,7 @@
 
     // Add loading animation to elements
     document.addEventListener('DOMContentLoaded', function() {
-      const elements = document.querySelectorAll('.skill-card, .project-card, .cert-card, .contact-card');
+      const elements = document.querySelectorAll('.skill-card, .project-card, .cert-card, .vision-mission-card');
       elements.forEach((el, index) => {
         el.style.animationDelay = `${index * 0.1}s`;
       });
