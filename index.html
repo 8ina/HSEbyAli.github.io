@@ -1262,3 +1262,193 @@
         "certifications.cert2.desc": "معايير إدارة السلامة والصحة المهنية",
         "certifications.cert3.title": "الإسعافات الأولية",
         "certifications.cert3.desc": "الإسعافات الأولية الطارئة، الإنعاش القلبي الرئوي، وإدارة الاستجابة للأزمات",
+        "certifications.cert4.title": "إدارة السلامة من الحرائق",
+        "certifications.cert4.desc": "الوقاية من الحرائق، تقييم المخاطر، والإجراءات الطارئة",
+        
+        // Vision & Mission Section
+        "vision.title": "الرؤية والرسالة",
+        "vision.visionTitle": "الرؤية",
+        "vision.visionText": "أن نكون الاستشارة الموثوقة في المنطقة حيث تلتقي دقة الهندسة المدنية والتميز في مجال السلامة - لتشكيل بنية تحتية مرنة تخدم المجتمعات وتدفع عجلة التنمية المستدامة.",
+        "vision.missionTitle": "الرسالة",
+        "vision.missionText": "في CivSafe Solutions، نقدم خبرة الهندسة والسلامة والصحة والبيئة التي تحمي الناس، وتقوي المشاريع، وتمكن المنظمات. نحن نربط الدقة التقنية مع الأثر الإنساني، ونتأكد من أن كل مشروع مبني على السلامة والجودة والثقة.",
+        
+        // Call to Action Section
+        "action.title": "دعوة للعمل",
+        "action.description": "شارك مع CivSafe Solutions في مشروعك القادم. دعونا نبني حلولاً أكثر أمانًا وذكاءً وتأثيرًا معًا.",
+        "action.schedule": "جدولة استشارة",
+        "action.download": "تحميل ملفي الشخصي",
+        
+        // Footer
+        "footer.brand": "مدسيف للاستشارات",
+        "footer.profession": "المؤسس: محمد",
+        "footer.copyright": "© 2025 جميع الحقوق محفوظة."
+      }
+    };
+
+    // Swipe animation functionality
+    let lastScrollTop = 0;
+    let ticking = false;
+
+    function handleScroll() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const sections = document.querySelectorAll('.section');
+          const cards = document.querySelectorAll('.skill-card, .project-card, .cert-card, .vision-mission-card');
+          
+          // Section animations
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            const windowHeight = window.innerHeight;
+            
+            // Check if section is in viewport
+            if (scrollTop > sectionTop - windowHeight + 100 && 
+                scrollTop < sectionTop + sectionHeight) {
+              section.classList.add('visible');
+            }
+          });
+          
+          // Card animations with staggered delay
+          cards.forEach((card, index) => {
+            const cardTop = card.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (cardTop < windowHeight - 100) {
+              setTimeout(() => {
+                card.classList.add('animate');
+              }, index * 100);
+            }
+          });
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+          ticking = false;
+        });
+        
+        ticking = true;
+      }
+    }
+
+    // Language switching functionality
+    let currentLang = 'en';
+    
+    function switchLanguage(lang) {
+      currentLang = lang;
+      
+      // Update all elements with data-i18n attribute
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update active button state
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+      
+      // Update HTML direction and lang attribute
+      if (lang === 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
+        document.body.classList.add('rtl');
+      } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        document.body.classList.remove('rtl');
+      }
+      
+      // Reinitialize AOS for proper animations
+      AOS.refresh();
+    }
+    
+    // Set up language switcher event listeners
+    document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+    document.getElementById('lang-ar').addEventListener('click', () => switchLanguage('ar'));
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      // Update active nav link
+      updateActiveNavLink();
+      
+      // Handle swipe animations
+      handleScroll();
+    });
+
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    // Update active nav link based on scroll position
+    function updateActiveNavLink() {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 100)) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Add loading animation to elements
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('.skill-card, .project-card, .cert-card, .vision-mission-card');
+      elements.forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.1}s`;
+      });
+      
+      // Trigger initial animations
+      handleScroll();
+    });
+  </script>
+</body>
+</html>
