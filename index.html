@@ -4,22 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CivSafe Solutions</title>
-  
-  <!-- Performance Optimizations -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  
-  <!-- Lazy load AOS CSS -->
-  <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"></noscript>
-
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     :root {
       --primary-white: #ffffff;
@@ -29,78 +18,8 @@
       --accent-gray: #6c757d;
       --light-gray: #e9ecef;
       --dark-gray: #495057;
-      --transition-time: 0.3s;
     }
     
-    /* Dark Mode Variables */
-    [data-theme="dark"] {
-      --primary-white: #1a1a1a;
-      --secondary-white: #2d2d2d;
-      --primary-black: #ffffff;
-      --secondary-black: #f8f9fa;
-      --accent-gray: #a0a0a0;
-      --light-gray: #404040;
-      --dark-gray: #e9ecef;
-    }
-
-    /* Theme Toggle Styles */
-    .theme-toggle-container {
-      position: fixed;
-      top: 1.2rem;
-      left: 1.5rem;
-      z-index: 1001;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .theme-toggle {
-      background: var(--primary-white);
-      border: 1px solid var(--light-gray);
-      border-radius: 50px;
-      width: 60px;
-      height: 30px;
-      position: relative;
-      cursor: pointer;
-      transition: all var(--transition-time) ease;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .theme-toggle::before {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 26px;
-      height: 26px;
-      background: var(--primary-black);
-      border-radius: 50%;
-      transition: all var(--transition-time) ease;
-    }
-
-    [data-theme="dark"] .theme-toggle::before {
-      transform: translateX(30px);
-      background: var(--primary-white);
-    }
-
-    .theme-icon {
-      font-size: 1.2rem;
-      color: var(--primary-black);
-      transition: color var(--transition-time) ease;
-    }
-
-    .language-switcher {
-      background: var(--primary-white);
-      border-radius: 4px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 0.4rem 0.8rem;
-      border: 1px solid var(--light-gray);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    /* Rest of your existing CSS remains the same, just adding the transition property to body */
     * {
       margin: 0;
       padding: 0;
@@ -117,7 +36,7 @@
       color: var(--primary-black);
       line-height: 1.7;
       font-weight: 400;
-      transition: background-color var(--transition-time) ease, color var(--transition-time) ease;
+      transition: all 0.3s ease;
     }
 
     /* RTL Support */
@@ -127,6 +46,21 @@
       font-family: 'Tajawal', 'Inter', sans-serif;
     }
 
+    /* Language Switcher */
+    .language-switcher {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      background: var(--primary-white);
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--light-gray);
+    }
+    
     .language-switcher button {
       background: none;
       border: none;
@@ -134,9 +68,8 @@
       padding: 0.3rem 0.6rem;
       border-radius: 2px;
       font-weight: 500;
-      transition: all var(--transition-time) ease;
+      transition: all 0.3s ease;
       font-size: 0.85rem;
-      color: var(--primary-black);
     }
     
     .language-switcher button.active {
@@ -158,7 +91,7 @@
       width: 100%;
       top: 0;
       z-index: 1000;
-      transition: all var(--transition-time) ease;
+      transition: all 0.3s ease;
     }
     
     .navbar.scrolled {
@@ -178,7 +111,7 @@
       font-weight: 500;
       margin: 0 0.8rem;
       position: relative;
-      transition: all var(--transition-time) ease;
+      transition: all 0.3s ease;
     }
     
     .nav-link::after {
@@ -189,7 +122,7 @@
       bottom: 0;
       left: 0;
       background-color: var(--primary-black);
-      transition: width var(--transition-time) ease;
+      transition: width 0.3s ease;
     }
     
     .nav-link:hover::after,
@@ -202,22 +135,726 @@
       color: var(--primary-black) !important;
     }
 
-    /* Rest of your existing CSS... */
-    /* I'm keeping all your existing CSS but adding transitions for dark mode */
+    /* RTL Navigation Adjustments */
+    body.rtl .nav-link::after {
+      left: auto;
+      right: 0;
+    }
     
-    /* Add transitions to all elements that change with theme */
-    .skill-card, .project-card, .cert-card, .vision-mission-card,
-    .btn-custom, .footer-icon, .back-to-top {
-      transition: all var(--transition-time) ease;
+    body.rtl .navbar-brand {
+      margin-right: 0;
+      margin-left: auto;
     }
 
-    /* Responsive adjustments for theme toggle */
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-white) 0%, var(--secondary-white) 100%);
+      padding: 180px 0 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(0,0,0,0.02)"/></svg>');
+      background-size: cover;
+    }
+    
+    .hero-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary-white);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      transition: all 0.4s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .hero-photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      animation: none;
+    }
+    
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary-black);
+      letter-spacing: -1px;
+    }
+    
+    .hero .lead {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--dark-gray);
+      margin-bottom: 0.5rem;
+    }
+    
+    .hero .tagline {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--accent-gray);
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .hero .tagline::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 1px;
+      background: var(--primary-black);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .cta-buttons {
+      margin-top: 2.5rem;
+    }
+    
+    .btn-custom {
+      padding: 12px 32px;
+      border-radius: 2px;
+      font-weight: 600;
+      margin: 0 0.8rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.9rem;
+    }
+    
+    .btn-primary-custom {
+      background-color: var(--primary-black);
+      border: 2px solid var(--primary-black);
+      color: var(--primary-white);
+    }
+    
+    .btn-primary-custom:hover {
+      background-color: transparent;
+      color: var(--primary-black);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-outline-custom {
+      background-color: transparent;
+      border: 2px solid var(--primary-black);
+      color: var(--primary-black);
+    }
+    
+    .btn-outline-custom:hover {
+      background-color: var(--primary-black);
+      color: var(--primary-white);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Construction Banner */
+    .construction-banner {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .construction-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .construction-banner:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 100px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .section-dark {
+      background-color: var(--secondary-black);
+      color: var(--primary-white);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      color: var(--primary-black);
+    }
+    
+    .section-dark .section-title {
+      color: var(--primary-white);
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background: var(--primary-black);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section-dark .section-title::after {
+      background: var(--primary-white);
+    }
+
+    /* About Section */
+    .skill-card {
+      background: var(--primary-white);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      height: 100%;
+      transition: all 0.3s ease;
+      border: 1px solid var(--light-gray);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    
+    .skill-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-black);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .skill-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    
+    .skill-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-black);
+      transition: transform 0.3s ease;
+    }
+    
+    .skill-card:hover .skill-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .skill-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary-black);
+    }
+    
+    .skill-card p {
+      color: var(--dark-gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Projects Section */
+    .project-card {
+      background: var(--primary-white);
+      border-radius: 4px;
+      padding: 2rem;
+      height: 100%;
+      transition: all 0.3s ease;
+      border: 1px solid var(--light-gray);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    
+    .project-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.03), transparent);
+      transition: left 0.6s;
+    }
+    
+    .project-card:hover::before {
+      left: 100%;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    
+    .project-icon {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-black);
+    }
+    
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary-black);
+    }
+    
+    .project-card p {
+      color: var(--dark-gray);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .project-badge {
+      background: var(--light-gray);
+      color: var(--dark-gray);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Certifications Section */
+    .cert-card {
+      background: var(--primary-white);
+      border-radius: 4px;
+      padding: 2rem;
+      height: 100%;
+      transition: all 0.3s ease;
+      border: 1px solid var(--light-gray);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    
+    .cert-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .cert-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-black);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .cert-card:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    
+    .cert-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-black);
+      transition: transform 0.3s ease;
+    }
+    
+    .cert-card:hover .cert-icon {
+      transform: scale(1.1);
+    }
+    
+    .cert-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary-black);
+    }
+    
+    .cert-card p {
+      color: var(--dark-gray);
+      font-size: 0.9rem;
+    }
+
+    /* Vision & Mission Section */
+    .vision-mission-section {
+      background-color: var(--secondary-white);
+      padding: 100px 0;
+    }
+    
+    .vision-mission-card {
+      background: var(--primary-white);
+      border-radius: 4px;
+      padding: 3rem;
+      height: 100%;
+      transition: all 0.3s ease;
+      border: 1px solid var(--light-gray);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    
+    .vision-mission-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .vision-mission-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-black);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .vision-mission-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .vision-mission-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    
+    .vision-mission-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-black);
+      transition: transform 0.3s ease;
+    }
+    
+    .vision-mission-card:hover .vision-mission-icon {
+      transform: scale(1.1);
+    }
+    
+    .vision-mission-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--primary-black);
+    }
+    
+    .vision-mission-text {
+      color: var(--dark-gray);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    /* Call to Action Section */
+    .cta-section {
+      background-color: var(--secondary-black);
+      color: var(--primary-white);
+      padding: 100px 0;
+      text-align: center;
+    }
+    
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .cta-icon {
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      color: var(--primary-white);
+    }
+    
+    .cta-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary-white);
+    }
+    
+    .cta-description {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-black);
+      color: var(--primary-white);
+      text-align: center;
+      padding: 3rem 0;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .footer-icons {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--primary-white);
+      border-radius: 50%;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .footer-icon:hover {
+      background: var(--primary-white);
+      color: var(--primary-black);
+      transform: translateY(-3px);
+    }
+    
+    .footer-text {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-copyright {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--primary-black);
+      color: var(--primary-white);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: var(--dark-gray);
+      transform: translateY(-3px);
+    }
+
+    /* Animation Classes */
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .slide-in-left {
+      animation: slideInLeft 0.8s ease-out;
+    }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .slide-in-right {
+      animation: slideInRight 0.8s ease-out;
+    }
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* RTL Adjustments */
+    body.rtl .hero::before {
+      right: auto;
+      left: 0;
+      transform: scaleX(-1);
+    }
+    
+    body.rtl .section-title::after,
+    body.rtl .hero .tagline::after {
+      left: auto;
+      right: 50%;
+      transform: translateX(50%);
+    }
+    
+    body.rtl .skill-card::before,
+    body.rtl .cert-card::after,
+    body.rtl .vision-mission-card::before {
+      left: auto;
+      right: 0;
+    }
+    
+    body.rtl .project-card::before {
+      left: 100%;
+      right: auto;
+    }
+    
+    body.rtl .project-card:hover::before {
+      left: -100%;
+    }
+    
+    body.rtl .back-to-top {
+      right: auto;
+      left: 2rem;
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
-      .theme-toggle-container {
+      .hero {
+        padding: 150px 0 80px;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero .lead {
+        font-size: 1.2rem;
+      }
+      
+      .section {
+        padding: 80px 0;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .btn-custom {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+      
+      .footer-icons {
+        gap: 1rem;
+      }
+      
+      .construction-banner {
+        height: 200px;
+      }
+      
+      .language-switcher {
         top: 0.8rem;
-        left: 1rem;
-        flex-direction: column;
-        gap: 0.5rem;
+        right: 1rem;
+      }
+      
+      .vision-mission-card {
+        padding: 2rem;
+      }
+      
+      .cta-title {
+        font-size: 1.8rem;
+      }
+      
+      .cta-description {
+        font-size: 1.1rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero .lead {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .skill-card, .project-card, .cert-card, .vision-mission-card {
+        padding: 1.5rem;
       }
       
       .language-switcher {
@@ -233,23 +870,17 @@
 </head>
 <body>
 
-  <!-- Theme Toggle & Language Switcher -->
-  <div class="theme-toggle-container">
-    <div class="theme-toggle" id="themeToggle">
-      <div class="theme-icon"></div>
-    </div>
-    <div class="language-switcher">
-      <button id="lang-en" class="active">EN</button>
-      <button id="lang-ar">AR</button>
-    </div>
+  <!-- Language Switcher -->
+  <div class="language-switcher">
+    <button id="lang-en" class="active">EN</button>
+    <button id="lang-ar">AR</button>
   </div>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="#home">
-        <!-- Optimized logo with lazy loading -->
-        <img src="logo.jpg" alt="Logo" height="40" class="me-2 circle" loading="lazy">
+        <img src="logo.jpg" alt="Logo" height="40" class="me-2 circle">
         <span>CivSafe Solutions</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -271,8 +902,7 @@
   <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="container">
-      <!-- Optimized profile image with lazy loading -->
-      <img src="profile.jpg" alt="Mohamed Ali Suliman Salih" class="hero-photo" loading="lazy">
+      <img src="profile.jpg" alt="Mohamed Ali Suliman Salih" class="hero-photo">
       <h1 data-aos="fade-up" data-i18n="hero.name">Mohamed Ali Suliman Salih</h1>
       <p class="lead" data-aos="fade-up" data-aos-delay="100" data-i18n="hero.title">Civil Engineer | HSE Specialist</p>
       <p class="tagline" data-aos="fade-up" data-aos-delay="200" data-i18n="hero.tagline">Bridging Civil Engineering and Safety Excellence on High-Impact Projects</p>
@@ -285,8 +915,7 @@
 
   <!-- Construction Banner -->
   <div class="construction-banner" data-aos="fade-in">
-    <!-- Optimized construction image with lazy loading -->
-    <img src="construction-bg.jpg" alt="Construction Site" loading="lazy">
+    <img src="construction-bg.jpg" alt="Construction Site">
   </div>
 
   <!-- About Section -->
@@ -497,67 +1126,329 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- Performance Optimized Script Loading -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    // Load non-critical scripts after page load
-    function loadScript(src, callback) {
-      const script = document.createElement('script');
-      script.src = src;
-      script.onload = callback;
-      document.body.appendChild(script);
-    }
-
-    // Load critical functionality first
-    document.addEventListener('DOMContentLoaded', function() {
-      // Theme toggle functionality
-      const themeToggle = document.getElementById('themeToggle');
-      const currentTheme = localStorage.getItem('theme') || 'light';
-      
-      // Set initial theme
-      document.documentElement.setAttribute('data-theme', currentTheme);
-      
-      themeToggle.addEventListener('click', function() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-      });
-
-      // Your existing JavaScript code for navbar, scroll effects, etc.
-      // ... (keep all your existing JavaScript functionality)
-      
-      // Load non-critical scripts
-      setTimeout(() => {
-        loadScript('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js', function() {
-          console.log('Bootstrap loaded');
-        });
-        
-        loadScript('https://unpkg.com/aos@2.3.4/dist/aos.js', function() {
-          AOS.init({
-            duration: 800,
-            once: false,
-            offset: 100,
-            mirror: true
-          });
-        });
-      }, 1000);
+    // Initialize AOS animations - FIXED: Changed once to false
+    AOS.init({
+      duration: 800,
+      once: false, // Changed from true to false to allow animations on every scroll
+      offset: 100,
+      mirror: true // This ensures animations trigger when scrolling up as well
     });
 
-    // Rest of your existing JavaScript code goes here
-    // ... (all your existing JavaScript code)
-  </script>
+    // Language translations
+    const translations = {
+      en: {
+        // Navigation
+        "nav.home": "Home",
+        "nav.summary": "Summary",
+        "nav.impact": "Impact",
+        "nav.credentials": "Credentials",
+        "nav.vision": "Vision & Mission",
+        "nav.action": "Call to Action",
+        
+        // Hero Section
+        "hero.name": "Mohamed Ali Suliman Salih",
+        "hero.title": "Civil Engineer | HSE Specialist",
+        "hero.tagline": "Bridging Civil Engineering and Safety Excellence on High-Impact Projects",
+        "hero.viewImpact": "View My Impact",
+        "hero.collaborate": "Let's Collaborate",
+        
+        // About Section
+        "about.title": "Professional Summary & Value",
+        "about.skill1.title": "Engineering-Construction & Estimation",
+        "about.skill1.desc": "Structural analysis, site planning, and construction project management for resilient infrastructure solutions.",
+        "about.skill2.title": "HSE Management",
+        "about.skill2.desc": "Comprehensive risk assessment, safety audits, and compliance protocols for workplace safety excellence.",
+        "about.skill3.title": "Project Coordination",
+        "about.skill3.desc": "Stakeholder engagement, resource management, and quality assurance for successful project delivery.",
+        
+        // Projects Section
+        "projects.title": "Key Project Impact & Achievements",
+        "projects.project1.title": "Diplomatic Villas Restoration",
+        "projects.project1.desc": "I restored diplomatic villas as part of a high-level engineering project, ensuring quality and safety in the execution.",
+        "projects.project2.title": "Commercial Market Construction",
+        "projects.project2.desc": "Oversaw the construction of commercial markets, with a focus on quality execution and occupational safety in multiple environments.",
+        "projects.project3.title": "Humanitarian Field Engagement",
+        "projects.project3.desc": "I engaged in humanitarian field work, contributing to projects in areas of need.",
+        "projects.badge1": "Renovation",
+        "projects.badge2": "Diplomatic",
+        "projects.badge3": "High-Security",
+        "projects.badge4": "Commercial",
+        "projects.badge5": "Site Supervision",
+        "projects.badge6": "Construction",
+        "projects.badge7": "Humanitarian",
+        "projects.badge8": "Field Work",
+        "projects.badge9": "Impact",
+        
+        // Certifications Section
+        "certifications.title": "Core Credentials & Professional Training",
+        "certifications.cert1.title": "NEBOSH",
+        "certifications.cert1.desc": "International General Certificate in Occupational Health and Safety",
+        "certifications.cert2.title": "OSHA Safety",
+        "certifications.cert2.desc": "Occupational Safety and Health Administration Standards",
+        "certifications.cert3.title": "First Aid Certified",
+        "certifications.cert3.desc": "Emergency First Aid, CPR, and Crisis Response Management",
+        "certifications.cert4.title": "Fire Safety Management",
+        "certifications.cert4.desc": "Fire Prevention, Risk Assessment, and Emergency Procedures",
+        
+        // Vision & Mission Section
+        "vision.title": "Vision & Mission",
+        "vision.visionTitle": "Vision",
+        "vision.visionText": "To be the region's trusted consultancy where civil engineering precision and safety excellence converge — shaping resilient infrastructure that serves communities and drives sustainable development.",
+        "vision.missionTitle": "Mission",
+        "vision.missionText": "At CivSafe Solutions, we deliver engineering and HSE expertise that protects people, strengthens projects, and empowers organizations. We bridge technical rigor with humanitarian impact, ensuring every project is built on safety, quality, and trust.",
+        
+        // Call to Action Section
+        "action.title": "Call to Action",
+        "action.description": "Partner with CivSafe Solutions on your next project. Let's build safer, smarter, and more impactful solutions together.",
+        "action.schedule": "Schedule a Consultation",
+        "action.download": "Download My Profile",
+        
+        // Footer
+        "footer.brand": "CivSafeSolution",
+        "footer.profession": "Founder: Mhmd",
+        "footer.copyright": "© 2025 All rights reserved."
+      },
+      ar: {
+        // Navigation
+        "nav.home": "الرئيسية",
+        "nav.summary": "ملخص",
+        "nav.impact": "التأثير",
+        "nav.credentials": "الشهادات",
+        "nav.vision": "الرؤية والرسالة",
+        "nav.action": "دعوة للعمل",
+        
+        // Hero Section
+        "hero.name": "محمد علي سليمان صالح",
+        "hero.title": "مهندس مدني | أخصائي الصحة والسلامة والبيئة",
+        "hero.tagline": "ربط الهندسة المدنية والتميز في مجال السلامة في المشاريع عالية التأثير",
+        "hero.viewImpact": "عرض تأثيري",
+        "hero.collaborate": "لنتعاون",
+        
+        // About Section
+        "about.title": "ملخص احترافي والقيمة المضافة",
+        "about.skill1.title": "الهندسة الإنشائية والتقدير",
+        "about.skill1.desc": "التحليل الإنشائي، تخطيط المواقع، وإدارة مشاريع البناء لحلول البنية التحتية المرنة.",
+        "about.skill2.title": "إدارة الصحة والسلامة والبيئة",
+        "about.skill2.desc": "تقييم شامل للمخاطر، تدقيق السلامة، وبروتوكولات الامتثال لتحقيق التميز في سلامة مكان العمل.",
+        "about.skill3.title": "تنسيق المشاريع",
+        "about.skill3.desc": "إشراك أصحاب المصلحة، إدارة الموارد، وضمان الجودة لتسليم المشروع بنجاح.",
+        
+        // Projects Section
+        "projects.title": "التأثير الرئيسي للمشاريع والإنجازات",
+        "projects.project1.title": "ترميم الفيلات الدبلوماسية",
+        "projects.project1.desc": "قمت بترميم الفيلات الدبلوماسية كجزء من مشروع هندسي رفيع المستوى، مع ضمان الجودة والسلامة في التنفيذ.",
+        "projects.project2.title": "بناء الأسواق التجارية",
+        "projects.project2.desc": "أشرت على بناء الأسواق التجارية، مع التركيز على التنفيذ عالي الجودة والسلامة المهنية في بيئات متعددة.",
+        "projects.project3.title": "العمل الميداني الإنساني",
+        "projects.project3.desc": "شاركت في العمل الميداني الإنساني، مساهمًا في المشاريع في المناطق المحتاجة.",
+        "projects.badge1": "ترميم",
+        "projects.badge2": "دبلوماسي",
+        "projects.badge3": "أمني عالي",
+        "projects.badge4": "تجاري",
+        "projects.badge5": "إشراف موقع",
+        "projects.badge6": "بناء",
+        "projects.badge7": "إنساني",
+        "projects.badge8": "عمل ميداني",
+        "projects.badge9": "تأثير",
+        
+        // Certifications Section
+        "certifications.title": "الشهادات الأساسية والتدريب المهني",
+        "certifications.cert1.title": "نيبوش",
+        "certifications.cert1.desc": "الشهادة الدولية العامة في الصحة والسلامة المهنية",
+        "certifications.cert2.title": "السلامة (أوشا)",
+        "certifications.cert2.desc": "معايير إدارة السلامة والصحة المهنية",
+        "certifications.cert3.title": "الإسعافات الأولية",
+        "certifications.cert3.desc": "الإسعافات الأولية الطارئة، الإنعاش القلبي الرئوي، وإدارة الاستجابة للأزمات",
+        "certifications.cert4.title": "إدارة السلامة من الحرائق",
+        "certifications.cert4.desc": "الوقاية من الحرائق، تقييم المخاطر، والإجراءات الطارئة",
+        
+        // Vision & Mission Section
+        "vision.title": "الرؤية والرسالة",
+        "vision.visionTitle": "الرؤية",
+        "vision.visionText": "أن نكون الاستشارة الموثوقة في المنطقة حيث تلتقي دقة الهندسة المدنية والتميز في مجال السلامة - لتشكيل بنية تحتية مرنة تخدم المجتمعات وتدفع عجلة التنمية المستدامة.",
+        "vision.missionTitle": "الرسالة",
+        "vision.missionText": "في CivSafe Solutions، نقدم خبرة الهندسة والسلامة والصحة والبيئة التي تحمي الناس، وتقوي المشاريع، وتمكن المنظمات. نحن نربط الدقة التقنية مع الأثر الإنساني، ونتأكد من أن كل مشروع مبني على السلامة والجودة والثقة.",
+        
+        // Call to Action Section
+        "action.title": "دعوة للعمل",
+        "action.description": "شارك مع CivSafe Solutions في مشروعك القادم. دعونا نبني حلولاً أكثر أمانًا وذكاءً وتأثيرًا معًا.",
+        "action.schedule": "جدولة استشارة",
+        "action.download": "تحميل ملفي الشخصي",
+        
+        // Footer
+        "footer.brand": "مدسيف للاستشارات",
+        "footer.profession": "المؤسس: محمد",
+        "footer.copyright": "© 2025 جميع الحقوق محفوظة."
+      }
+    };
 
-  <!-- Inline the rest of your JavaScript here to avoid separate requests -->
-  <script>
-    // Your existing JavaScript code for translations, animations, etc.
-    // I'm including a condensed version - you should paste your full JS here
+    // Swipe animation functionality
+    let lastScrollTop = 0;
+    let ticking = false;
+
+    function handleScroll() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const sections = document.querySelectorAll('.section');
+          const cards = document.querySelectorAll('.skill-card, .project-card, .cert-card, .vision-mission-card');
+          
+          // Section animations
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            const windowHeight = window.innerHeight;
+            
+            // Check if section is in viewport
+            if (scrollTop > sectionTop - windowHeight + 100 && 
+                scrollTop < sectionTop + sectionHeight) {
+              section.classList.add('visible');
+            }
+          });
+          
+          // Card animations with staggered delay
+          cards.forEach((card, index) => {
+            const cardTop = card.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (cardTop < windowHeight - 100) {
+              setTimeout(() => {
+                card.classList.add('animate');
+              }, index * 100);
+            }
+          });
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+          ticking = false;
+        });
+        
+        ticking = true;
+      }
+    }
+
+    // Language switching functionality
+    let currentLang = 'en';
     
-    // Language translations object
-    const translations = { /* your translations object */ };
+    function switchLanguage(lang) {
+      currentLang = lang;
+      
+      // Update all elements with data-i18n attribute
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update active button state
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+      
+      // Update HTML direction and lang attribute
+      if (lang === 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
+        document.body.classList.add('rtl');
+      } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        document.body.classList.remove('rtl');
+      }
+      
+      // Reinitialize AOS for proper animations
+      AOS.refresh();
+    }
     
-    // All your existing JavaScript functionality
-    // ... (paste the rest of your JS code here)
+    // Set up language switcher event listeners
+    document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+    document.getElementById('lang-ar').addEventListener('click', () => switchLanguage('ar'));
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      // Update active nav link
+      updateActiveNavLink();
+      
+      // Handle swipe animations
+      handleScroll();
+    });
+
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    // Update active nav link based on scroll position
+    function updateActiveNavLink() {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 100)) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Add loading animation to elements
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('.skill-card, .project-card, .cert-card, .vision-mission-card');
+      elements.forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.1}s`;
+      });
+      
+      // Trigger initial animations
+      handleScroll();
+    });
   </script>
 </body>
 </html>
