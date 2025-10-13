@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CivSafe Solutions - HSE Engineering & Safety Excellence</title>
+  <title>CivSafe Solutions</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -12,20 +12,21 @@
   <style>
     :root {
       --primary-white: #ffffff;
-      --secondary-white: #f8f9fa;
-      --primary-black: #1A365D; /* Changed to professional navy */
-      --secondary-black: #2D3748;
-      --accent-gray: #6c757d;
-      --light-gray: #e9ecef;
-      --dark-gray: #495057;
+      --secondary-white: #f8fafc;
+      --primary-navy: #1E3A8A;
+      --secondary-navy: #2D4BA8;
+      --dark-charcoal: #374151;
+      --light-charcoal: #4B5563;
+      --light-gray: #f1f5f9;
+      --medium-gray: #e2e8f0;
       
-      /* HSE Industry Colors */
-      --safety-blue: #2C5AA0;
-      --safety-green: #4CAF50;
-      --warning-orange: #FF6B35;
-      --safety-red: #E53E3E;
-      --professional-navy: #1A365D;
-      --engineering-teal: #38B2AC;
+      /* Professional HSE Color Palette */
+      --safety-blue: #1E40AF;
+      --safety-green: #10B981;
+      --accent-orange: #F59E0B;
+      --safety-red: #DC2626;
+      --engineering-teal: #0D9488;
+      --professional-navy: #1E3A8A;
     }
     
     * {
@@ -41,7 +42,7 @@
     body {
       background-color: var(--primary-white);
       font-family: 'Inter', sans-serif;
-      color: var(--primary-black);
+      color: var(--dark-charcoal);
       line-height: 1.7;
       font-weight: 400;
       transition: all 0.3s ease;
@@ -63,10 +64,10 @@
       display: flex;
       align-items: center;
       background: var(--primary-white);
-      border-radius: 4px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15);
       padding: 0.4rem 0.8rem;
-      border: 1px solid var(--light-gray);
+      border: 1px solid var(--medium-gray);
     }
     
     .language-switcher button {
@@ -74,10 +75,11 @@
       border: none;
       cursor: pointer;
       padding: 0.3rem 0.6rem;
-      border-radius: 2px;
-      font-weight: 500;
+      border-radius: 4px;
+      font-weight: 600;
       transition: all 0.3s ease;
       font-size: 0.85rem;
+      color: var(--light-charcoal);
     }
     
     .language-switcher button.active {
@@ -87,14 +89,15 @@
     
     .language-switcher button:not(.active):hover {
       background: var(--light-gray);
+      color: var(--safety-blue);
     }
 
     /* Navigation */
     .navbar {
       background-color: var(--primary-white);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(30, 58, 138, 0.08);
       padding: 1.2rem 0;
-      border-bottom: 1px solid var(--light-gray);
+      border-bottom: 1px solid var(--medium-gray);
       position: fixed;
       width: 100%;
       top: 0;
@@ -104,18 +107,18 @@
     
     .navbar.scrolled {
       padding: 0.8rem 0;
-      box-shadow: 0 2px 30px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 4px 25px rgba(30, 58, 138, 0.12);
     }
     
     .navbar-brand {
       font-weight: 700;
       font-size: 1.4rem;
-      color: var(--primary-black) !important;
+      color: var(--primary-navy) !important;
       letter-spacing: -0.5px;
     }
     
     .nav-link {
-      color: var(--dark-gray) !important;
+      color: var(--light-charcoal) !important;
       font-weight: 500;
       margin: 0 0.8rem;
       position: relative;
@@ -140,7 +143,7 @@
     
     .nav-link:hover,
     .nav-link.active {
-      color: var(--primary-black) !important;
+      color: var(--primary-navy) !important;
     }
 
     /* RTL Navigation Adjustments */
@@ -156,12 +159,12 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, var(--primary-white) 0%, #f0f4f8 100%);
+      background: linear-gradient(135deg, var(--primary-white) 0%, var(--secondary-white) 100%);
       padding: 180px 0 100px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      border-bottom: 1px solid var(--light-gray);
+      border-bottom: 1px solid var(--medium-gray);
     }
     
     .hero::before {
@@ -171,7 +174,7 @@
       right: 0;
       width: 40%;
       height: 100%;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(44,90,160,0.03)"/></svg>');
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(30, 64, 175, 0.03)"/></svg>');
       background-size: cover;
     }
     
@@ -181,7 +184,7 @@
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid var(--primary-white);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 15px 35px rgba(30, 58, 138, 0.1);
       margin-bottom: 2rem;
       transition: all 0.4s ease;
       animation: float 3s ease-in-out infinite;
@@ -194,7 +197,7 @@
     
     .hero-photo:hover {
       transform: scale(1.05);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 20px 45px rgba(30, 58, 138, 0.15);
       animation: none;
     }
     
@@ -202,21 +205,21 @@
       font-size: 3.2rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      color: var(--primary-black);
+      color: var(--primary-navy);
       letter-spacing: -1px;
     }
     
     .hero .lead {
       font-size: 1.4rem;
-      font-weight: 400;
-      color: var(--dark-gray);
+      font-weight: 500;
+      color: var(--light-charcoal);
       margin-bottom: 0.5rem;
     }
     
     .hero .tagline {
       font-size: 1.1rem;
       font-weight: 400;
-      color: var(--accent-gray);
+      color: var(--light-charcoal);
       margin-bottom: 2.5rem;
       position: relative;
       display: inline-block;
@@ -226,7 +229,7 @@
       content: '';
       position: absolute;
       width: 60px;
-      height: 1px;
+      height: 2px;
       background: var(--safety-blue);
       bottom: -10px;
       left: 50%;
@@ -244,18 +247,21 @@
     .credential-badge {
       background: var(--safety-blue);
       color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
       font-size: 0.85rem;
       font-weight: 600;
+      box-shadow: 0 4px 8px rgba(30, 64, 175, 0.2);
     }
     
     .credential-badge.success {
       background: var(--safety-green);
+      box-shadow: 0 4px 8px rgba(16, 185, 129, 0.2);
     }
     
     .credential-badge.dark {
-      background: var(--secondary-black);
+      background: var(--primary-navy);
+      box-shadow: 0 4px 8px rgba(30, 58, 138, 0.2);
     }
     
     .cta-buttons {
@@ -264,31 +270,33 @@
     
     .btn-custom {
       padding: 12px 32px;
-      border-radius: 2px;
+      border-radius: 6px;
       font-weight: 600;
       margin: 0 0.8rem;
       transition: all 0.3s ease;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       font-size: 0.9rem;
+      border: 2px solid transparent;
     }
     
     .btn-primary-custom {
       background-color: var(--safety-blue);
-      border: 2px solid var(--safety-blue);
+      border-color: var(--safety-blue);
       color: var(--primary-white);
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
     }
     
     .btn-primary-custom:hover {
-      background-color: transparent;
-      color: var(--safety-blue);
+      background-color: var(--secondary-navy);
+      border-color: var(--secondary-navy);
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(44, 90, 160, 0.2);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
     }
     
     .btn-outline-custom {
       background-color: transparent;
-      border: 2px solid var(--safety-blue);
+      border-color: var(--safety-blue);
       color: var(--safety-blue);
     }
     
@@ -296,7 +304,7 @@
       background-color: var(--safety-blue);
       color: var(--primary-white);
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(44, 90, 160, 0.2);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.3);
     }
 
     /* Construction Banner */
@@ -332,7 +340,7 @@
     }
     
     .section-dark {
-      background-color: var(--secondary-black);
+      background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
       color: var(--primary-white);
     }
     
@@ -342,7 +350,7 @@
       margin-bottom: 3rem;
       text-align: center;
       position: relative;
-      color: var(--primary-black);
+      color: var(--primary-navy);
     }
     
     .section-dark .section-title {
@@ -352,32 +360,34 @@
     .section-title::after {
       content: '';
       position: absolute;
-      width: 60px;
-      height: 3px;
+      width: 80px;
+      height: 4px;
       background: var(--safety-blue);
       bottom: -15px;
       left: 50%;
       transform: translateX(-50%);
+      border-radius: 2px;
     }
     
     .section-dark .section-title::after {
-      background: var(--primary-white);
+      background: var(--accent-orange);
     }
 
     /* About Section */
     .skill-card {
       background: var(--primary-white);
-      border-radius: 4px;
+      border-radius: 8px;
       padding: 2.5rem 2rem;
       height: 100%;
       transition: all 0.3s ease;
-      border: 1px solid var(--light-gray);
+      border: 1px solid var(--medium-gray);
       text-align: center;
       position: relative;
       overflow: hidden;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.08);
     }
     
     .skill-card.animate {
@@ -392,7 +402,7 @@
       left: 0;
       width: 100%;
       height: 4px;
-      background: var(--safety-green);
+      background: linear-gradient(90deg, var(--safety-blue), var(--safety-green));
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
@@ -402,8 +412,8 @@
     }
     
     .skill-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(30, 58, 138, 0.15);
     }
     
     .skill-icon {
@@ -421,28 +431,57 @@
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: var(--primary-black);
+      color: var(--primary-navy);
     }
     
     .skill-card p {
-      color: var(--dark-gray);
+      color: var(--light-charcoal);
       font-size: 0.95rem;
       line-height: 1.6;
+    }
+
+    /* Safety Metrics Section */
+    .metrics-section {
+      background: linear-gradient(135deg, var(--secondary-white) 0%, var(--light-gray) 100%);
+      padding: 80px 0;
+    }
+    
+    .metric-item {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    
+    .metric-value {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--safety-blue), var(--engineering-teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .metric-label {
+      font-size: 1.1rem;
+      color: var(--light-charcoal);
+      font-weight: 500;
     }
 
     /* Projects Section */
     .project-card {
       background: var(--primary-white);
-      border-radius: 4px;
+      border-radius: 8px;
       padding: 2rem;
       height: 100%;
       transition: all 0.3s ease;
-      border: 1px solid var(--light-gray);
+      border: 1px solid var(--medium-gray);
       position: relative;
       overflow: hidden;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.08);
       border-left: 4px solid transparent;
     }
     
@@ -458,7 +497,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(44, 90, 160, 0.03), transparent);
+      background: linear-gradient(90deg, transparent, rgba(30, 64, 175, 0.05), transparent);
       transition: left 0.6s;
     }
     
@@ -467,8 +506,8 @@
     }
     
     .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(30, 58, 138, 0.15);
       border-left: 4px solid var(--safety-blue);
     }
     
@@ -482,11 +521,11 @@
       font-size: 1.2rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: var(--primary-black);
+      color: var(--primary-navy);
     }
     
     .project-card p {
-      color: var(--dark-gray);
+      color: var(--light-charcoal);
       font-size: 0.95rem;
       margin-bottom: 1.5rem;
     }
@@ -499,9 +538,9 @@
     
     .project-badge {
       background: var(--light-gray);
-      color: var(--dark-gray);
-      padding: 0.3rem 0.8rem;
-      border-radius: 2px;
+      color: var(--light-charcoal);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
       font-size: 0.8rem;
       font-weight: 500;
     }
@@ -510,8 +549,8 @@
       position: absolute;
       top: 1rem;
       right: 1rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 2px;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
       font-size: 0.8rem;
       font-weight: 600;
     }
@@ -522,47 +561,25 @@
     }
     
     .status-ongoing {
-      background: var(--warning-orange);
+      background: var(--accent-orange);
       color: white;
-    }
-
-    /* Safety Metrics Section */
-    .metrics-section {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      padding: 80px 0;
-    }
-    
-    .metric-item {
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    
-    .metric-value {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      line-height: 1;
-    }
-    
-    .metric-label {
-      font-size: 1.1rem;
-      color: var(--dark-gray);
     }
 
     /* Certifications Section */
     .cert-card {
       background: var(--primary-white);
-      border-radius: 4px;
+      border-radius: 8px;
       padding: 2rem;
       height: 100%;
       transition: all 0.3s ease;
-      border: 1px solid var(--light-gray);
+      border: 1px solid var(--medium-gray);
       text-align: center;
       position: relative;
       overflow: hidden;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.08);
     }
     
     .cert-card.animate {
@@ -577,7 +594,7 @@
       left: 0;
       width: 100%;
       height: 4px;
-      background: var(--safety-green);
+      background: linear-gradient(90deg, var(--safety-blue), var(--safety-green));
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
@@ -587,8 +604,8 @@
     }
     
     .cert-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(30, 58, 138, 0.15);
     }
     
     .cert-icon {
@@ -606,33 +623,34 @@
       font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: var(--primary-black);
+      color: var(--primary-navy);
     }
     
     .cert-card p {
-      color: var(--dark-gray);
+      color: var(--light-charcoal);
       font-size: 0.9rem;
     }
 
     /* Vision & Mission Section */
     .vision-mission-section {
-      background-color: var(--secondary-white);
+      background: linear-gradient(135deg, var(--secondary-white) 0%, var(--light-gray) 100%);
       padding: 100px 0;
     }
     
     .vision-mission-card {
       background: var(--primary-white);
-      border-radius: 4px;
+      border-radius: 8px;
       padding: 3rem;
       height: 100%;
       transition: all 0.3s ease;
-      border: 1px solid var(--light-gray);
+      border: 1px solid var(--medium-gray);
       position: relative;
       overflow: hidden;
       text-align: center;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.08);
     }
     
     .vision-mission-card.animate {
@@ -647,7 +665,7 @@
       left: 0;
       width: 100%;
       height: 4px;
-      background: var(--safety-blue);
+      background: linear-gradient(90deg, var(--safety-blue), var(--accent-orange));
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
@@ -657,8 +675,8 @@
     }
     
     .vision-mission-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(30, 58, 138, 0.15);
     }
     
     .vision-mission-icon {
@@ -676,18 +694,18 @@
       font-size: 1.5rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
-      color: var(--primary-black);
+      color: var(--primary-navy);
     }
     
     .vision-mission-text {
-      color: var(--dark-gray);
+      color: var(--light-charcoal);
       font-size: 1.05rem;
       line-height: 1.8;
     }
 
     /* Call to Action Section */
     .cta-section {
-      background-color: var(--secondary-black);
+      background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
       color: var(--primary-white);
       padding: 100px 0;
       text-align: center;
@@ -714,13 +732,13 @@
     .cta-description {
       font-size: 1.2rem;
       margin-bottom: 3rem;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.9);
       line-height: 1.7;
     }
 
     /* Footer */
     footer {
-      background: var(--primary-black);
+      background: var(--primary-navy);
       color: var(--primary-white);
       text-align: center;
       padding: 3rem 0;
@@ -746,7 +764,7 @@
       height: 44px;
       background: rgba(255, 255, 255, 0.1);
       color: var(--primary-white);
-      border-radius: 50%;
+      border-radius: 8px;
       font-size: 1.1rem;
       transition: all 0.3s ease;
       text-decoration: none;
@@ -759,13 +777,14 @@
     }
     
     .footer-text {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.9);
       font-size: 1rem;
       margin-bottom: 0.5rem;
+      font-weight: 500;
     }
     
     .footer-copyright {
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.7);
       font-size: 0.9rem;
       margin-top: 1rem;
     }
@@ -779,7 +798,7 @@
       height: 50px;
       background: var(--safety-blue);
       color: var(--primary-white);
-      border-radius: 2px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -790,6 +809,7 @@
       z-index: 1000;
       border: none;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
     }
     
     .back-to-top.active {
@@ -798,8 +818,9 @@
     }
     
     .back-to-top:hover {
-      background: var(--professional-navy);
+      background: var(--secondary-navy);
       transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
     }
 
     /* Animation Classes */
@@ -1066,25 +1087,25 @@
       <div class="row">
         <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="metric-item">
-            <div class="metric-value" style="color: var(--safety-green);">0</div>
+            <div class="metric-value">0</div>
             <div class="metric-label" data-i18n="metrics.metric1">Lost Time Incidents</div>
           </div>
         </div>
         <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="metric-item">
-            <div class="metric-value" style="color: var(--safety-blue);">100%</div>
+            <div class="metric-value">100%</div>
             <div class="metric-label" data-i18n="metrics.metric2">Regulatory Compliance</div>
           </div>
         </div>
         <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="metric-item">
-            <div class="metric-value" style="color: var(--professional-navy);">50+</div>
+            <div class="metric-value">50+</div>
             <div class="metric-label" data-i18n="metrics.metric3">Safety Audits Conducted</div>
           </div>
         </div>
         <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="400">
           <div class="metric-item">
-            <div class="metric-value" style="color: var(--warning-orange);">75+</div>
+            <div class="metric-value">75+</div>
             <div class="metric-label" data-i18n="metrics.metric4">Workers Trained</div>
           </div>
         </div>
