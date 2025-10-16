@@ -669,6 +669,11 @@
       color: white;
     }
 
+    /* Catalog/Portfolio Section */
+    .catalog-section {
+      background: linear-gradient(135deg, var(--secondary-white) 0%, var(--light-gray) 100%);
+    }
+
     /* Certifications Section */
     .cert-card {
       background: var(--primary-white);
@@ -807,10 +812,9 @@
       line-height: 1.8;
     }
 
-    /* UPDATED: Call to Action Section with Logo Background */
+    /* UPDATED: Call to Action Section with Larger Logo and Black Overlay */
     .cta-section {
-      background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(45, 75, 168, 0.9)), url('logo.jpg') center/contain no-repeat;
-      background-size: 300px auto;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('logo.jpg') center/cover no-repeat;
       color: var(--primary-white);
       padding: 100px 0;
       text-align: center;
@@ -831,33 +835,36 @@
     }
     
     .cta-title {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
       color: var(--primary-white);
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     }
     
     .cta-description {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 3rem;
       color: rgba(255, 255, 255, 0.95);
       line-height: 1.7;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
     }
 
-    /* Footer */
+    /* UPDATED: Footer with Same Background as CTA */
     footer {
-      background: var(--primary-navy);
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('logo.jpg') center/cover no-repeat;
       color: var(--primary-white);
       text-align: center;
       padding: 3rem 0;
+      position: relative;
     }
     
     .footer-content {
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
     
     .footer-icons {
@@ -872,7 +879,7 @@
       justify-content: center;
       width: 44px;
       height: 44px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.2);
       color: var(--primary-white);
       border-radius: 8px;
       font-size: 1.1rem;
@@ -887,16 +894,18 @@
     }
     
     .footer-text {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.95);
       font-size: 1rem;
       margin-bottom: 0.5rem;
       font-weight: 500;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
     
     .footer-copyright {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.9rem;
       margin-top: 1rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
 
     /* Back to Top Button */
@@ -1048,7 +1057,7 @@
       }
       
       .cta-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       
       .cta-description {
@@ -1062,10 +1071,6 @@
       .service-card,
       .skill-card {
         padding: 2rem 1.5rem;
-      }
-      
-      .cta-section {
-        background-size: 200px auto;
       }
     }
     
@@ -1103,10 +1108,6 @@
       .metric-value {
         font-size: 2rem;
       }
-      
-      .cta-section {
-        background-size: 150px auto;
-      }
     }
   </style>
 </head>
@@ -1135,6 +1136,7 @@
           <li class="nav-item"><a class="nav-link" href="#services" data-i18n="nav.services">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="#metrics" data-i18n="nav.metrics">Safety Metrics</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects" data-i18n="nav.impact">Impact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#catalog" data-i18n="nav.catalog">Portfolio</a></li>
           <li class="nav-item"><a class="nav-link" href="#certifications" data-i18n="nav.credentials">Credentials</a></li>
           <li class="nav-item"><a class="nav-link" href="#vision-mission" data-i18n="nav.vision">Vision & Mission</a></li>
           <li class="nav-item"><a class="nav-link" href="#call-to-action" data-i18n="nav.action">Call to Action</a></li>
@@ -1158,7 +1160,7 @@
       
       <p class="tagline" data-aos="fade-up" data-aos-delay="200" data-i18n="hero.tagline">Bridging Civil Engineering and Safety Excellence on High-Impact Projects</p>
       <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-        <a href="#services" class="btn btn-primary-custom btn-custom" data-i18n="hero.viewServices">View Services</a>
+        <a href="#projects" class="btn btn-primary-custom btn-custom" data-i18n="hero.viewImpact">View My Impact</a>
         <a href="#call-to-action" class="btn btn-outline-custom btn-custom" data-i18n="hero.collaborate">Let's Collaborate</a>
       </div>
     </div>
@@ -1351,6 +1353,45 @@
     </div>
   </section>
 
+  <!-- Catalog/Portfolio Section -->
+  <section id="catalog" class="section catalog-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up" data-i18n="catalog.title">Project Portfolio & Services</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-card">
+            <div class="project-status status-completed">Featured</div>
+            <div class="project-icon">
+              <i class="fas fa-blueprint"></i>
+            </div>
+            <h4 class="project-title">Architectural Plan Review & Safety Compliance</h4>
+            <p>Comprehensive analysis of architectural plans with focus on structural integrity, safety compliance, and risk mitigation for residential and commercial projects.</p>
+            <div class="project-badges">
+              <span class="project-badge">Plan Review</span>
+              <span class="project-badge">Safety Compliance</span>
+              <span class="project-badge">Risk Assessment</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-card">
+            <div class="project-status status-completed">Featured</div>
+            <div class="project-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h4 class="project-title">Comprehensive Maintenance & Restoration</h4>
+            <p>Full-scale maintenance and restoration services ensuring structural integrity, quality workmanship, and long-term durability of building infrastructure.</p>
+            <div class="project-badges">
+              <span class="project-badge">Maintenance</span>
+              <span class="project-badge">Restoration</span>
+              <span class="project-badge">Quality Control</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Certifications Section -->
   <section id="certifications" class="section">
     <div class="container">
@@ -1423,7 +1464,7 @@
     </div>
   </section>
 
-  <!-- UPDATED: Call to Action Section with Logo Background -->
+  <!-- UPDATED: Call to Action Section with Larger Logo and Black Overlay -->
   <section id="call-to-action" class="section cta-section">
     <div class="container">
       <div class="cta-content">
@@ -1440,7 +1481,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- UPDATED: Footer with Same Background -->
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -1487,6 +1528,7 @@
         "nav.services": "Services",
         "nav.metrics": "Safety Metrics",
         "nav.impact": "Impact",
+        "nav.catalog": "Portfolio",
         "nav.credentials": "Credentials",
         "nav.vision": "Vision & Mission",
         "nav.action": "Call to Action",
@@ -1498,7 +1540,7 @@
         "hero.badge1": "NEBOSH Certified",
         "hero.badge2": "OSHA Trained",
         "hero.badge3": "HSE Specialist",
-        "hero.viewServices": "View Services",
+        "hero.viewImpact": "View My Impact",
         "hero.collaborate": "Let's Collaborate",
         
         // About Section
@@ -1558,6 +1600,9 @@
         "projects.badge8": "Field Operations",
         "projects.badge9": "Sustainable Development",
         
+        // Catalog Section
+        "catalog.title": "Project Portfolio & Services",
+        
         // Certifications Section
         "certifications.title": "Core Credentials & Professional Training",
         "certifications.cert1.title": "NEBOSH",
@@ -1591,9 +1636,9 @@
         // Navigation
         "nav.home": "الرئيسية",
         "nav.summary": "ملخص",
-        "nav.services": "الخدمات",
         "nav.metrics": "مقاييس السلامة",
         "nav.impact": "التأثير",
+        "nav.catalog": "الحافظة",
         "nav.credentials": "الشهادات",
         "nav.vision": "الرؤية والرسالة",
         "nav.action": "دعوة للعمل",
@@ -1605,7 +1650,7 @@
         "hero.badge1": "معتمد نيبوش",
         "hero.badge2": "مدرب أوشا",
         "hero.badge3": "أخصائي صحة وسلامة",
-        "hero.viewServices": "عرض الخدمات",
+        "hero.viewImpact": "عرض تأثيري",
         "hero.collaborate": "لنتعاون",
         
         // About Section
@@ -1616,27 +1661,6 @@
         "about.skill2.desc": "تقييم شامل للمخاطر، تدقيق السلامة، وبروتوكولات الامتثال لتحقيق التميز في سلامة مكان العمل.",
         "about.skill3.title": "تنسيق المشاريع",
         "about.skill3.desc": "إشراك أصحاب المصلحة، إدارة الموارد، وضمان الجودة لتسليم المشروع بنجاح.",
-        
-        // NEW: Services Section
-        "services.title": "خدمات الصحة والسلامة والبيئة",
-        "services.service1.title": "تدقيق السلامة والتفتيش",
-        "services.service1.desc": "تقييمات شاملة لسلامة مكان العمل والتحقق من الامتثال",
-        "services.service1.feature1": "تفتيش سلامة المواقع",
-        "services.service1.feature2": "فحص الامتثال التنظيمي",
-        "services.service1.feature3": "تقارير تقييم المخاطر",
-        "services.service1.feature4": "تقييم برنامج السلامة",
-        "services.service2.title": "إدارة سلامة البناء",
-        "services.service2.desc": "خطط سلامة مخصصة للموقع لمشاريع البناء",
-        "services.service2.feature1": "تطوير برنامج السلامة",
-        "services.service2.feature2": "تحقيق الحوادث",
-        "services.service2.feature3": "الإشراف على سلامة المقاولين",
-        "services.service2.feature4": "تخطيط الاستجابة للطوارئ",
-        "services.service3.title": "التدريب والتطوير في السلامة",
-        "services.service3.desc": "برامج تدريب القوى العاملة والتوعية بالسلامة",
-        "services.service3.feature1": "تدريب الامتثال لأوشا",
-        "services.service3.feature2": "تمارين الاستجابة للطوارئ",
-        "services.service3.feature3": "حوارات الصندوق وورش العمل",
-        "services.service3.feature4": "تطوير ثقافة السلامة",
         
         // Metrics Section
         "metrics.title": "مقاييس أداء السلامة",
@@ -1664,6 +1688,9 @@
         "projects.badge7": "إنساني",
         "projects.badge8": "عمليات ميدانية",
         "projects.badge9": "تنمية مستدامة",
+        
+        // Catalog Section
+        "catalog.title": "حافظة المشاريع والخدمات",
         
         // Certifications Section
         "certifications.title": "الشهادات الأساسية والتدريب المهني",
