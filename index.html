@@ -812,20 +812,27 @@
       line-height: 1.8;
     }
 
-    /* UPDATED: Call to Action Section with Single Logo Background and Black Gradient */
-    .cta-section {
-      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('logo.jpg') center/cover no-repeat;
+    /* NEW: Combined Logo Container for both CTA and Footer */
+    .combined-logo-container {
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
+        url('logo.jpg') center/cover no-repeat;
       color: var(--primary-white);
+      position: relative;
+    }
+
+    /* UPDATED: Call to Action Section - now part of combined container */
+    .cta-section {
       padding: 120px 0;
       text-align: center;
       position: relative;
+      z-index: 2;
     }
     
     .cta-content {
       max-width: 800px;
       margin: 0 auto;
       position: relative;
-      z-index: 2;
     }
     
     .cta-icon {
@@ -852,13 +859,12 @@
       font-weight: 500;
     }
 
-    /* UPDATED: Footer with Same Logo Background and Black Gradient */
+    /* UPDATED: Footer - now part of combined container */
     footer {
-      background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), url('logo.jpg') center/cover no-repeat;
-      color: var(--primary-white);
       text-align: center;
       padding: 4rem 0;
       position: relative;
+      z-index: 2;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
     
@@ -867,7 +873,6 @@
       flex-direction: column;
       align-items: center;
       position: relative;
-      z-index: 2;
     }
     
     .footer-icons {
@@ -1485,44 +1490,47 @@
     </div>
   </section>
 
-  <!-- UPDATED: Call to Action Section with Single Logo Background and Black Gradient -->
-  <section id="call-to-action" class="section cta-section">
-    <div class="container">
-      <div class="cta-content">
-        <div class="cta-icon" data-aos="fade-up">
-          <i class="fas fa-rocket"></i>
-        </div>
-        <h2 class="cta-title" data-aos="fade-up" data-aos-delay="100" data-i18n="action.title">Call to Action</h2>
-        <p class="cta-description" data-aos="fade-up" data-aos-delay="200" data-i18n="action.description">Partner with CivSafe Solutions on your next project. Let's build safer, smarter, and more impactful solutions together.</p>
-        <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-          <a href="mailto:mu8dali@gmail.com?subject=Consultation Request&body=Hello, I would like to schedule a consultation." class="btn btn-primary-custom btn-custom" data-i18n="action.schedule">Schedule a Consultation</a>
-          <a href="profile.pdf" class="btn btn-outline-custom btn-custom" download data-i18n="action.download">Download My Profile</a>
+  <!-- NEW: Combined Logo Container for both CTA and Footer -->
+  <div class="combined-logo-container">
+    <!-- UPDATED: Call to Action Section - now part of combined container -->
+    <section id="call-to-action" class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <div class="cta-icon" data-aos="fade-up">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h2 class="cta-title" data-aos="fade-up" data-aos-delay="100" data-i18n="action.title">Call to Action</h2>
+          <p class="cta-description" data-aos="fade-up" data-aos-delay="200" data-i18n="action.description">Partner with CivSafe Solutions on your next project. Let's build safer, smarter, and more impactful solutions together.</p>
+          <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
+            <a href="mailto:mu8dali@gmail.com?subject=Consultation Request&body=Hello, I would like to schedule a consultation." class="btn btn-primary-custom btn-custom" data-i18n="action.schedule">Schedule a Consultation</a>
+            <a href="profile.pdf" class="btn btn-outline-custom btn-custom" download data-i18n="action.download">Download My Profile</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- UPDATED: Footer with Same Logo Background and Black Gradient -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-icons">
-          <a href="mailto:mu8dali@gmail.com" class="footer-icon" title="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a href="https://linkedin.com/in/mohamed-s-b8929a28b" target="_blank" class="footer-icon" title="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="https://wa.me/message/CWKOGQVLSIGUF1" class="footer-icon" title="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-          </a>
+    <!-- UPDATED: Footer - now part of combined container -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-icons">
+            <a href="mailto:mu8dali@gmail.com" class="footer-icon" title="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://linkedin.com/in/mohamed-s-b8929a28b" target="_blank" class="footer-icon" title="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/message/CWKOGQVLSIGUF1" class="footer-icon" title="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+          <p class="footer-text" data-i18n="footer.brand">CivSafe Solutions</p>
+          <p class="footer-text" data-i18n="footer.profession">HSE Engineering & Safety Excellence</p>
+          <p class="footer-copyright" data-i18n="footer.copyright">&copy; 2025 All rights reserved.</p>
         </div>
-        <p class="footer-text" data-i18n="footer.brand">CivSafe Solutions</p>
-        <p class="footer-text" data-i18n="footer.profession">HSE Engineering & Safety Excellence</p>
-        <p class="footer-copyright" data-i18n="footer.copyright">&copy; 2025 All rights reserved.</p>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <!-- Back to Top Button -->
   <button class="back-to-top">
