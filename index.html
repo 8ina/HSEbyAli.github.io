@@ -6,23 +6,36 @@
   <title>CivSafe Solutions</title>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- AOS Animations -->
+  <!-- AOS (Scroll Animation) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0e0e0e;
-      --card-bg: #181818;
-      --text: #eaeaea;
-      --subtext: #9b9b9b;
-      --accent: #00b4ff;
-      --accent-glow: 0 0 15px rgba(0,180,255,0.4);
-      --border: #2a2a2a;
+      --bg: #f8f9fa;
+      --text: #121212;
+      --subtext: #555;
+      --accent: #1a1a1a;
+      --card-bg: #ffffff;
+      --border: #e2e6ea;
+      --dark-section: #2d2d2d;
+      --light-gray: #e9ecef;
+    }
+
+    /* Dark Mode Variables */
+    .dark-mode {
+      --bg: #121212;
+      --text: #f8f9fa;
+      --subtext: #b0b0b0;
+      --accent: #ffffff;
+      --card-bg: #1e1e1e;
+      --border: #333;
+      --dark-section: #0d0d0d;
+      --light-gray: #2d2d2d;
     }
 
     * {
@@ -32,96 +45,194 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
       background: var(--bg);
+      font-family: 'Inter', sans-serif;
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.6;
       overflow-x: hidden;
+      transition: all 0.3s ease;
     }
 
-    /* Navbar */
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Header & Navigation */
     header {
-      background: rgba(15,15,15,0.9);
-      backdrop-filter: blur(12px);
+      background: var(--card-bg);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid var(--border);
     }
 
     nav {
-      max-width: 1200px;
-      margin: auto;
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    nav h1 {
-      font-family: 'Poppins', sans-serif;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo {
+      height: 40px;
+      width: auto;
+      border-radius: 4px;
+    }
+
+    .logo-text {
       font-weight: 700;
       color: var(--accent);
       letter-spacing: -0.5px;
+      font-size: 1.5rem;
     }
 
     nav ul {
       list-style: none;
       display: flex;
       gap: 2rem;
+      align-items: center;
     }
 
     nav ul li a {
       text-decoration: none;
       color: var(--text);
       font-weight: 500;
-      transition: 0.3s;
+      transition: 0.2s ease;
+      position: relative;
     }
 
     nav ul li a:hover {
       color: var(--accent);
-      text-shadow: var(--accent-glow);
     }
 
-    /* Hero */
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      padding: 0.5rem;
+      border-radius: 50%;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--light-gray);
+      transform: rotate(15deg);
+    }
+
+    /* Hero Section */
     .hero {
       text-align: center;
       padding: 8rem 2rem 6rem;
-      background: radial-gradient(circle at 50% 20%, rgba(0,180,255,0.05), transparent 70%);
+      background: linear-gradient(180deg, var(--card-bg), var(--bg));
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(0, 0, 0, 0.03)"/></svg>');
+      background-size: cover;
+    }
+
+    .dark-mode .hero::before {
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255, 255, 255, 0.03)"/></svg>');
     }
 
     .hero h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      color: #fff;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
     }
 
     .hero p {
       color: var(--subtext);
+      font-size: 1.2rem;
       max-width: 700px;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
+      margin: 0 auto 2.5rem;
+      font-weight: 400;
     }
 
-    .hero a {
-      background: var(--accent);
-      color: #fff;
-      padding: 0.9rem 2.4rem;
-      border-radius: 12px;
-      font-weight: 600;
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
       text-decoration: none;
+      font-weight: 600;
       transition: 0.3s;
-      box-shadow: var(--accent-glow);
+      display: inline-block;
+      font-size: 0.95rem;
     }
 
-    .hero a:hover {
-      background: #0098da;
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #000;
       transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
 
-    /* Section */
+    .dark-mode .btn-primary:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Sections */
     section {
       max-width: 1100px;
       margin: 5rem auto;
@@ -129,59 +240,103 @@
     }
 
     h3.section-title {
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-      font-size: 1.8rem;
       font-weight: 600;
-      color: #fff;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: var(--text);
+      font-size: 2.2rem;
       position: relative;
     }
 
     h3.section-title::after {
       content: '';
-      display: block;
-      width: 60px;
+      position: absolute;
+      width: 80px;
       height: 3px;
       background: var(--accent);
-      margin: 0.6rem auto 0;
-      border-radius: 5px;
-      box-shadow: var(--accent-glow);
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-dark {
+      background: var(--dark-section);
+      color: white;
+      padding: 5rem 2rem;
+      margin: 5rem 0;
+      width: 100%;
+    }
+
+    .section-dark .section-title {
+      color: white;
+    }
+
+    .section-dark .section-title::after {
+      background: white;
+    }
+
+    .section-dark .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .section-dark .card h4 {
+      color: white;
+    }
+
+    .section-dark .card p {
+      color: rgba(255, 255, 255, 0.8);
     }
 
     /* Cards */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
 
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2.2rem 1.5rem;
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
       text-align: center;
-      transition: 0.4s ease;
-      box-shadow: 0 0 0 rgba(0,0,0,0);
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
     }
 
     .card:hover {
       transform: translateY(-8px);
-      border-color: var(--accent);
-      box-shadow: var(--accent-glow);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.1);
     }
 
     .card i {
-      font-size: 2.3rem;
+      font-size: 2.5rem;
       color: var(--accent);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     .card h4 {
       font-weight: 600;
-      margin-bottom: 0.5rem;
-      font-family: 'Poppins', sans-serif;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
     }
 
     .card p {
@@ -189,47 +344,292 @@
       font-size: 0.95rem;
     }
 
-    /* Contact */
-    #contact p {
+    /* Profile Section */
+    .profile-section {
       text-align: center;
-      font-size: 1rem;
-      color: var(--subtext);
+      padding: 4rem 2rem;
+      background: var(--card-bg);
+      border-radius: 12px;
+      margin: 4rem auto;
+      max-width: 900px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
 
-    #contact a {
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 2rem;
+      border: 5px solid var(--card-bg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      filter: grayscale(30%);
+      transition: all 0.4s ease;
+    }
+
+    .profile-photo:hover {
+      filter: grayscale(0%);
+      transform: scale(1.03);
+    }
+
+    .profile-section h3 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-section .title {
       color: var(--accent);
-      text-decoration: none;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: var(--accent);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
       font-weight: 600;
     }
 
-    #contact a:hover {
-      text-shadow: var(--accent-glow);
+    /* Metrics Section */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
 
+    .metric {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .metric-value {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .metric-label {
+      color: var(--subtext);
+      font-weight: 500;
+    }
+
+    /* Project Badges */
+    .project-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .project-badge {
+      background: var(--light-gray);
+      color: var(--subtext);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Project Status */
+    .project-status {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .status-completed {
+      background: var(--accent);
+      color: white;
+    }
+
+    .status-ongoing {
+      background: var(--subtext);
+      color: white;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 2rem;
-      color: var(--subtext);
-      border-top: 1px solid var(--border);
-      background: #101010;
+      padding: 4rem 2rem;
+      background: var(--dark-section);
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.9rem;
+      margin-top: 5rem;
     }
 
-    footer a {
-      color: var(--accent);
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
       text-decoration: none;
     }
 
-    footer a:hover {
-      text-shadow: var(--accent-glow);
+    .footer-icon:hover {
+      background: white;
+      color: var(--dark-section);
+      transform: translateY(-3px);
     }
 
-    @media (max-width: 600px) {
+    .footer-text {
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .footer-copyright {
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 1.5rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: #000;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .dark-mode .back-to-top:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 6rem 1.5rem 4rem;
+      }
+      
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav ul {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+      
+      section {
+        margin: 3rem auto;
+      }
+      
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
       .hero h2 {
         font-size: 2rem;
       }
+      
       nav ul {
-        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .profile-photo {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .metrics {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -238,54 +638,296 @@
 <body>
   <header>
     <nav>
-      <h1>CivSafe</h1>
+      <div class="logo-container">
+        <img src="logo.jpg" alt="CivSafe Logo" class="logo">
+        <span class="logo-text">CivSafe</span>
+      </div>
       <ul>
         <li><a href="#about">About</a></li>
-        <li><a href="#services">Expertise</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="dark-mode-toggle" id="darkModeToggle">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
       </ul>
     </nav>
   </header>
 
   <section class="hero" data-aos="fade-up">
-    <h2>Engineering Safety, Building Trust.</h2>
-    <p>CivSafe Solutions empowers construction and infrastructure projects with advanced safety engineering, compliance systems, and modern risk management strategies.</p>
-    <a href="#contact">Work With Us</a>
+    <h2>Building Safer Futures</h2>
+    <p>At CivSafe Solutions, we combine engineering precision with safety innovation — helping teams design, manage, and deliver safer construction environments.</p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn btn-primary">View Our Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
   </section>
 
-  <section id="services" data-aos="fade-up">
-    <h3 class="section-title">Our Core Expertise</h3>
-    <div class="cards">
-      <div class="card">
-        <i class="fa-solid fa-helmet-safety"></i>
-        <h4>Safety & Compliance</h4>
-        <p>Certified NEBOSH, IOSH, and OSHA professionals providing global-standard safety strategies for every site.</p>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-chart-bar"></i>
-        <h4>Performance & KPIs</h4>
-        <p>Data-driven tracking systems that connect incident reports, KPIs, and preventive analytics for smarter project delivery.</p>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-building-shield"></i>
-        <h4>Engineering Management</h4>
-        <p>Integrating technical precision with project leadership to create safer, more efficient construction workflows.</p>
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up">
+    <div class="profile-section">
+      <img src="profile.jpg" alt="Mohamed Ali Suliman Salih" class="profile-photo">
+      <h3>Mohamed Ali Suliman Salih</h3>
+      <p class="title">Civil Engineer | HSE Management & Risk Control</p>
+      <p>Bridging Civil Engineering and Safety Excellence on High-Impact Projects</p>
+      <div class="badges">
+        <span class="badge">NEBOSH Certified</span>
+        <span class="badge">OSHA Trained</span>
+        <span class="badge">HSE Specialist</span>
       </div>
     </div>
   </section>
 
+  <!-- Services Section -->
+  <section id="services" data-aos="fade-up">
+    <h3 class="section-title">Our Expertise</h3>
+    <div class="cards">
+      <div class="card">
+        <i class="fa-solid fa-helmet-safety"></i>
+        <h4>Safety Management</h4>
+        <p>Comprehensive safety assessments and risk management tailored for construction and infrastructure projects.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-chart-line"></i>
+        <h4>Project Monitoring</h4>
+        <p>Real-time project supervision with KPI-based reporting and compliance tracking.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-building"></i>
+        <h4>Civil Engineering</h4>
+        <p>End-to-end engineering solutions from estimation to execution, prioritizing safety and sustainability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Safety Metrics Section -->
+  <section data-aos="fade-up">
+    <h3 class="section-title">Safety Performance Metrics</h3>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-value">0</div>
+        <div class="metric-label">Lost Time Incidents</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">100%</div>
+        <div class="metric-label">Regulatory Compliance</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">50+</div>
+        <div class="metric-label">Safety Audits Conducted</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">75+</div>
+        <div class="metric-label">Workers Trained</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Highlights Section -->
+  <section id="impact" data-aos="fade-up">
+    <h3 class="section-title">Impact Highlights</h3>
+    <div class="cards">
+      <div class="card">
+        <i class="fa-solid fa-hard-hat"></i>
+        <h4>Zero-LTI Milestone</h4>
+        <p>Maintained zero Lost Time Incidents across multiple project sites in 2024–2025.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <h4>Compliance Excellence</h4>
+        <p>Achieved 100% audit compliance under Ministry of Infrastructure standards.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section-dark" data-aos="fade-up">
+    <h3 class="section-title">Key Project Impact & Achievements</h3>
+    <div class="cards">
+      <div class="card">
+        <span class="project-status status-completed">Completed</span>
+        <i class="fa-solid fa-landmark"></i>
+        <h4>High-Profile Residential Restoration</h4>
+        <p>Executed comprehensive restoration and structural reinforcement for a sensitive residential compound, ensuring the highest standards of quality and safety.</p>
+        <div class="project-badges">
+          <span class="project-badge">Restoration</span>
+          <span class="project-badge">Structural Integrity</span>
+          <span class="project-badge">Quality Assurance</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="project-status status-completed">Completed</span>
+        <i class="fa-solid fa-store"></i>
+        <h4>Commercial Market Construction</h4>
+        <p>Managed end-to-end construction of commercial market facilities, focusing on quality execution, occupational safety, and adherence to project timelines.</p>
+        <div class="project-badges">
+          <span class="project-badge">Commercial</span>
+          <span class="project-badge">Site Supervision</span>
+          <span class="project-badge">Construction</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="project-status status-ongoing">Ongoing</span>
+        <i class="fa-solid fa-hands-helping"></i>
+        <h4>Humanitarian Engineering</h4>
+        <p>Applied engineering expertise to support critical infrastructure projects in underserved areas, focusing on sustainable and resilient solutions for communities in need.</p>
+        <div class="project-badges">
+          <span class="project-badge">Humanitarian</span>
+          <span class="project-badge">Field Operations</span>
+          <span class="project-badge">Sustainable Development</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" data-aos="fade-up">
+    <h3 class="section-title">Core Credentials & Professional Training</h3>
+    <div class="cards">
+      <div class="card">
+        <i class="fa-solid fa-certificate"></i>
+        <h4>NEBOSH</h4>
+        <p>International General Certificate in Occupational Health and Safety</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-shield-alt"></i>
+        <h4>OSHA Safety</h4>
+        <p>Occupational Safety and Health Administration Standards</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-medkit"></i>
+        <h4>First Aid Certified</h4>
+        <p>Emergency First Aid, CPR, and Crisis Response Management</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-fire-extinguisher"></i>
+        <h4>Fire Safety Management</h4>
+        <p>Fire Prevention, Risk Assessment, and Emergency Procedures</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
   <section id="contact" data-aos="fade-up">
-    <h3 class="section-title">Get In Touch</h3>
-    <p>Reach out for collaborations or inquiries at <a href="mailto:info@civsafe.solutions">info@civsafe.solutions</a></p>
+    <h3 class="section-title">Contact</h3>
+    <p style="text-align:center; margin-bottom: 2rem;">For collaborations or inquiries, reach out via <a href="mailto:mu8dali@gmail.com">mu8dali@gmail.com</a></p>
+    <div class="cards">
+      <div class="card">
+        <i class="fa-solid fa-envelope"></i>
+        <h4>Email</h4>
+        <p><a href="mailto:mu8dali@gmail.com">mu8dali@gmail.com</a></p>
+      </div>
+
+      <div class="card">
+        <i class="fa-brands fa-linkedin"></i>
+        <h4>LinkedIn</h4>
+        <p><a href="https://linkedin.com/in/mohamed-s-b8929a28b" target="_blank">Connect for professional inquiries</a></p>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 CivSafe Solutions — Designed by <a href="#">Bina</a></p>
+    <div class="footer-content">
+      <div class="footer-icons">
+        <a href="mailto:mu8dali@gmail.com" class="footer-icon" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://linkedin.com/in/mohamed-s-b8929a28b" target="_blank" class="footer-icon" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+      <p class="footer-text">CivSafe Solutions</p>
+      <p>HSE Engineering & Safety Excellence</p>
+      <p class="footer-copyright">&copy; 2025 All rights reserved.</p>
+    </div>
   </footer>
 
+  <!-- Back to Top Button -->
+  <button class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ duration: 800, once: true });</script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: false,
+      offset: 100
+    });
+
+    // Back to top button functionality
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const darkModeIcon = darkModeToggle.querySelector('i');
+    
+    // Check for saved theme preference or respect OS preference
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const currentTheme = localStorage.getItem('theme');
+    
+    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+      document.body.classList.add('dark-mode');
+      darkModeIcon.classList.remove('fa-moon');
+      darkModeIcon.classList.add('fa-sun');
+    }
+    
+    darkModeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+      
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        darkModeIcon.classList.remove('fa-moon');
+        darkModeIcon.classList.add('fa-sun');
+      } else {
+        localStorage.setItem('theme', 'light');
+        darkModeIcon.classList.remove('fa-sun');
+        darkModeIcon.classList.add('fa-moon');
+      }
+    });
+  </script>
 </body>
 </html>
