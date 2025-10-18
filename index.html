@@ -61,6 +61,11 @@
       transform: translateX(50%);
     }
 
+    [dir="rtl"] .competency-list li::before {
+      margin-right: 0;
+      margin-left: 0.5rem;
+    }
+
     /* Typography */
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Poppins', sans-serif;
@@ -381,20 +386,27 @@
     }
 
     /* Competencies Section */
-    .competencies {
-      display: flex;
-      flex-wrap: wrap;
+    .competency-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1rem;
       margin-top: 2rem;
     }
 
-    .competency {
-      background: var(--accent);
-      color: var(--bg);
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
+    .competency-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      color: var(--subtext);
+    }
+
+    .competency-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
     }
 
     /* Experience Section */
@@ -414,9 +426,10 @@
     }
 
     .experience-date {
-      color: var(--subtext);
+      color: var(--accent);
       font-size: 0.9rem;
       margin-bottom: 1rem;
+      font-weight: 600;
     }
 
     .experience-description {
@@ -582,6 +595,10 @@
       .about-content {
         grid-template-columns: 1fr;
       }
+      
+      .competency-list {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 576px) {
@@ -646,8 +663,7 @@
     <h3 class="section-title" data-en="Professional Summary" data-ar="ملخص مهني">Professional Summary</h3>
     <div class="about-content">
       <div class="about-text animate-on-scroll">
-        <p data-en="With over 5 years of experience in construction safety and project management, I specialize in creating safer work environments while maintaining project efficiency and compliance. My expertise spans across civil engineering, HSE management, and risk assessment for high-stakes infrastructure projects." data-ar="مع أكثر من 5 سنوات من الخبرة في سلامة البناء وإدارة المشاريع، أتخصص في خلق بيئات عمل أكثر أمانًا مع الحفاظ على كفاءة المشروع والامتثال. تمتد خبرتي عبر الهندسة المدنية، وإدارة السلامة والصحة المهنية، وتقييم المخاطر للمشاريع التحتية عالية المخاطر.">With over 5 years of experience in construction safety and project management, I specialize in creating safer work environments while maintaining project efficiency and compliance.</p>
-        <p data-en="I have successfully maintained zero Lost Time Incidents across multiple project sites while achieving 100% regulatory compliance. My approach combines technical engineering knowledge with practical safety implementations to deliver sustainable and resilient solutions." data-ar="لقد حافظت بنجاح على صفر حوادث وقت ضائع عبر مواقع مشاريع متعددة مع تحقيق 100٪ من الامتثال التنظيمي. يجمع نهجي بين المعرفة الهندسية التقنية والتطبيقات العملية للسلامة لتقديم حلول مستدامة ومرنة.">I have successfully maintained zero Lost Time Incidents across multiple project sites while achieving 100% regulatory compliance.</p>
+        <p data-en="Certified Civil Engineer and HSE Professional with advanced qualifications in NEBOSH, IOSH, OSHA, and STPM-C, and specialized training in project management and safety systems. Experienced in construction supervision, compliance auditing, and risk control across infrastructure and civil projects. Known for combining engineering precision with proactive safety leadership to maintain zero-incident performance and full regulatory compliance." data-ar="مهندس مدني معتمد ومحترف في السلامة والصحة المهنية مع مؤهلات متقدمة في NEBOSH و IOSH و OSHA و STPM-C، وتدريب متخصص في إدارة المشاريع وأنظمة السلامة. لديه خبرة في الإشراف على البناء وتدقيق الامتثال والتحكم في المخاطر عبر مشاريع البنية التحتية والمدنية. معروف بجمع الدقة الهندسية مع القيادة الاستباقية في مجال السلامة للحفاظ على أداء خالٍ من الحوادث والامتثال التنظيمي الكامل.">Certified Civil Engineer and HSE Professional with advanced qualifications in NEBOSH, IOSH, OSHA, and STPM-C, and specialized training in project management and safety systems.</p>
         <p class="education-line animate-on-scroll delay-2" data-en="BSc Civil Engineering – JNTUH (2021) | Diploma in Fire & Construction Safety Management – BSS (2023)" data-ar="بكالوريوس هندسة مدنية – JNTUH (2021) | دبلوم في إدارة السلامة من الحرائق والبناء – BSS (2023)">BSc Civil Engineering – JNTUH (2021) | Diploma in Fire & Construction Safety Management – BSS (2023)</p>
       </div>
       <div class="card animate-on-scroll delay-1">
@@ -687,15 +703,15 @@
     <h3 class="section-title" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</h3>
     <div class="experience-list">
       <div class="experience-item animate-on-scroll">
-        <h4 data-en="HSE & Civil Engineering Consultant" data-ar="مستشار السلامة والصحة المهنية والهندسة المدنية">HSE & Civil Engineering Consultant</h4>
-        <div class="experience-date" data-en="2020 - Present" data-ar="2020 - الحاضر">2020 - Present</div>
-        <div class="experience-description" data-en="Providing comprehensive safety management and engineering solutions for construction projects, focusing on risk assessment, compliance, and project monitoring." data-ar="توفير حلول شاملة لإدارة السلامة والهندسة لمشاريع البناء، مع التركيز على تقييم المخاطر والامتثال ومراقبة المشروع.">Providing comprehensive safety management and engineering solutions for construction projects.</div>
+        <h4 data-en="Civil Engineer & HSE Coordinator" data-ar="مهندس مدني ومنسق السلامة والصحة المهنية">Civil Engineer & HSE Coordinator</h4>
+        <div class="experience-date" data-en="2024 – Present" data-ar="2024 – الحاضر">2024 – Present</div>
+        <div class="experience-description" data-en="Providing integrated safety and engineering support for construction projects, focusing on risk management, compliance monitoring, and quality control under national safety standards." data-ar="توفير الدعم المتكامل للسلامة والهندسة لمشاريع البناء، مع التركيز على إدارة المخاطر ومراقبة الامتثال ومراقبة الجودة وفقًا لمعايير السلامة الوطنية.">Providing integrated safety and engineering support for construction projects, focusing on risk management, compliance monitoring, and quality control under national safety standards.</div>
       </div>
 
       <div class="experience-item animate-on-scroll delay-1">
-        <h4 data-en="Site Safety Manager" data-ar="مدير السلامة في الموقع">Site Safety Manager</h4>
-        <div class="experience-date" data-en="2018 - 2020" data-ar="2018 - 2020">2018 - 2020</div>
-        <div class="experience-description" data-en="Managed safety protocols and compliance for large-scale construction projects, achieving zero lost-time incidents across multiple sites." data-ar="إدارة بروتوكولات السلامة والامتثال لمشاريع البناء واسعة النطاق، وتحقيق صفر حوادث وقت ضائع عبر مواقع متعددة.">Managed safety protocols and compliance for large-scale construction projects.</div>
+        <h4 data-en="Site Safety & Compliance Assistant" data-ar="مساعد السلامة والامتثال في الموقع">Site Safety & Compliance Assistant</h4>
+        <div class="experience-date" data-en="2022 – 2024" data-ar="2022 – 2024">2022 – 2024</div>
+        <div class="experience-description" data-en="Supported on-site safety operations and compliance documentation for multiple construction projects. Assisted in toolbox talks, inspections, and reporting to ensure zero-incident operations." data-ar="دعم عمليات السلامة في الموقع وتوثيق الامتثال لمشاريع بناء متعددة. ساعد في اجتماعات الأدوات والتفتيش وإعداد التقارير لضمان عمليات خالية من الحوادث.">Supported on-site safety operations and compliance documentation for multiple construction projects. Assisted in toolbox talks, inspections, and reporting to ensure zero-incident operations.</div>
       </div>
     </div>
   </section>
@@ -703,16 +719,15 @@
   <!-- Competencies Section -->
   <section id="competencies">
     <h3 class="section-title" data-en="Core Competencies" data-ar="الكفاءات الأساسية">Core Competencies</h3>
-    <div class="competencies">
-      <span class="competency" data-en="Safety Management" data-ar="إدارة السلامة">Safety Management</span>
-      <span class="competency" data-en="Risk Assessment" data-ar="تقييم المخاطر">Risk Assessment</span>
-      <span class="competency" data-en="Project Monitoring" data-ar="مراقبة المشروع">Project Monitoring</span>
-      <span class="competency" data-en="Compliance Audits" data-ar="تدقيق الامتثال">Compliance Audits</span>
-      <span class="competency" data-en="Structural Engineering" data-ar="الهندسة الإنشائية">Structural Engineering</span>
-      <span class="competency" data-en="HSE Training" data-ar="تدريب السلامة">HSE Training</span>
-      <span class="competency" data-en="Incident Investigation" data-ar="تحقيق الحوادث">Incident Investigation</span>
-      <span class="competency" data-en="Emergency Response" data-ar="الاستجابة للطوارئ">Emergency Response</span>
-    </div>
+    <ul class="competency-list animate-on-scroll">
+      <li data-en="Safety & Risk Management for Construction Projects" data-ar="إدارة السلامة والمخاطر لمشاريع البناء">Safety & Risk Management for Construction Projects</li>
+      <li data-en="Compliance Audits and Regulatory Reporting" data-ar="تدقيق الامتثال وإعداد التقارير التنظيمية">Compliance Audits and Regulatory Reporting</li>
+      <li data-en="Site Monitoring & Incident Investigation" data-ar="مراقبة الموقع وتحقيق الحوادث">Site Monitoring & Incident Investigation</li>
+      <li data-en="Emergency Preparedness and Response Planning" data-ar="التأهب للطوارئ وتخطيط الاستجابة">Emergency Preparedness and Response Planning</li>
+      <li data-en="Structural Assessment & Engineering Support" data-ar="التقييم الإنشائي والدعم الهندسي">Structural Assessment & Engineering Support</li>
+      <li data-en="HSE Induction and Workforce Training" data-ar="التوجيه في السلامة والصحة المهنية وتدريب القوى العاملة">HSE Induction and Workforce Training</li>
+      <li data-en="Hazard Identification & Preventive Action Planning" data-ar="تحديد المخاطر وتخطيط الإجراءات الوقائية">Hazard Identification & Preventive Action Planning</li>
+    </ul>
   </section>
 
   <!-- Solutions Section -->
@@ -720,21 +735,21 @@
     <h3 class="section-title" data-en="CivSafe Solutions" data-ar="حلول CivSafe">CivSafe Solutions</h3>
     <div class="cards">
       <div class="card animate-on-scroll">
-        <i class="fa-solid fa-helmet-safety"></i>
-        <h4 data-en="Safety Management" data-ar="إدارة السلامة">Safety Management</h4>
-        <p data-en="Comprehensive safety assessments and risk management tailored for construction and infrastructure projects." data-ar="تقييمات السلامة الشاملة وإدارة المخاطر المصممة خصيصًا لمشاريع البناء والبنية التحتية.">Comprehensive safety assessments and risk management.</p>
+        <i class="fa-solid fa-hard-hat"></i>
+        <h4 data-en="Site Supervision" data-ar="الإشراف على الموقع">Site Supervision</h4>
+        <p data-en="Active on-site safety supervision and coordination to maintain zero-incident environments and ensure daily compliance with HSE plans." data-ar="الإشراف النشط على السلامة في الموقع والتنسيق للحفاظ على بيئات خالية من الحوادث وضمان الامتثال اليومي لخطط السلامة والصحة المهنية.">Active on-site safety supervision and coordination to maintain zero-incident environments and ensure daily compliance with HSE plans.</p>
       </div>
 
       <div class="card animate-on-scroll delay-1">
         <i class="fa-solid fa-clipboard-check"></i>
         <h4 data-en="Compliance Auditing" data-ar="تدقيق الامتثال">Compliance Auditing</h4>
-        <p data-en="Thorough compliance audits to ensure adherence to local and international safety standards." data-ar="تدقيق شامل للامتثال لضمان الالتزام بمعايير السلامة المحلية والدولية.">Thorough compliance audits to ensure adherence to standards.</p>
+        <p data-en="Conduct internal inspections and compliance checks in line with national and international safety standards to support project certification and reporting." data-ar="إجراء عمليات التفتيش الداخلي وفحوصات الامتثال بما يتماشى مع معايير السلامة الوطنية والدولية لدعم شهادات المشروع وإعداد التقارير.">Conduct internal inspections and compliance checks in line with national and international safety standards to support project certification and reporting.</p>
       </div>
 
       <div class="card animate-on-scroll delay-2">
-        <i class="fa-solid fa-hard-hat"></i>
-        <h4 data-en="Site Supervision" data-ar="الإشراف على الموقع">Site Supervision</h4>
-        <p data-en="On-site safety supervision and monitoring to maintain zero-incident work environments." data-ar="الإشراف على السلامة في الموقع والمراقبة للحفاظ على بيئات عمل خالية من الحوادث.">On-site safety supervision and monitoring.</p>
+        <i class="fa-solid fa-helmet-safety"></i>
+        <h4 data-en="Safety Management" data-ar="إدارة السلامة">Safety Management</h4>
+        <p data-en="Implement risk assessments and safety management systems tailored for construction and infrastructure projects, integrating preventive actions and performance monitoring." data-ar="تنفيذ تقييمات المخاطر وأنظمة إدارة السلامة المصممة خصيصًا لمشاريع البناء والبنية التحتية، ودمج الإجراءات الوقائية ومراقبة الأداء.">Implement risk assessments and safety management systems tailored for construction and infrastructure projects, integrating preventive actions and performance monitoring.</p>
       </div>
     </div>
   </section>
