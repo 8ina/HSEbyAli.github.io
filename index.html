@@ -1,1000 +1,903 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CivSafe | Mohamed Ali - Civil Engineering & HSE Excellence</title>
-  
-  <!-- Fonts: Inter (Content) & Poppins (Headings) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Icons: Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  
-  <style>
-    /* --- Theme Variables (Root & Dark Mode) --- */
-    :root {
-      --bg: #ffffff;
-      --text: #121212;
-      --subtext: #555555;
-      --accent: #194870; /* Darker, professional blue/gray */
-      --card-bg: #f8f9fa;
-      --border: #e2e6ea;
-      --dark-section: #2d2d2d;
-      --light-gray: #e9ecef;
-    }
-
-    .dark-mode {
-      --bg: #121212;
-      --text: #f8f9fa;
-      --subtext: #b0b0b0;
-      --accent: #4a80b0; /* Lighter accent for dark mode contrast */
-      --card-bg: #1e1e1e;
-      --border: #333333;
-      --dark-section: #0d0d0d;
-      --light-gray: #2d2d2d;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: var(--bg);
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      transition: all 0.3s ease;
-    }
-
-    /* RTL Support for Arabic */
-    [dir="rtl"] {
-      text-align: right;
-    }
-
-    [dir="rtl"] .section-title::after {
-      left: unset;
-      right: 50%;
-      transform: translateX(50%);
-    }
-
-    /* Typography */
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      color: var(--text);
-    }
-    
-    /* General Utility */
-    .text-accent {
-      color: var(--accent);
-    }
-
-
-    /* Header & Navigation */
-    header {
-      background: var(--bg);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-
-    header.scrolled {
-      padding: 0.5rem 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.3s ease;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .logo {
-      /* Using a placeholder for the logo */
-      background: var(--accent);
-      color: var(--bg);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 4px;
-      font-size: 1.2rem;
-    }
-
-    .logo-text {
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: -0.5px;
-      font-size: 1.5rem;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      transition: 0.2s ease;
-      position: relative;
-    }
-
-    nav ul li a:hover {
-      color: var(--accent);
-    }
-
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background-color: var(--accent);
-      transition: width 0.3s ease;
-    }
-
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    /* Language Switcher */
-    .language-switcher {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--light-gray);
-      border-radius: 20px;
-      padding: 0.3rem;
-      cursor: pointer;
-    }
-
-    .lang-option {
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-
-    .lang-option.active {
-      background: var(--accent);
-      color: var(--bg);
-    }
-
-    /* Dark Mode Toggle */
-    .dark-mode-toggle {
-      background: none;
-      border: none;
-      color: var(--text);
-      cursor: pointer;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      padding: 0.5rem;
-      border-radius: 50%;
-    }
-
-    .dark-mode-toggle:hover {
-      background: var(--light-gray);
-      transform: rotate(15deg);
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 8rem 2rem 6rem;
-      background: linear-gradient(180deg, var(--bg), var(--card-bg));
-      position: relative;
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      z-index: 1;
-    }
-
-    .hero h2 {
-      font-size: 3.2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem; /* Adjusted for title/subtitle spacing */
-      line-height: 1.2;
-    }
-    
-    .hero .title {
-      color: var(--accent); /* Highlight the main role */
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-
-    .hero p {
-      color: var(--subtext);
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 2.5rem;
-      font-weight: 400;
-    }
-
-    .profile-photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 2rem;
-      border: 5px solid var(--accent); /* Use accent color for border */
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      transition: all 0.4s ease;
-    }
-
-    .profile-photo:hover {
-      transform: scale(1.03);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-    }
-    
-    /* Placeholder image styling */
-    .profile-photo-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      background: var(--light-gray);
-      color: var(--accent);
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      margin: 0 auto 2rem;
-      border: 5px solid var(--accent);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-
-    /* Sections */
-    section {
-      max-width: 1100px;
-      margin: 5rem auto;
-      padding: 0 2rem;
-    }
-
-    h3.section-title {
-      font-weight: 600;
-      margin-bottom: 3rem;
-      text-align: center;
-      color: var(--text);
-      font-size: 2.2rem;
-      position: relative;
-    }
-
-    h3.section-title::after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 3px;
-      background: var(--accent);
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .section-dark {
-      background: var(--dark-section);
-      color: white;
-      padding: 5rem 0; /* Full width padding */
-      margin: 5rem 0;
-      width: 100%;
-      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
-    }
-    
-    .section-dark .content-wrapper {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .section-dark .section-title {
-      color: white;
-    }
-
-    .section-dark .section-title::after {
-      background: var(--accent);
-    }
-    
-    .section-dark .card {
-      background: var(--card-bg); /* Use card-bg for contrast */
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    
-    .section-dark .card i {
-      color: var(--accent);
-    }
-
-    /* Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      transition: 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.1);
-    }
-
-    .card i {
-      font-size: 2.5rem;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
-
-    .card h4 {
-      font-weight: 600;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-    }
-
-    .card p {
-      color: var(--subtext);
-      font-size: 0.95rem;
-    }
-
-    /* About Section */
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .about-text {
-      padding: 1rem 0;
-    }
-
-    .about-text p {
-      margin-bottom: 1.5rem;
-      color: var(--subtext);
-    }
-    
-    .about-metrics-card {
-      padding: 2.5rem 2rem;
-      background: var(--card-bg);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      align-self: stretch;
-    }
-
-    /* Competencies Section */
-    .competencies {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-top: 2rem;
-    }
-
-    .competency {
-      background: var(--accent);
-      color: var(--bg);
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: background 0.3s;
-    }
-
-    /* Experience Section */
-    .experience-list {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .experience-item {
-      margin-bottom: 2.5rem;
-      padding-bottom: 2rem;
-      border-left: 3px solid var(--accent);
-      padding-left: 20px;
-      position: relative;
-    }
-    
-    [dir="rtl"] .experience-item {
-      border-left: none;
-      border-right: 3px solid var(--accent);
-      padding-left: 0;
-      padding-right: 20px;
-    }
-    
-    .experience-item::before {
-      content: '\f0b1'; /* Icon for briefcase */
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      position: absolute;
-      left: -15px;
-      top: 0;
-      width: 30px;
-      height: 30px;
-      background: var(--accent);
-      color: var(--bg);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      border: 4px solid var(--bg); /* To make it stand out on dark background */
-      z-index: 10;
-      transition: border-color 0.3s;
-    }
-    
-    .dark-mode .experience-item::before {
-      border-color: var(--dark-section);
-    }
-
-    [dir="rtl"] .experience-item::before {
-      left: unset;
-      right: -15px;
-    }
-
-    .experience-item:last-child {
-      border-bottom: none;
-    }
-
-    .experience-item h4 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .experience-date {
-      color: var(--subtext);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      font-weight: 500;
-    }
-
-    .experience-description {
-      color: var(--subtext);
-    }
-
-    /* Contact Icons */
-    .contact-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .contact-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background: var(--card-bg);
-      color: var(--accent);
-      border-radius: 50%;
-      font-size: 1.5rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      border: 1px solid var(--border);
-    }
-
-    .contact-icon:hover {
-      background: var(--accent);
-      color: var(--bg);
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: var(--dark-section);
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
-      margin-top: 5rem;
-    }
-
-    /* Back to Top Button */
-    .back-to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 50px;
-      height: 50px;
-      background: var(--accent);
-      color: var(--bg);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 1000;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    .back-to-top.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* Animation Classes (Improved) */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother curve */
-    }
-
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
-
-    /* Responsive Design */
-    @media (max-width: 900px) {
-      nav ul {
-        gap: 1rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding: 6rem 1.5rem 4rem;
-      }
-      
-      .hero h2 {
-        font-size: 2.5rem;
-      }
-      
-      nav {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      nav ul {
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      section {
-        margin: 3rem auto;
-        padding: 0 1.5rem;
-      }
-      
-      .cards {
-        grid-template-columns: 1fr;
-      }
-      
-      .about-content {
-        grid-template-columns: 1fr;
-      }
-      
-      .about-text {
-        padding: 0;
-      }
-
-      .section-dark .content-wrapper {
-        padding: 0 1.5rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero h2 {
-        font-size: 2rem;
-      }
-      
-      .profile-photo-placeholder {
-        width: 150px;
-        height: 150px;
-        font-size: 2.5rem;
-      }
-
-      .language-switcher {
-        display: none; /* Hide on small mobile to save space */
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CivSafe | Mohamed Ali - Civil Engineering & HSE Excellence</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #121212;
+      --subtext: #555555;
+      --accent: #1a1a1a;
+      --card-bg: #f8f9fa;
+      --border: #e2e6ea;
+      --dark-section: #2d2d2d;
+      --light-gray: #e9ecef;
+    }
+
+    /* Dark Mode Variables */
+    .dark-mode {
+      --bg: #121212;
+      --text: #f8f9fa;
+      --subtext: #b0b0b0;
+      --accent: #ffffff;
+      --card-bg: #1e1e1e;
+      --border: #333333;
+      --dark-section: #0d0d0d;
+      --light-gray: #2d2d2d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* RTL Support for Arabic */
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    [dir="rtl"] .section-title::after {
+      left: unset;
+      right: 50%;
+      transform: translateX(50%);
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Header & Navigation */
+    header {
+      background: var(--bg);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo {
+      height: 40px;
+      width: auto;
+      border-radius: 4px;
+      filter: grayscale(100%);
+    }
+
+    .logo-text {
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: 0.2s ease;
+      position: relative;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* Language Switcher */
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--light-gray);
+      border-radius: 20px;
+      padding: 0.3rem;
+      cursor: pointer;
+    }
+
+    .lang-option {
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .lang-option.active {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      padding: 0.5rem;
+      border-radius: 50%;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--light-gray);
+      transform: rotate(15deg);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+      background: linear-gradient(180deg, var(--bg), var(--card-bg));
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: url('drawing.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.03;
+    }
+
+    .dark-mode .hero::before {
+      opacity: 0.05;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 1;
+    }
+
+    .hero h2 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      color: var(--subtext);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      font-weight: 400;
+    }
+
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 2rem;
+      border: 5px solid var(--card-bg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      filter: grayscale(100%);
+      transition: all 0.4s ease;
+    }
+
+    .profile-photo:hover {
+      filter: grayscale(0%);
+      transform: scale(1.03);
+    }
+
+    /* Education Line */
+    .education-line {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      max-width: 1100px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+    }
+
+    h3.section-title {
+      font-weight: 600;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: var(--text);
+      font-size: 2.2rem;
+      position: relative;
+    }
+
+    h3.section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-dark {
+      background: var(--dark-section);
+      color: white;
+      padding: 5rem 2rem;
+      margin: 5rem 0;
+      width: 100%;
+    }
+
+    .section-dark .section-title {
+      color: white;
+    }
+
+    .section-dark .section-title::after {
+      background: white;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    }
+
+    .card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      filter: grayscale(100%);
+    }
+
+    .card h4 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      color: var(--subtext);
+      font-size: 0.95rem;
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text {
+      padding: 2rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      color: var(--subtext);
+    }
+
+    /* Competencies Section */
+    .competencies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .competency {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Experience Section */
+    .experience-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .experience-item:last-child {
+      border-bottom: none;
+    }
+
+    .experience-item h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-date {
+      color: var(--subtext);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .experience-description {
+      color: var(--subtext);
+    }
+
+    /* Contact Icons */
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: var(--card-bg);
+      color: var(--accent);
+      border-radius: 50%;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: 1px solid var(--border);
+    }
+
+    .contact-icon:hover {
+      background: var(--accent);
+      color: var(--bg);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--dark-section);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      margin-top: 5rem;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo img {
+      height: 40px;
+      filter: grayscale(100%) brightness(200%);
+    }
+
+    .footer-logo span {
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .footer-copyright {
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 1.5rem;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      color: var(--bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--text);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    /* Animation Classes */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 6rem 1.5rem 4rem;
+      }
+      
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav ul {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      section {
+        margin: 3rem auto;
+      }
+      
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .profile-photo {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <div class="logo-container">
-        <div class="logo"><i class="fa-solid fa-gem"></i></div>
-        <span class="logo-text">CivSafe</span>
-      </div>
-      <ul>
-        <li><a href="#about" data-en="About" data-ar="نبذة">About</a></li>
-        <li><a href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
-        <li><a href="#experience" data-en="Experience" data-ar="الخبرة">Experience</a></li>
-        <li><a href="#competencies" data-en="Competencies" data-ar="الكفاءات">Competencies</a></li>
-        <li><a href="#solutions" data-en="Solutions" data-ar="الحلول">Solutions</a></li>
-        <li><a href="#contact" data-en="Contact" data-ar="اتصل">Contact</a></li>
-        <li>
-          <!-- Language Switcher -->
-          <div class="language-switcher" id="languageSwitcher">
-            <span class="lang-option active" data-lang="en">EN</span>
-            <span class="lang-option" data-lang="ar">AR</span>
-          </div>
-        </li>
-        <li>
-          <!-- Dark Mode Toggle -->
-          <button class="dark-mode-toggle" id="darkModeToggle">
-            <i class="fas fa-moon"></i>
-          </button>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="logo.jpg" alt="CivSafe Logo" class="logo">
+        <span class="logo-text">CivSafe</span>
+      </div>
+      <ul>
+        <li><a href="#about" data-en="About" data-ar="نبذة">About</a></li>
+        <li><a href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
+        <li><a href="#experience" data-en="Experience" data-ar="الخبرة">Experience</a></li>
+        <li><a href="#competencies" data-en="Competencies" data-ar="الكفاءات">Competencies</a></li>
+        <li><a href="#solutions" data-en="Solutions" data-ar="الحلول">Solutions</a></li>
+        <li><a href="#contact" data-en="Contact" data-ar="اتصل">Contact</a></li>
+        <li>
+          <div class="language-switcher" id="languageSwitcher">
+            <span class="lang-option active" data-lang="en">EN</span>
+            <span class="lang-option" data-lang="ar">AR</span>
+          </div>
+        </li>
+        <li>
+          <button class="dark-mode-toggle" id="darkModeToggle">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <!-- Profile Picture Placeholder -->
-      <div class="profile-photo-placeholder animate-on-scroll">
-        <i class="fa-solid fa-user-tie"></i>
-      </div>
-      <h2 class="animate-on-scroll" data-en="Mohamed Ali" data-ar="محمد علي">Mohamed Ali</h2>
-      <p class="title animate-on-scroll delay-1" data-en="Civil Engineer | HSE & Risk Control" data-ar="مهندس مدني | السلامة والصحة المهنية والتحكم بالمخاطر">Civil Engineer | HSE & Risk Control</p>
-      <p class="animate-on-scroll delay-2" data-en="Bridging Civil Engineering and Safety Excellence on High-Impact Projects" data-ar="الجمع بين الهندسة المدنية والتميز في مجال السلامة في المشاريع عالية التأثير">Bridging Civil Engineering and Safety Excellence on High-Impact Projects</p>
-    </div>
-  </section>
+  <section class="hero">
+    <div class="hero-content">
+      <img src="profile.jpg" alt="Mohamed Ali" class="profile-photo animate-on-scroll">
+      <h2 class="animate-on-scroll" data-en="Mohamed Ali" data-ar="محمد علي">Mohamed Ali</h2>
+      <p class="title animate-on-scroll delay-1" data-en="Civil Engineer | HSE & Risk Control" data-ar="مهندس مدني | السلامة والصحة المهنية والتحكم بالمخاطر">Civil Engineer | HSE & Risk Control</p>
+      <p class="animate-on-scroll delay-2" data-en="Bridging Civil Engineering and Safety Excellence on High-Impact Projects" data-ar="الجمع بين الهندسة المدنية والتميز في مجال السلامة في المشاريع عالية التأثير">Bridging Civil Engineering and Safety Excellence on High-Impact Projects</p>
+    </div>
+  </section>
 
-  <!-- About Section -->
-  <section id="about">
-    <h3 class="section-title" data-en="Professional Summary" data-ar="ملخص مهني">Professional Summary</h3>
-    <div class="about-content">
-      <div class="about-text animate-on-scroll">
-        <p data-en="As a dedicated Civil Engineer and certified HSE specialist, I focus on integrating robust safety protocols with efficient project execution. My dual expertise ensures that complex construction and infrastructure projects are not only delivered on time and budget but are also compliant with the highest international safety standards (NEBOSH, OSHA)." data-ar="بصفتي مهندسًا مدنيًا متخصصًا ومتخصصًا معتمدًا في السلامة والصحة المهنية، أركز على دمج بروتوكولات السلامة القوية مع التنفيذ الفعال للمشاريع. تضمن خبرتي المزدوجة أن مشاريع البناء والبنية التحتية المعقدة لا يتم تسليمها في الوقت المحدد وفي حدود الميزانية فحسب، بل إنها تتوافق أيضًا مع أعلى معايير السلامة الدولية (NEBOSH، OSHA).">As a dedicated Civil Engineer and certified HSE specialist...</p>
-        <p data-en="I leverage analytical skills from my engineering background to perform advanced risk assessments and implement preventative strategies. My commitment is to foster a proactive safety culture and manage project documentation and coordination seamlessly across multidisciplinary teams." data-ar="أستغل المهارات التحليلية من خلفيتي الهندسية لإجراء تقييمات متقدمة للمخاطر وتطبيق استراتيجيات وقائية. التزامي هو تعزيز ثقافة السلامة الاستباقية وإدارة وثائق المشروع والتنسيق بسلاسة عبر فرق متعددة التخصصات.">I leverage analytical skills from my engineering background...</p>
-      </div>
-      <div class="about-metrics-card card animate-on-scroll delay-1">
-        <i class="fa-solid fa-chart-line"></i>
-        <h4 data-en="Key Achievements" data-ar="الإنجازات الرئيسية">Key Achievements</h4>
-        <ul style="list-style-type: none; padding: 0; text-align: left; max-width: 250px; margin: 1rem auto; color: var(--subtext);">
-          <li data-en="5+ Years of experience" data-ar="5+ سنوات من الخبرة"><i class="fa-solid fa-clock text-accent" style="margin-right: 10px;"></i> 5+ Years of experience</li>
-          <li data-en="Zero Lost Time Incidents (LTI)" data-ar="صفر حوادث وقت ضائع (LTI)"><i class="fa-solid fa-handshake text-accent" style="margin-right: 10px;"></i> Zero Lost Time Incidents (LTI)</li>
-          <li data-en="NEBOSH, OSHA, & PMP-CFYE Trained" data-ar="تدريب NEBOSH وOSHA وPMP-CFYE"><i class="fa-solid fa-award text-accent" style="margin-right: 10px;"></i> NEBOSH, OSHA, & PMP-CFYE Trained</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <!-- About Section -->
+  <section id="about">
+    <h3 class="section-title" data-en="Professional Summary" data-ar="ملخص مهني">Professional Summary</h3>
+    <div class="about-content">
+      <div class="about-text animate-on-scroll">
+        <p data-en="With over 5 years of experience in construction safety and project management, I specialize in creating safer work environments while maintaining project efficiency and compliance. My expertise spans across civil engineering, HSE management, and risk assessment for high-stakes infrastructure projects." data-ar="مع أكثر من 5 سنوات من الخبرة في سلامة البناء وإدارة المشاريع، أتخصص في خلق بيئات عمل أكثر أمانًا مع الحفاظ على كفاءة المشروع والامتثال. تمتد خبرتي عبر الهندسة المدنية، وإدارة السلامة والصحة المهنية، وتقييم المخاطر للمشاريع التحتية عالية المخاطر.">With over 5 years of experience in construction safety and project management, I specialize in creating safer work environments while maintaining project efficiency and compliance.</p>
+        <p data-en="I have successfully maintained zero Lost Time Incidents across multiple project sites while achieving 100% regulatory compliance. My approach combines technical engineering knowledge with practical safety implementations to deliver sustainable and resilient solutions." data-ar="لقد حافظت بنجاح على صفر حوادث وقت ضائع عبر مواقع مشاريع متعددة مع تحقيق 100٪ من الامتثال التنظيمي. يجمع نهجي بين المعرفة الهندسية التقنية والتطبيقات العملية للسلامة لتقديم حلول مستدامة ومرنة.">I have successfully maintained zero Lost Time Incidents across multiple project sites while achieving 100% regulatory compliance.</p>
+        <p class="education-line animate-on-scroll delay-2" data-en="BSc Civil Engineering – JNTUH (2021) | Diploma in Fire & Construction Safety Management – BSS (2023)" data-ar="بكالوريوس هندسة مدنية – JNTUH (2021) | دبلوم في إدارة السلامة من الحرائق والبناء – BSS (2023)">BSc Civil Engineering – JNTUH (2021) | Diploma in Fire & Construction Safety Management – BSS (2023)</p>
+      </div>
+      <div class="card animate-on-scroll delay-1">
+        <i class="fa-solid fa-chart-line"></i>
+        <h4 data-en="Key Metrics" data-ar="المقاييس الرئيسية">Key Metrics</h4>
+        <p data-en="5+ Years Experience | 50+ Projects | 100% Compliance | 0 Major Incidents" data-ar="5+ سنوات خبرة | 50+ مشروع | 100% امتثال | 0 حوادث كبرى">5+ Years Experience | 50+ Projects | 100% Compliance | 0 Major Incidents</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Certifications Section -->
-  <section id="certifications" class="section-dark">
-    <div class="content-wrapper">
-      <h3 class="section-title" data-en="Certifications & Training" data-ar="الشهادات والتدريب">Certifications & Training</h3>
-      <div class="cards">
-        <div class="card animate-on-scroll">
-          <i class="fa-solid fa-certificate"></i>
-          <h4 data-en="NEBOSH IGC (2024)" data-ar="NEBOSH IGC (2024)">NEBOSH IGC (2024)</h4>
-          <p data-en="International General Certificate in Occupational Health and Safety" data-ar="الشهادة العامة الدولية في السلامة والصحة المهنية">International General Certificate in Occupational Health and Safety</p>
-        </div>
+  <!-- Certifications Section -->
+  <section id="certifications" class="section-dark">
+    <h3 class="section-title" data-en="Certifications" data-ar="الشهادات">Certifications</h3>
+    <div class="cards">
+      <div class="card animate-on-scroll">
+        <i class="fa-solid fa-certificate"></i>
+        <h4 data-en="NEBOSH IGC" data-ar="NEBOSH IGC">NEBOSH IGC</h4>
+        <p data-en="International General Certificate in Occupational Health and Safety" data-ar="الشهادة العامة الدولية في السلامة والصحة المهنية">International General Certificate in Occupational Health and Safety</p>
+      </div>
 
-        <div class="card animate-on-scroll delay-1">
-          <i class="fa-solid fa-shield-alt"></i>
-          <h4 data-en="OSHA 30-Hour (2024)" data-ar="OSHA 30-Hour (2024)">OSHA 30-Hour (2024)</h4>
-          <p data-en="Advanced training in Construction Safety and Health Administration Standards." data-ar="تدريب متقدم في معايير السلامة والصحة في البناء وإدارة الصحة.">Advanced training in Construction Safety and Health Administration Standards.</p>
-        </div>
+      <div class="card animate-on-scroll delay-1">
+        <i class="fa-solid fa-shield-alt"></i>
+        <h4 data-en="OSHA Safety" data-ar="السلامة OSHA">OSHA Safety</h4>
+        <p data-en="Occupational Safety and Health Administration Standards" data-ar="معايير إدارة السلامة والصحة المهنية">Occupational Safety and Health Administration Standards</p>
+      </div>
 
-        <div class="card animate-on-scroll delay-2">
-          <i class="fa-solid fa-graduation-cap"></i>
-          <h4 data-en="PMP CFYE Scholarship" data-ar="منحة PMP CFYE">PMP CFYE Scholarship</h4>
-          <p data-en="Project Management Professional (PMP) training focused on young professionals." data-ar="تدريب محترف إدارة المشاريع (PMP) يركز على المهنيين الشباب.">Project Management Professional (PMP) training.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="card animate-on-scroll delay-2">
+        <i class="fa-solid fa-medkit"></i>
+        <h4 data-en="First Aid Certified" data-ar="الإسعافات الأولية">First Aid Certified</h4>
+        <p data-en="Emergency First Aid, CPR, and Crisis Response Management" data-ar="الإسعافات الأولية في حالات الطوارئ وإنعاش القلب والرئتين وإدارة الاستجابة للأزمات">Emergency First Aid, CPR, and Crisis Response Management</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Experience Section -->
-  <section id="experience">
-    <h3 class="section-title" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</h3>
-    <div class="experience-list">
-      <div class="experience-item animate-on-scroll">
-        <h4 data-en="Civil Engineer – Construction & Estimation" data-ar="مهندس مدني – بناء وتقدير">Civil Engineer – Construction & Estimation</h4>
-        <div class="experience-date" data-en="Ministry of Infrastructure & Urban Development, Sudan | Aug 2024 – Apr 2025" data-ar="وزارة البنية التحتية والتنمية العمرانية، السودان | أغسطس 2024 – أبريل 2025">Ministry of Infrastructure & Urban Development, Sudan | Aug 2024 – Apr 2025</div>
-        <div class="experience-description" data-en="Managed site operations, prepared detailed construction estimates, and ensured compliance with urban development regulations. Focused on efficient resource management and project scheduling." data-ar="إدارة عمليات الموقع، وإعداد تقديرات بناء مفصلة، وضمان الامتثال للوائح التنمية الحضرية. التركيز على الإدارة الفعالة للموارد وجدولة المشاريع.">Managed site operations, prepared detailed construction estimates, and ensured compliance.</div>
-      </div>
+  <!-- Experience Section -->
+  <section id="experience">
+    <h3 class="section-title" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</h3>
+    <div class="experience-list">
+      <div class="experience-item animate-on-scroll">
+        <h4 data-en="HSE & Civil Engineering Consultant" data-ar="مستشار السلامة والصحة المهنية والهندسة المدنية">HSE & Civil Engineering Consultant</h4>
+        <div class="experience-date" data-en="2020 - Present" data-ar="2020 - الحاضر">2020 - Present</div>
+        <div class="experience-description" data-en="Providing comprehensive safety management and engineering solutions for construction projects, focusing on risk assessment, compliance, and project monitoring." data-ar="توفير حلول شاملة لإدارة السلامة والهندسة لمشاريع البناء، مع التركيز على تقييم المخاطر والامتثال ومراقبة المشروع.">Providing comprehensive safety management and engineering solutions for construction projects.</div>
+      </div>
 
-      <div class="experience-item animate-on-scroll delay-1">
-        <h4 data-en="Project Management Intern – SPAD Project" data-ar="متدرب إدارة المشاريع – مشروع SPAD">Project Management Intern – SPAD Project</h4>
-        <div class="experience-date" data-en="Plan International Sudan | Feb 2025 – Mar 2025" data-ar="بلان إنترناشونال السودان | فبراير 2025 – مارس 2025">Plan International Sudan | Feb 2025 – Mar 2025</div>
-        <div class="experience-description" data-en="Supported project coordination and documentation for a community development initiative. Ensured all stakeholders were informed and milestones were tracked accurately, enhancing communication flow." data-ar="دعم تنسيق المشروع وتوثيقه لمبادرة تنمية مجتمعية. التأكد من إبلاغ جميع أصحاب المصلحة وتتبع المعالم بدقة، مما يعزز تدفق الاتصالات.">Supported project coordination and documentation for a community development initiative.</div>
-      </div>
+      <div class="experience-item animate-on-scroll delay-1">
+        <h4 data-en="Site Safety Manager" data-ar="مدير السلامة في الموقع">Site Safety Manager</h4>
+        <div class="experience-date" data-en="2018 - 2020" data-ar="2018 - 2020">2018 - 2020</div>
+        <div class="experience-description" data-en="Managed safety protocols and compliance for large-scale construction projects, achieving zero lost-time incidents across multiple sites." data-ar="إدارة بروتوكولات السلامة والامتثال لمشاريع البناء واسعة النطاق، وتحقيق صفر حوادث وقت ضائع عبر مواقع متعددة.">Managed safety protocols and compliance for large-scale construction projects.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competencies Section -->
+  <section id="competencies">
+    <h3 class="section-title" data-en="Core Competencies" data-ar="الكفاءات الأساسية">Core Competencies</h3>
+    <div class="competencies">
+      <span class="competency" data-en="Safety Management" data-ar="إدارة السلامة">Safety Management</span>
+      <span class="competency" data-en="Risk Assessment" data-ar="تقييم المخاطر">Risk Assessment</span>
+      <span class="competency" data-en="Project Monitoring" data-ar="مراقبة المشروع">Project Monitoring</span>
+      <span class="competency" data-en="Compliance Audits" data-ar="تدقيق الامتثال">Compliance Audits</span>
+      <span class="competency" data-en="Structural Engineering" data-ar="الهندسة الإنشائية">Structural Engineering</span>
+      <span class="competency" data-en="HSE Training" data-ar="تدريب السلامة">HSE Training</span>
+      <span class="competency" data-en="Incident Investigation" data-ar="تحقيق الحوادث">Incident Investigation</span>
+      <span class="competency" data-en="Emergency Response" data-ar="الاستجابة للطوارئ">Emergency Response</span>
+    </div>
+  </section>
+
+  <!-- Solutions Section -->
+  <section id="solutions" class="section-dark">
+    <h3 class="section-title" data-en="CivSafe Solutions" data-ar="حلول CivSafe">CivSafe Solutions</h3>
+    <div class="cards">
+      <div class="card animate-on-scroll">
+        <i class="fa-solid fa-helmet-safety"></i>
+        <h4 data-en="Safety Management" data-ar="إدارة السلامة">Safety Management</h4>
+        <p data-en="Comprehensive safety assessments and risk management tailored for construction and infrastructure projects." data-ar="تقييمات السلامة الشاملة وإدارة المخاطر المصممة خصيصًا لمشاريع البناء والبنية التحتية.">Comprehensive safety assessments and risk management.</p>
+      </div>
+
+      <div class="card animate-on-scroll delay-1">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <h4 data-en="Compliance Auditing" data-ar="تدقيق الامتثال">Compliance Auditing</h4>
+        <p data-en="Thorough compliance audits to ensure adherence to local and international safety standards." data-ar="تدقيق شامل للامتثال لضمان الالتزام بمعايير السلامة المحلية والدولية.">Thorough compliance audits to ensure adherence to standards.</p>
+      </div>
+
+      <div class="card animate-on-scroll delay-2">
+        <i class="fa-solid fa-hard-hat"></i>
+        <h4 data-en="Site Supervision" data-ar="الإشراف على الموقع">Site Supervision</h4>
+        <p data-en="On-site safety supervision and monitoring to maintain zero-incident work environments." data-ar="الإشراف على السلامة في الموقع والمراقبة للحفاظ على بيئات عمل خالية من الحوادث.">On-site safety supervision and monitoring.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h3 class="section-title" data-en="Contact" data-ar="اتصل">Contact</h3>
+    <div class="contact-icons">
+      <a href="mailto:mu8dali@gmail.com" class="contact-icon" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/mohamed-s-b8929a28b" target="_blank" class="contact-icon" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://wa.me/249900795293" target="_blank" class="contact-icon" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="logo.jpg" alt="CivSafe Logo">
+        <span>CivSafe</span>
+      </div>
+      <p class="footer-copyright">&copy; 2025 CivSafe. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Language Switcher
+    const languageSwitcher = document.getElementById('languageSwitcher');
+    const langOptions = languageSwitcher.querySelectorAll('.lang-option');
+    let currentLang = 'en';
+    
+    langOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        const selectedLang = this.getAttribute('data-lang');
+        
+        if (selectedLang !== currentLang) {
+          langOptions.forEach(opt => opt.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Update all text elements with data attributes
+          document.querySelectorAll('[data-en]').forEach(element => {
+            if (selectedLang === 'ar') {
+              element.textContent = element.getAttribute('data-ar');
+              document.documentElement.dir = 'rtl';
+              document.documentElement.lang = 'ar';
+            } else {
+              element.textContent = element.getAttribute('data-en');
+              document.documentElement.dir = 'ltr';
+              document.documentElement.lang = 'en';
+            }
+          });
+          
+          currentLang = selectedLang;
+        }
+      });
+    });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const darkModeIcon = darkModeToggle.querySelector('i');
+    
+    // Check for saved theme preference or respect OS preference
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const currentTheme = localStorage.getItem('theme');
+    
+    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+      document.body.classList.add('dark-mode');
+      darkModeIcon.classList.remove('fa-moon');
+      darkModeIcon.classList.add('fa-sun');
+    }
+    
+    darkModeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
       
-      <div class="experience-item animate-on-scroll delay-2" style="border-left: none; padding-bottom: 0;">
-        <h4 data-en="Site Supervisor" data-ar="مشرف موقع">Site Supervisor</h4>
-        <div class="experience-date" data-en="Alnafizha Real Estate, Sudan (Short-term)" data-ar="العافية للعقارات، السودان (لفترة قصيرة)">Alnafizha Real Estate, Sudan (Short-term)</div>
-        <div class="experience-description" data-en="Oversaw daily on-site operations and quality control for residential development projects." data-ar="أشرف على العمليات اليومية في الموقع ومراقبة الجودة لمشاريع التطوير السكني.">Oversaw daily on-site operations and quality control.</div>
-      </div>
-    </div>
-  </section>
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        darkModeIcon.classList.remove('fa-moon');
+        darkModeIcon.classList.add('fa-sun');
+      } else {
+        localStorage.setItem('theme', 'light');
+        darkModeIcon.classList.remove('fa-sun');
+        darkModeIcon.classList.add('fa-moon');
+      }
+    });
 
-  <!-- Competencies Section -->
-  <section id="competencies">
-    <h3 class="section-title" data-en="Transferable & Core Competencies" data-ar="الكفاءات الأساسية والقابلة للنقل">Transferable & Core Competencies</h3>
-    <div class="competencies">
-      <span class="competency" data-en="Communication Management" data-ar="إدارة الاتصال">Communication Management</span>
-      <span class="competency" data-en="Documentation & Reporting" data-ar="التوثيق وإعداد التقارير">Documentation & Reporting</span>
-      <span class="competency" data-en="Stakeholder Coordination" data-ar="تنسيق أصحاب المصلحة">Stakeholder Coordination</span>
-      <span class="competency" data-en="NEBOSH & OSHA Standards" data-ar="معايير NEBOSH وOSHA">NEBOSH & OSHA Standards</span>
-      <span class="competency" data-en="Risk Assessment (HAZID/HAZOP)" data-ar="تقييم المخاطر (HAZID/HAZOP)">Risk Assessment (HAZID/HAZOP)</span>
-      <span class="competency" data-en="Construction Estimation" data-ar="تقدير تكاليف البناء">Construction Estimation</span>
-      <span class="competency" data-en="Site Management" data-ar="إدارة الموقع">Site Management</span>
-      <span class="competency" data-en="Quality Control (QC)" data-ar="مراقبة الجودة (QC)">Quality Control (QC)</span>
-    </div>
-  </section>
+    // Back to top button functionality
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
 
-  <!-- Solutions Section -->
-  <section id="solutions" class="section-dark">
-    <div class="content-wrapper">
-      <h3 class="section-title" data-en="CivSafe Solutions" data-ar="حلول CivSafe">CivSafe Solutions</h3>
-      <div class="cards">
-        <div class="card animate-on-scroll">
-          <i class="fa-solid fa-helmet-safety"></i>
-          <h4 data-en="Integrated HSE Consulting" data-ar="استشارات السلامة والصحة المتكاملة">Integrated HSE Consulting</h4>
-          <p data-en="Developing and implementing tailored safety management systems (SMS) for civil and infrastructure projects." data-ar="تطوير وتطبيق أنظمة إدارة السلامة (SMS) المصممة خصيصًا للمشاريع المدنية والبنية التحتية.">Developing and implementing tailored safety management systems (SMS).</p>
-        </div>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
 
-        <div class="card animate-on-scroll delay-1">
-          <i class="fa-solid fa-clipboard-check"></i>
-          <h4 data-en="Compliance Auditing & Training" data-ar="تدقيق الامتثال والتدريب">Compliance Auditing & Training</h4>
-          <p data-en="Conducting audits against NEBOSH/OSHA standards and delivering site-specific safety training to workforces." data-ar="إجراء تدقيقات مقابل معايير NEBOSH/OSHA وتقديم تدريب على السلامة خاص بالموقع للعمال.">Conducting audits against international standards and delivering training.</p>
-        </div>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
 
-        <div class="card animate-on-scroll delay-2">
-          <i class="fa-solid fa-hard-hat"></i>
-          <h4 data-en="Construction Project Support" data-ar="دعم مشاريع البناء">Construction Project Support</h4>
-          <p data-en="Expert support for construction estimation, scheduling, and ensuring quality control (QC) throughout the lifecycle." data-ar="دعم خبير لتقدير تكاليف البناء، والجدولة، وضمان مراقبة الجودة (QC) طوال دورة الحياة.">Expert support for construction estimation, scheduling, and QC.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    // Scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h3 class="section-title" data-en="Get in Touch" data-ar="تواصل معي">Get in Touch</h3>
-    <div class="contact-icons">
-      <a href="mailto:mu8dali@gmail.com" class="contact-icon" title="Email">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/mohamed-s-b8929a28b" target="_blank" class="contact-icon" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a href="https://wa.me/249900795293" target="_blank" class="contact-icon" title="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-    </div>
-  </section>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          // Remove visible class when scrolling up
+          if (window.scrollY < entry.target.offsetTop) {
+            entry.target.classList.remove('visible');
+          }
+        }
+      });
+    }, observerOptions);
 
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">
-        <div class="logo" style="filter: none;"><i class="fa-solid fa-gem"></i></div>
-        <span>CivSafe</span>
-      </div>
-      <p class="footer-copyright" data-en="&copy; 2025 CivSafe. All rights reserved." data-ar="&copy; 2025 CivSafe. جميع الحقوق محفوظة.">&copy; 2025 CivSafe. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Back to Top Button -->
-  <button class="back-to-top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <script>
-    // --- Language Switcher ---
-    const languageSwitcher = document.getElementById('languageSwitcher');
-    const langOptions = languageSwitcher.querySelectorAll('.lang-option');
-    let currentLang = 'en';
-    
-    langOptions.forEach(option => {
-      option.addEventListener('click', function() {
-        const selectedLang = this.getAttribute('data-lang');
-        
-        if (selectedLang !== currentLang) {
-          langOptions.forEach(opt => opt.classList.remove('active'));
-          this.classList.add('active');
-          
-          // Update all text elements with data attributes
-          document.querySelectorAll('[data-en]').forEach(element => {
-            // Check if element is an <li> inside the metrics list to handle its special structure
-            const isListItem = element.tagName === 'LI' && element.parentElement.style.listStyleType === 'none';
-            const textContent = selectedLang === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
-
-            if (isListItem) {
-              // For list items, we only update the text node, keeping the icon
-              const icon = element.querySelector('i');
-              if (icon) {
-                // Remove existing text content and append the new text
-                Array.from(element.childNodes).forEach(node => {
-                  if (node.nodeType === 3) node.remove();
-                });
-                element.appendChild(document.createTextNode(' ' + textContent));
-              } else {
-                element.textContent = textContent;
-              }
-            } else {
-              element.textContent = textContent;
-            }
-            
-            if (selectedLang === 'ar') {
-              document.documentElement.dir = 'rtl';
-              document.documentElement.lang = 'ar';
-            } else {
-              document.documentElement.dir = 'ltr';
-              document.documentElement.lang = 'en';
-            }
-          });
-          
-          currentLang = selectedLang;
-        }
-      });
-    });
-
-    // --- Dark Mode Toggle ---
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeIcon = darkModeToggle.querySelector('i');
-    
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    const currentTheme = localStorage.getItem('theme');
-    
-    const activateDarkMode = () => {
-      document.body.classList.add('dark-mode');
-      darkModeIcon.classList.remove('fa-moon');
-      darkModeIcon.classList.add('fa-sun');
-      localStorage.setItem('theme', 'dark');
-    }
-
-    const deactivateDarkMode = () => {
-      document.body.classList.remove('dark-mode');
-      darkModeIcon.classList.remove('fa-sun');
-      darkModeIcon.classList.add('fa-moon');
-      localStorage.setItem('theme', 'light');
-    }
-
-    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
-      activateDarkMode();
-    }
-    
-    darkModeToggle.addEventListener('click', function() {
-      if (document.body.classList.contains('dark-mode')) {
-        deactivateDarkMode();
-      } else {
-        activateDarkMode();
-      }
-    });
-
-    // --- Back to top button functionality ---
-    const backToTopButton = document.querySelector('.back-to-top');
-    
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 300) {
-        backToTopButton.classList.add('active');
-      } else {
-        backToTopButton.classList.remove('active');
-      }
-    });
-    
-    backToTopButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    });
-
-    // --- Smooth scrolling for navigation links ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          // Scroll to the target, accounting for the fixed header height (approx 80px)
-          const offset = 80; 
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // --- Header scroll effect ---
-    window.addEventListener('scroll', function() {
-      const header = document.querySelector('header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
-    // --- Scroll animations (One-time visibility) ---
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          // Stop observing once it's visible to prevent re-animation on scroll up
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Observe all elements with animation classes
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-      observer.observe(el);
-    });
-  </script>
+    // Observe all elements with animation classes
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
