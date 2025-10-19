@@ -156,6 +156,17 @@
       border-radius: 20px;
       padding: 0.3rem;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .language-switcher:hover {
+      background: var(--border);
+    }
+
+    .language-switcher i {
+      font-size: 1.2rem;
+      color: var(--subtext);
+      margin: 0 0.3rem;
     }
 
     .lang-option {
@@ -199,22 +210,6 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 40%;
-      height: 100%;
-      background: url('drawing.jpg') no-repeat center center;
-      background-size: cover;
-      opacity: 0.03;
-    }
-
-    .dark-mode .hero::before {
-      opacity: 0.05;
     }
 
     .hero-content {
@@ -698,11 +693,12 @@
         <li><a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
         <li><a href="#contact" data-en="Contact" data-ar="اتصل">Contact</a></li>
         <li>
-         <div class="language-switcher" id="languageSwitcher">
-  <i class="fas fa-language"></i>
-  <span class="lang-option active" data-lang="en">EN</span>
-  <span class="lang-option" data-lang="ar">AR</span>
-</div>
+          <div class="language-switcher" id="languageSwitcher">
+            <i class="fas fa-language"></i>
+            <span class="lang-option active" data-lang="en">EN</span>
+            <span class="lang-option" data-lang="ar">AR</span>
+          </div>
+        </li>
         <li>
           <button class="dark-mode-toggle" id="darkModeToggle">
             <i class="fas fa-moon"></i>
@@ -823,14 +819,18 @@
     <h3 class="section-title" data-en="Projects" data-ar="المشاريع">Projects</h3>
     <div class="projects-grid">
       <div class="project-card animate-on-scroll">
-        <img src="drawing.jpg" alt="Civil Drawing">
+        <a href="drawing.jpg" target="_blank">
+          <img src="drawing.jpg" alt="Civil Drawing">
+        </a>
         <div class="project-content">
           <h4 data-en="18 Room Market Building" data-ar="مبنى سوق من 18 غرفة">18 Room Market Building</h4>
           <p data-en="18 Room Market Building – designed by Mohammed Ali Suliman Salih. Includes 18 rooms (3×6m each) optimized for small retail units." data-ar="مبنى سوق من 18 غرفة – صممه محمد علي سليمان صالح، يضم 18 غرفة (3×6م) مخصصة للمحلات التجارية الصغيرة.">18 Room Market Building – designed by Mohammed Ali Suliman Salih. Includes 18 rooms (3×6m each) optimized for small retail units.</p>
         </div>
       </div>
       <div class="project-card animate-on-scroll delay-1">
-        <img src="kpi.jpg" alt="KPI Dashboard">
+        <a href="kpi.jpg" target="_blank">
+          <img src="kpi.jpg" alt="KPI Dashboard">
+        </a>
         <div class="project-content">
           <h4 data-en="HSE Performance KPI Dashboard" data-ar="لوحة مؤشرات أداء السلامة">HSE Performance KPI Dashboard</h4>
           <p data-en="HSE Performance KPI Dashboard – visualizing safety metrics and compliance trends to support data-driven decision making." data-ar="لوحة مؤشرات أداء السلامة – تعرض مؤشرات الأداء الرئيسية للسلامة ودعم اتخاذ القرارات بناءً على البيانات.">HSE Performance KPI Dashboard – visualizing safety metrics and compliance trends to support data-driven decision making.</p>
