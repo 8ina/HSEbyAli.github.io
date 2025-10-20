@@ -147,39 +147,67 @@
       width: 100%;
     }
 
-    /* Language Switcher */
-    .language-switcher {
+    /* Language Toggle Styles */
+    .language-toggle {
       display: flex;
       align-items: center;
-      gap: 0.2rem;
-      background: var(--light-gray);
-      border-radius: 20px;
-      padding: 0.3rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 70px;
+      height: 30px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .language-switcher:hover {
-      background: var(--border);
-    }
-
-    .language-switcher i {
-      font-size: .5rem;
-      color: var(--subtext);
-      margin: 0 0.3rem;
-    }
-
-    .lang-option {
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-size: 0.85rem;
+      background-color: var(--light-gray);
+      border-radius: 30px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+      color: var(--text);
+      transition: background-color 0.3s ease;
       font-weight: 500;
-      transition: all 0.3s ease;
     }
 
-    .lang-option.active {
-      background: var(--accent);
+    .lang {
+      font-size: 0.9rem;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lang.en {
+      opacity: 1;
+    }
+
+    .lang.ar {
+      opacity: 0.5;
+    }
+
+    input:checked + .slider {
+      background-color: var(--accent);
       color: var(--bg);
+    }
+
+    input:checked + .slider .lang.en {
+      opacity: 0.5;
+    }
+
+    input:checked + .slider .lang.ar {
+      opacity: 1;
     }
 
     /* Dark Mode Toggle */
@@ -239,7 +267,8 @@
       object-fit: cover;
       margin-bottom: 2rem;
       border: 5px solid var(--card-bg);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1)
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      filter: grayscale(100%);
       transition: all 0.4s ease;
     }
 
@@ -344,6 +373,7 @@
       font-size: 2.5rem;
       color: var(--accent);
       margin-bottom: 1.5rem;
+      filter: grayscale(100%);
     }
 
     .card h4 {
@@ -691,10 +721,15 @@
         <li><a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
         <li><a href="#contact" data-en="Contact" data-ar="اتصل">Contact</a></li>
         <li>
-          <div class="language-switcher" id="languageSwitcher">
-            <i class="fas fa-language"></i>
-            <span class="lang-option active" data-lang="en">EN</span>
-            <span class="lang-option" data-lang="ar">AR</span>
+          <!-- Language Switcher -->
+          <div class="language-toggle">
+            <label class="switch">
+              <input type="checkbox" id="langToggle" />
+              <span class="slider">
+                <span class="lang en">EN</span>
+                <span class="lang ar">AR</span>
+              </span>
+            </label>
           </div>
         </li>
         <li>
@@ -870,34 +905,28 @@
 
   <script>
     // Language Switcher
-    const languageSwitcher = document.getElementById('languageSwitcher');
-    const langOptions = languageSwitcher.querySelectorAll('.lang-option');
+    const langToggle = document.getElementById('langToggle');
     let currentLang = 'en';
     
-    langOptions.forEach(option => {
-      option.addEventListener('click', function() {
-        const selectedLang = this.getAttribute('data-lang');
+    langToggle.addEventListener('change', function() {
+      const selectedLang = this.checked ? 'ar' : 'en';
+      
+      if (selectedLang !== currentLang) {
+        // Update all text elements with data attributes
+        document.querySelectorAll('[data-en]').forEach(element => {
+          if (selectedLang === 'ar') {
+            element.textContent = element.getAttribute('data-ar');
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'ar';
+          } else {
+            element.textContent = element.getAttribute('data-en');
+            document.documentElement.dir = 'ltr';
+            document.documentElement.lang = 'en';
+          }
+        });
         
-        if (selectedLang !== currentLang) {
-          langOptions.forEach(opt => opt.classList.remove('active'));
-          this.classList.add('active');
-          
-          // Update all text elements with data attributes
-          document.querySelectorAll('[data-en]').forEach(element => {
-            if (selectedLang === 'ar') {
-              element.textContent = element.getAttribute('data-ar');
-              document.documentElement.dir = 'rtl';
-              document.documentElement.lang = 'ar';
-            } else {
-              element.textContent = element.getAttribute('data-en');
-              document.documentElement.dir = 'ltr';
-              document.documentElement.lang = 'en';
-            }
-          });
-          
-          currentLang = selectedLang;
-        }
-      });
+        currentLang = selectedLang;
+      }
     });
 
     // Dark Mode Toggle
