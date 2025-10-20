@@ -455,52 +455,101 @@
       color: var(--subtext);
     }
 
-    /* Projects Section */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .project-card {
+    /* Project Carousel */
+    .project-carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.3s ease;
     }
 
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    .carousel-container {
+      display: flex;
+      transition: transform 0.5s ease;
     }
 
-    .project-card img {
+    .carousel-slide {
+      min-width: 100%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .project-image {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-      filter: grayscale(30%);
-      transition: filter 0.3s ease;
-    }
-
-    .project-card:hover img {
-      filter: grayscale(0%);
+      max-width: 600px;
+      height: 300px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
     }
 
     .project-content {
-      padding: 1.5rem;
+      text-align: center;
+      max-width: 600px;
     }
 
     .project-content h4 {
       font-weight: 600;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
     }
 
     .project-content p {
       color: var(--subtext);
-      font-size: 0.9rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+      gap: 1rem;
+    }
+
+    .carousel-btn {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .carousel-btn:hover {
+      background: var(--text);
+      transform: scale(1.1);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--light-gray);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-dot.active {
+      background: var(--accent);
+      transform: scale(1.2);
     }
 
     /* Contact Icons */
@@ -672,8 +721,8 @@
         font-size: 0.85rem;
       }
       
-      .projects-grid {
-        grid-template-columns: 1fr;
+      .project-image {
+        height: 250px;
       }
     }
 
@@ -700,6 +749,14 @@
       .competency {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
+      }
+      
+      .project-image {
+        height: 200px;
+      }
+      
+      .carousel-slide {
+        padding: 1.5rem;
       }
     }
   </style>
@@ -850,24 +907,65 @@
   <!-- Projects Section -->
   <section id="projects">
     <h3 class="section-title" data-en="Projects" data-ar="المشاريع">Projects</h3>
-    <div class="projects-grid">
-      <div class="project-card animate-on-scroll">
-        <a href="drawing.jpg" target="_blank">
-          <img src="drawing.jpg" alt="Civil Drawing">
-        </a>
-        <div class="project-content">
-          <h4 data-en="18 Room Market Building" data-ar="مبنى سوق من 18 غرفة">18 Room Market Building</h4>
-          <p data-en="18 Room Market Building – designed by Mohammed Ali Suliman Salih. Includes 18 rooms (3×6m each) optimized for small retail units." data-ar="مبنى سوق من 18 غرفة – صممه محمد علي سليمان صالح، يضم 18 غرفة (3×6م) مخصصة للمحلات التجارية الصغيرة.">18 Room Market Building – designed by Mohammed Ali Suliman Salih. Includes 18 rooms (3×6m each) optimized for small retail units.</p>
+    <div class="project-carousel animate-on-scroll">
+      <div class="carousel-container" id="carouselContainer">
+        <!-- Project 1 -->
+        <div class="carousel-slide">
+          <a href="emergency-response-flowchart.png" target="_blank">
+            <img src="emergency-response-flowchart.png" alt="Emergency Response Flowchart" class="project-image">
+          </a>
+          <div class="project-content">
+            <h4 data-en="Emergency Response Flowchart" data-ar="مخطط استجابة الطوارئ">Emergency Response Flowchart</h4>
+            <p data-en="A visual guide outlining quick response actions, communication flow, and role responsibilities during site emergencies." data-ar="دليل مرئي يوضح إجراءات الاستجابة السريعة وتدفق الاتصالات ومسؤوليات الأدوار أثناء حالات الطوارئ في الموقع.">A visual guide outlining quick response actions, communication flow, and role responsibilities during site emergencies.</p>
+          </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="carousel-slide">
+          <a href="risk-assessment-matrix.png" target="_blank">
+            <img src="risk-assessment-matrix.png" alt="Risk Assessment Matrix" class="project-image">
+          </a>
+          <div class="project-content">
+            <h4 data-en="Risk Assessment Matrix" data-ar="مصفوفة تقييم المخاطر">Risk Assessment Matrix</h4>
+            <p data-en="Matrix evaluating hazards by likelihood and severity, helping identify and prioritize high-risk activities." data-ar="مصفوفة تقيم المخاطر بناءً على الاحتمالية والشدة، مما يساعد في تحديد وتحديد أولويات الأنشطة عالية الخطورة.">Matrix evaluating hazards by likelihood and severity, helping identify and prioritize high-risk activities.</p>
+          </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="carousel-slide">
+          <a href="security-risk-assessment.png" target="_blank">
+            <img src="security-risk-assessment.png" alt="Security Risk Assessment Diagram" class="project-image">
+          </a>
+          <div class="project-content">
+            <h4 data-en="Security Risk Assessment Diagram" data-ar="مخطط تقييم مخاطر الأمن">Security Risk Assessment Diagram</h4>
+            <p data-en="A layered model mapping threats, vulnerabilities, and mitigation controls." data-ar="نموذج متعدد الطبقات يرسم التهديدات والثغرات وضوابط التخفيف.">A layered model mapping threats, vulnerabilities, and mitigation controls.</p>
+          </div>
+        </div>
+        
+        <!-- Project 4 -->
+        <div class="carousel-slide">
+          <a href="low-cost-housing.png" target="_blank">
+            <img src="low-cost-housing.png" alt="10-Unit Low-Cost Housing Project" class="project-image">
+          </a>
+          <div class="project-content">
+            <h4 data-en="10-Unit Low-Cost Housing Project" data-ar="مشروع سكني من 10 وحدات منخفضة التكلفة">10-Unit Low-Cost Housing Project</h4>
+            <p data-en="A conceptual civil design emphasizing affordable materials, safe structural layout, and compliance with construction safety standards." data-ar="تصميم مدني مفاهيمي يركز على المواد الميسورة التكلفة والتخطيط الهيكلي الآلي والامتثال لمعايير سلامة البناء.">A conceptual civil design emphasizing affordable materials, safe structural layout, and compliance with construction safety standards.</p>
+          </div>
         </div>
       </div>
-      <div class="project-card animate-on-scroll delay-1">
-        <a href="kpi.jpg" target="_blank">
-          <img src="kpi.jpg" alt="KPI Dashboard">
-        </a>
-        <div class="project-content">
-          <h4 data-en="HSE Performance KPI Dashboard" data-ar="لوحة مؤشرات أداء السلامة">HSE Performance KPI Dashboard</h4>
-          <p data-en="HSE Performance KPI Dashboard – visualizing safety metrics and compliance trends to support data-driven decision making." data-ar="لوحة مؤشرات أداء السلامة – تعرض مؤشرات الأداء الرئيسية للسلامة ودعم اتخاذ القرارات بناءً على البيانات.">HSE Performance KPI Dashboard – visualizing safety metrics and compliance trends to support data-driven decision making.</p>
+      
+      <div class="carousel-nav">
+        <button class="carousel-btn" id="prevBtn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel-dots" id="carouselDots">
+          <!-- Dots will be generated by JavaScript -->
         </div>
+        
+        <button class="carousel-btn" id="nextBtn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -928,6 +1026,54 @@
         currentLang = selectedLang;
       }
     });
+
+    // Project Carousel
+    const carouselContainer = document.getElementById('carouselContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const carouselDots = document.getElementById('carouselDots');
+    const slides = document.querySelectorAll('.carousel-slide');
+    
+    let currentSlide = 0;
+    
+    // Create dots
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('carousel-dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(index));
+      carouselDots.appendChild(dot);
+    });
+    
+    function updateCarousel() {
+      carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Update active dot
+      document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+    
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    }
+    
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+    
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+    
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    
+    // Auto-advance carousel every 5 seconds
+    setInterval(nextSlide, 5000);
 
     // Dark Mode Toggle
     const darkModeToggle = document.getElementById('darkModeToggle');
