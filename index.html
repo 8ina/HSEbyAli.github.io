@@ -73,7 +73,7 @@
       text-align: right;
     }
 
-    [dir="rtl"] .experience-item {
+    [dir="rtl"] .portfolio-item {
       text-align: right;
     }
 
@@ -432,6 +432,37 @@
       color: var(--subtext);
     }
 
+    /* Portfolio Highlights Section */
+    .portfolio-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .portfolio-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: 0.3s ease;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .portfolio-item h4 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .portfolio-item p {
+      color: var(--subtext);
+    }
+
     /* Competencies Section */
     .competencies {
       display: flex;
@@ -454,33 +485,6 @@
     .competency:hover {
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    /* Experience Section */
-    .experience-item {
-      margin-bottom: 2.5rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .experience-item:last-child {
-      border-bottom: none;
-    }
-
-    .experience-item h4 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .experience-date {
-      color: var(--accent);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-
-    .experience-description {
-      color: var(--subtext);
     }
 
     /* Project Carousel */
@@ -740,6 +744,10 @@
         grid-template-columns: 1fr;
       }
       
+      .portfolio-list {
+        grid-template-columns: 1fr;
+      }
+      
       .competencies {
         gap: 0.8rem;
       }
@@ -800,7 +808,7 @@
       <ul>
         <li><a href="#about" data-en="About" data-ar="نبذة">About</a></li>
         <li><a href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
-        <li><a href="#experience" data-en="Experience" data-ar="الخبرة">Experience</a></li>
+        <li><a href="#portfolio" data-en="Portfolio" data-ar="الأعمال">Portfolio</a></li>
         <li><a href="#competencies" data-en="Competencies" data-ar="الكفاءات">Competencies</a></li>
         <li><a href="#CivSafe" data-en="CivSafe" data-ar="ميدسيف">CivSafe</a></li>
         <li><a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
@@ -875,20 +883,33 @@
     </div>
   </section>
 
-  <!-- Experience Section -->
-  <section id="experience">
-    <h3 class="section-title" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</h3>
-    <div class="experience-list">
-      <div class="experience-item animate-on-scroll">
-        <h4 data-en="Civil Engineer & HSE Coordinator" data-ar="مهندس مدني ومنسق السلامة والصحة المهنية">Civil Engineer & HSE Coordinator</h4>
-        <div class="experience-date" data-en="2024 – Present" data-ar="2024 – الحاضر">2024 – Present</div>
-        <div class="experience-description" data-en="Providing integrated safety and engineering support for construction projects, focusing on risk management, compliance monitoring, and quality control under national safety standards." data-ar="توفير الدعم المتكامل للسلامة والهندسة لمشاريع البناء، مع التركيز على إدارة المخاطر ومراقبة الامتثال ومراقبة الجودة وفقًا لمعايير السلامة الوطنية.">Providing integrated safety and engineering support for construction projects, focusing on risk management, compliance monitoring, and quality control under national safety standards.</div>
+  <!-- Portfolio Highlights Section -->
+  <section id="portfolio">
+    <h3 class="section-title" data-en="Portfolio Highlights" data-ar="أبرز الأعمال">Portfolio Highlights</h3>
+    <div class="portfolio-list">
+      <div class="portfolio-item animate-on-scroll">
+        <h4 data-en="CivSafe Toolkit" data-ar="أدوات CivSafe">CivSafe Toolkit</h4>
+        <p data-en="Developed CivSafe, an online HSE toolkit for construction projects." data-ar="تطوير CivSafe، مجموعة أدوات السلامة والصحة المهنية الإلكترونية لمشاريع البناء.">Developed CivSafe, an online HSE toolkit for construction projects.</p>
       </div>
 
-      <div class="experience-item animate-on-scroll delay-1">
-        <h4 data-en="Site Safety & Compliance Assistant" data-ar="مساعد السلامة والامتثال في الموقع">Site Safety & Compliance Assistant</h4>
-        <div class="experience-date" data-en="2024" data-ar="2024">2024</div>
-        <div class="experience-description" data-en="Supported on-site safety operations and compliance documentation for multiple construction projects. Assisted in toolbox talks, inspections, and reporting to ensure zero-incident operations." data-ar="دعم عمليات السلامة في الموقع وتوثيق الامتثال لمشاريع بناء متعددة. ساعد في اجتماعات الأدوات والتفتيش وإعداد التقارير لضمان عمليات خالية من الحوادث.">Supported on-site safety operations and compliance documentation for multiple construction projects. Assisted in toolbox talks, inspections, and reporting to ensure zero-incident operations.</div>
+      <div class="portfolio-item animate-on-scroll delay-1">
+        <h4 data-en="Site Inspections & Risk Assessments" data-ar="فحوصات الموقع وتقييمات المخاطر">Site Inspections & Risk Assessments</h4>
+        <p data-en="Conducted site inspections and risk assessments for multiple local projects." data-ar="إجراء فحوصات الموقع وتقييمات المخاطر لمشاريع محلية متعددة.">Conducted site inspections and risk assessments for multiple local projects.</p>
+      </div>
+
+      <div class="portfolio-item animate-on-scroll delay-2">
+        <h4 data-en="Safety Awareness Campaigns" data-ar="حملات التوعية بالسلامة">Safety Awareness Campaigns</h4>
+        <p data-en="Designed safety awareness campaigns and training materials." data-ar="تصميم حملات التوعية بالسلامة ومواد التدريب.">Designed safety awareness campaigns and training materials.</p>
+      </div>
+
+      <div class="portfolio-item animate-on-scroll delay-3">
+        <h4 data-en="Compliance Audits" data-ar="تدقيق الامتثال">Compliance Audits</h4>
+        <p data-en="Led documentation and compliance audits for HSE protocols across development and humanitarian project sites." data-ar="قيادة التوثيق وتدقيق الامتثال لبروتوكولات السلامة والصحة المهنية عبر مواقع المشاريع التنموية والإنسانية.">Led documentation and compliance audits for HSE protocols across development and humanitarian project sites.</p>
+      </div>
+
+      <div class="portfolio-item animate-on-scroll delay-1">
+        <h4 data-en="Safety Briefings" data-ar="إحاطات السلامة">Safety Briefings</h4>
+        <p data-en="Coordinated cross-functional safety briefings between engineers, contractors, and stakeholders." data-ar="تنسيق إحاطات السلامة متعددة الوظائف بين المهندسين والمقاولين وأصحاب المصلحة.">Coordinated cross-functional safety briefings between engineers, contractors, and stakeholders.</p>
       </div>
     </div>
   </section>
@@ -909,8 +930,8 @@
   </section>
 
   <!-- CivSafe Section -->
-  <section id="CivSAfe" class="section-dark">
-    <h3 class="section-title" data-en="CivSafe" data-ar=" ميد سيف">CivSafe</h3>
+  <section id="CivSafe" class="section-dark">
+    <h3 class="section-title" data-en="CivSafe" data-ar="ميد سيف">CivSafe</h3>
     <div class="cards">
       <div class="card animate-on-scroll">
         <i class="fa-solid fa-hard-hat"></i>
