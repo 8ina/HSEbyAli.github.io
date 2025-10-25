@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CivSafe | Mohamed Ali - Civil Engineering & HSE Excellence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CivSafe</title>
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -41,6 +41,11 @@
       box-sizing: border-box;
     }
 
+    html {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       background: var(--bg);
       font-family: 'Inter', sans-serif;
@@ -48,6 +53,8 @@
       line-height: 1.6;
       overflow-x: hidden;
       transition: all 0.3s ease;
+      width: 100%;
+      min-height: 100vh;
     }
 
     /* RTL Support for Arabic */
@@ -104,6 +111,7 @@
       top: 0;
       z-index: 1000;
       transition: all 0.3s ease;
+      width: 100%;
     }
 
     header.scrolled {
@@ -112,13 +120,14 @@
     }
 
     nav {
-      max-width: 1100px;
+      max-width: 100%;
       margin: 0 auto;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       transition: all 0.3s ease;
+      width: 100%;
     }
 
     .logo-container {
@@ -141,14 +150,14 @@
       font-size: 1.5rem;
     }
 
-    nav ul {
+    .nav-menu {
       list-style: none;
       display: flex;
       gap: 2rem;
       align-items: center;
     }
 
-    nav ul li a {
+    .nav-menu li a {
       text-decoration: none;
       color: var(--text);
       font-weight: 500;
@@ -156,11 +165,11 @@
       position: relative;
     }
 
-    nav ul li a:hover {
+    .nav-menu li a:hover {
       color: var(--accent);
     }
 
-    nav ul li a::after {
+    .nav-menu li a::after {
       content: '';
       position: absolute;
       width: 0;
@@ -171,8 +180,19 @@
       transition: width 0.3s ease;
     }
 
-    nav ul li a:hover::after {
+    .nav-menu li a:hover::after {
       width: 100%;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
     }
 
     /* Language Toggle Styles */
@@ -266,15 +286,17 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      width: 100%;
     }
 
     .hero-content {
-      max-width: 800px;
+      max-width: 100%;
       z-index: 1;
+      width: 100%;
     }
 
     .hero h2 {
-      font-size: 3.2rem;
+      font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 700;
       margin-bottom: 1.5rem;
       line-height: 1.2;
@@ -282,15 +304,16 @@
 
     .hero p {
       color: var(--subtext);
-      font-size: 1.2rem;
-      max-width: 700px;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 100%;
       margin: 0 auto 2.5rem;
       font-weight: 400;
+      padding: 0 1rem;
     }
 
     .profile-photo {
-      width: 180px;
-      height: 180px;
+      width: clamp(120px, 25vw, 180px);
+      height: clamp(120px, 25vw, 180px);
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 2rem;
@@ -316,10 +339,11 @@
 
     /* Sections */
     section {
-      max-width: 1100px;
+      max-width: 100%;
       margin: 5rem auto;
       padding: 0 2rem;
       position: relative;
+      width: 100%;
     }
 
     h3.section-title {
@@ -327,7 +351,7 @@
       margin-bottom: 3rem;
       text-align: center;
       color: var(--text);
-      font-size: 2.2rem;
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
       position: relative;
     }
 
@@ -361,8 +385,9 @@
     /* Cards */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
       gap: 2rem;
+      width: 100%;
     }
 
     .card {
@@ -374,6 +399,7 @@
       transition: 0.3s ease;
       position: relative;
       overflow: hidden;
+      width: 100%;
     }
 
     .card::before {
@@ -407,7 +433,7 @@
     .card h4 {
       font-weight: 600;
       margin-bottom: 1rem;
-      font-size: 1.3rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     }
 
     .card p {
@@ -418,13 +444,15 @@
     /* About Section */
     .about-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 3rem;
       align-items: center;
+      width: 100%;
     }
 
     .about-text {
       padding: 2rem;
+      width: 100%;
     }
 
     .about-text p {
@@ -440,17 +468,19 @@
       align-items: center;
       margin-bottom: 4rem;
       text-align: center;
+      width: 100%;
     }
 
     .founder-content {
       padding: 1rem;
-      max-width: 800px;
+      max-width: 100%;
       margin: 0 auto;
+      width: 100%;
     }
 
     .founder-content h3 {
       margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      font-size: clamp(1.5rem, 3vw, 1.8rem);
     }
 
     .founder-content p {
@@ -466,7 +496,7 @@
 
     .signature {
       font-family: 'Dancing Script', cursive;
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 4vw, 2.5rem);
       color: var(--accent);
       margin-bottom: 0.5rem;
     }
@@ -474,8 +504,9 @@
     /* Portfolio Highlights Section */
     .portfolio-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 2rem;
+      width: 100%;
     }
 
     .portfolio-item {
@@ -484,6 +515,7 @@
       border-radius: 12px;
       padding: 2rem;
       transition: 0.3s ease;
+      width: 100%;
     }
 
     .portfolio-item:hover {
@@ -494,7 +526,7 @@
     .portfolio-item h4 {
       font-weight: 600;
       margin-bottom: 1rem;
-      font-size: 1.2rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.2rem);
       color: var(--accent);
     }
 
@@ -509,6 +541,7 @@
       gap: 1rem;
       margin-top: 2rem;
       justify-content: center;
+      width: 100%;
     }
 
     .competency {
@@ -516,9 +549,10 @@
       color: var(--bg);
       padding: 0.8rem 1.5rem;
       border-radius: 6px;
-      font-size: 0.9rem;
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
       font-weight: 600;
       transition: all 0.3s ease;
+      white-space: nowrap;
     }
 
     .competency:hover {
@@ -533,11 +567,13 @@
       border-radius: 12px;
       background: var(--card-bg);
       border: 1px solid var(--border);
+      width: 100%;
     }
 
     .carousel-container {
       display: flex;
       transition: transform 0.5s ease;
+      width: 100%;
     }
 
     .carousel-slide {
@@ -546,12 +582,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%;
     }
 
     .project-image {
       width: 100%;
-      max-width: 600px;
-      height: 300px;
+      max-width: 100%;
+      height: auto;
+      max-height: 300px;
       object-fit: contain;
       margin-bottom: 1.5rem;
       border-radius: 8px;
@@ -561,18 +599,19 @@
 
     .project-content {
       text-align: center;
-      max-width: 600px;
+      max-width: 100%;
+      width: 100%;
     }
 
     .project-content h4 {
       font-weight: 600;
       margin-bottom: 1rem;
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
     }
 
     .project-content p {
       color: var(--subtext);
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2vw, 1rem);
       line-height: 1.6;
     }
 
@@ -582,6 +621,7 @@
       align-items: center;
       margin-top: 2rem;
       gap: 1rem;
+      width: 100%;
     }
 
     .carousel-btn {
@@ -631,17 +671,18 @@
       border-radius: 12px;
       border: 1px solid var(--border);
       margin: 4rem 0;
+      width: 100%;
     }
 
     .download-section h3 {
       margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      font-size: clamp(1.5rem, 3vw, 1.8rem);
     }
 
     .download-section p {
       color: var(--subtext);
       margin-bottom: 2rem;
-      max-width: 600px;
+      max-width: 100%;
       margin-left: auto;
       margin-right: auto;
     }
@@ -671,7 +712,7 @@
       color: white;
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: clamp(0.7rem, 2vw, 0.8rem);
       font-weight: 600;
       margin-left: 0.8rem;
       vertical-align: middle;
@@ -683,18 +724,19 @@
       justify-content: center;
       gap: 1.5rem;
       margin-top: 2rem;
+      width: 100%;
     }
 
     .contact-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 60px;
-      height: 60px;
+      width: clamp(50px, 10vw, 60px);
+      height: clamp(50px, 10vw, 60px);
       background: var(--card-bg);
       color: var(--accent);
       border-radius: 50%;
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
       transition: all 0.3s ease;
       text-decoration: none;
       border: 1px solid var(--border);
@@ -715,11 +757,13 @@
       color: rgba(255, 255, 255, 0.8);
       font-size: 0.9rem;
       margin-top: 5rem;
+      width: 100%;
     }
 
     .footer-content {
-      max-width: 1100px;
+      max-width: 100%;
       margin: 0 auto;
+      width: 100%;
     }
 
     .footer-logo {
@@ -804,41 +848,84 @@
       transition-delay: 0.3s;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
+    /* Enhanced Responsive Design */
+    @media (max-width: 1200px) {
+      section {
+        padding: 0 1.5rem;
+      }
+      
       .hero {
         padding: 6rem 1.5rem 4rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      nav {
+        padding: 1rem;
+      }
+      
+      .nav-menu {
+        gap: 1.5rem;
       }
       
       .hero h2 {
         font-size: 2.5rem;
       }
-      
-      nav {
-        flex-direction: column;
-        gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
       }
       
-      nav ul {
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+      
+      .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .hero {
+        padding: 5rem 1rem 3rem;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
       }
       
       section {
         margin: 3rem auto;
+        padding: 0 1rem;
       }
       
       .cards {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
       
       .about-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
       }
       
       .portfolio-list {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
       
       .competencies {
@@ -851,24 +938,26 @@
       }
       
       .project-image {
-        height: 250px;
+        max-height: 250px;
+      }
+      
+      .carousel-slide {
+        padding: 1.5rem;
       }
     }
 
     @media (max-width: 576px) {
       .hero h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       
-      nav ul {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
+      .hero p {
+        font-size: 1rem;
       }
       
       .profile-photo {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
       }
       
       .competencies {
@@ -881,11 +970,64 @@
       }
       
       .project-image {
-        height: 200px;
+        max-height: 200px;
       }
       
       .carousel-slide {
+        padding: 1rem;
+      }
+      
+      .download-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+      
+      .contact-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .hero {
+        padding: 4rem 0.5rem 2rem;
+      }
+      
+      section {
+        padding: 0 0.5rem;
+      }
+      
+      .card {
+        padding: 1.5rem 1rem;
+      }
+      
+      .portfolio-item {
         padding: 1.5rem;
+      }
+    }
+
+    /* Landscape orientation specific fixes */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero {
+        min-height: 100vh;
+        padding: 4rem 1rem 2rem;
+      }
+      
+      .profile-photo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1rem;
+      }
+      
+      .hero h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .hero p {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -898,7 +1040,12 @@
         <img src="logo.jpg" alt="CivSafe Logo" class="logo">
         <span class="logo-text">CivSafe</span>
       </div>
-      <ul>
+      
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <ul class="nav-menu" id="navMenu">
         <li><a href="#about" data-en="About" data-ar="نبذة">About</a></li>
         <li><a href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
         <li><a href="#portfolio" data-en="Portfolio" data-ar="الأعمال">Portfolio</a></li>
@@ -1199,6 +1346,32 @@
   </button>
 
   <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    menuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+      const icon = menuToggle.querySelector('i');
+      if (navMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+
     // Language Switcher
     const langToggle = document.getElementById('langToggle');
     let currentLang = 'en';
